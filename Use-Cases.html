@@ -1,0 +1,1193 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Use Cases and Use Case Diagrams</title>
+<!-- 2017-02-08 Wed 13:59 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Mikael Svahnberg" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="org/org.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Use Cases and Use Case Diagrams</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. About This Sprint</a></li>
+<li><a href="#sec-2">2. User Stories covered in this Sprint</a></li>
+<li><a href="#sec-3">3. Introduction</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Use Cases as Test Cases</a></li>
+<li><a href="#sec-3-2">3.2. Use Cases and Business Requirements</a></li>
+<li><a href="#sec-3-3">3.3. Use Cases and Quality Attributes</a></li>
+<li><a href="#sec-3-4">3.4. Use Case Diagrams</a></li>
+<li><a href="#sec-3-5">3.5. Use Case Reuse</a></li>
+<li><a href="#sec-3-6">3.6. Use Case Prioritisation</a></li>
+<li><a href="#sec-3-7">3.7. Story Points</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Learning Material</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Book Chapters</a></li>
+<li><a href="#sec-4-2">4.2. Screencasts</a></li>
+<li><a href="#sec-4-3">4.3. Further Reading</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Experiential Learning</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Sprint Test Plan</a></li>
+<li><a href="#sec-5-2">5.2. Self-Study: Use Cases</a></li>
+<li><a href="#sec-5-3">5.3. Self-Study: Planning</a></li>
+<li><a href="#sec-5-4">5.4. Assignment: Use Case Overview</a></li>
+<li><a href="#sec-5-5">5.5. Assignment: Implementation Plan</a></li>
+<li><a href="#sec-5-6">5.6. Assignment: Detailed Use Cases for First Iteration</a></li>
+<li><a href="#sec-5-7">5.7. Update Course Backlog</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Sprint Acceptance Tests</a></li>
+</ul>
+</div>
+</div>
+<br/>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> About This Sprint</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This sprint introduces UML use cases and UML use case diagrams as a means of putting requirements into a context and understanding the interactions between users and the system.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>As a software designer I want to document what the customer is telling me so that I can discuss my understanding of their requirements with them.
+</li>
+<li>As a software designer I want to document what the customer is telling me so that I can easily continue designing based on a joint understanding.
+</li>
+<li>As a software designer I want to be able to reuse common procedures between my use cases so that I only have to maintain them in one place.
+</li>
+<li>As a project manager I need to decide what to focus on building right now so that I best satisfy all customers&rsquo; expectations.
+</li>
+<li>As a product manager I want to make sure that we are building software of high quality.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Introduction</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+UML use cases is the first step into Object-Oriented Analysis, according to RUP. The core of a use case is a small set of attributes (name, involved actors, brief description, main course of events, alternative flows). Depending on which version of the course book (Larman) you have you may extend this set with more attributes, and they will have different names (for example Brief (or high-level) use cases and fully dressed (or expanded) use cases) depending on how much information you provide. Outside of this course, it is not important what you call the attributes, or what you call the use cases themselves. What is important, though, is that you establish an order in which to work with the use cases, and that you decide on one standardised format &#x2013; at least for your project, but preferrably for your organisation &#x2013; since this simplifies both readability and the creation of the use cases.
+</p>
+
+<div class="info">
+<p>
+<b>An Example of a Use Case</b>
+</p>
+
+<dl class="org-dl">
+<dt> Use Case </dt><dd>Order Ice Cream
+</dd>
+<dt> Actors </dt><dd>Kid, Ice Cream Man
+</dd>
+<dt> Description </dt><dd>A kid arrives at the ice cream truck and orders an ice cream.
+The Ice Cream Man delivers the ice cream, and informes the kid about the price.
+The kid pays and eats their ice cream.
+</dd>
+<dt> Main Course of Events </dt><dd><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Actor</th>
+<th scope="col" class="left">System</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">1. A kid arrives at the ice cream truck</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">2. The system informs about available choices</td>
+</tr>
+
+<tr>
+<td class="left">3. The kid orders an ice cream</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">4. The system prepares the ice cream and informs about the price</td>
+</tr>
+
+<tr>
+<td class="left">5. The ice cream man delivers the ice cream.</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">6. The kid pays.</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">7. The ice cream man enters the payment into the system.</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">8. The system gives change on the paid amount.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt> Alternative Flow of Events </dt><dd>6. The kid eats the ice cream and gets sucked into the ice cream van and turned into more ice cream.
+</dd>
+</dl>
+
+</div>
+
+<p>
+The usefulness of use cases lies in that you put a bunch of requirements into a working scenario. A scenario is easier for both the end-users and for the developers to understand. Rather than having to go through all possible alternative branches and edge cases, you focus on describing <i>one instance</i> of interacting with the system. In the example above, it is not &ldquo;any kid&rdquo; that arrives at &ldquo;any ice cream truck&rdquo;. It is one <i>specific</i> kid (Let&rsquo;s call him Bob) arriving at <i>one specific</i> ice cream truck, at <i>one particular time</i>. Yes, we do take some shortcuts by saying that the kid orders &ldquo;an ice cream&rdquo; instead of &ldquo;a vanilla ice cream&rdquo; in order to simplify a bit, but initially we try to avoid anything that may create branches in the main course of events. When we iterate the use case we may see that there are alternative flows to cover (like the <a href="http://www.imdb.com/title/tt0113376/">surprise twist</a> in the example).
+</p>
+
+
+<div class="figure">
+<p><img src="./images/Iwow-that-escalated.jpg" alt="Iwow-that-escalated.jpg" />
+</p>
+</div>
+
+<p>
+It is also important to remember that the main course of events should describe a <i>positive flow</i>, i.e. a flow where the operation succeeds and everyone leaves the use case happily. All the negative flows (for example, the kid does not have enough cash, the ice cream man is out of voodoo dolls, etc.) should be covered as alternative flows.
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Use Cases as Test Cases</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+As a developer, you may use this use case straight off as a test case for the system. Find Bob, put him in front of the ice cream truck, and tell him to order an ice cream. If you are able to execute the use case as specified, you have a passing test case. You are of course not done with your tests here, since the use case is not complete. If you think about it, you may select different flavours of ice cream, you may ask for one or several scoops of ice cream, you can ask for a cone or a cup, you can pay with cash or card, and so on. All of these choices ought to be covered in the use case and the corresponding test cases. You may also pay up-front or after delivery, but this may be better represented as two separate use cases.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Use Cases and Business Requirements</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+Take the use case above. Now quickly tell me which business requirements that are involved.
+</p>
+
+<p>
+Do the reverse. Take a requirement. Quickly tell me which use cases this requirement is realised in.
+</p>
+
+<p>
+You can&rsquo;t, can you? This is one of the downsides of use cases if we &ldquo;do things by the book&rdquo;. All is not lost, however. It is relatively easy to augment the use case format to cover for these two situations.
+</p>
+
+<p>
+The quickest is to add one attribute &ldquo;Dependencies&rdquo; (or &ldquo;Relevant Requirements&rdquo;, or whatever you wish to name it) and simply list all requirements that you are using in the use case. The downside to this approach is that you do not know <i>how</i> the requirements are involved. Let&rsquo;s say that you have a requirement that /"As a customer I want to know if there are any nuts in the ice cream because I am allergic to hazelnuts"/. When should this requirement be used? When the system informs about the available choices? When the kid orders the ice cream? When the kid has already payed?
+</p>
+
+<p>
+Another option is to add a column to the main course of events instead:
+</p>
+
+<table id="tab:UC-BR" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Adding Business Requirements to a Use Case&rsquo;s Main Course of Events</caption>
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Actor</th>
+<th scope="col" class="left">System</th>
+<th scope="col" class="left">Business Requirements</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">1. A kid arrives at the ice cream truck</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">2. The system informs about available choices</td>
+<td class="left">BR1: &ldquo;As a customer I want to know what choices are available because I don&rsquo;t like vanilla&rdquo;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">BR2: &ldquo;As a customer I want to know if there are any nuts in the ice cream because I am allergic to hazelnuts&rdquo;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">Note: Also list lactose, gluten etc.</td>
+</tr>
+
+<tr>
+<td class="left">3. The kid orders an ice cream</td>
+<td class="left">&#xa0;</td>
+<td class="left">BR3: &ldquo;As a customer I want to order a particular flavour of ice cream so that I can get the ice cream I like.&rdquo;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">4. The system prepares the ice cream and informs about the price</td>
+<td class="left">BR4: &ldquo;As an ice cream man I want to get payed before I deliver the ice cream to avoid them pesky kids running away without paying&rdquo;</td>
+</tr>
+
+<tr>
+<td class="left">5. The ice cream man delivers the ice cream.</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">6. The kid pays.</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">7. The ice cream man enters the pay into the system.</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">8. The system gives change on the paid amount.</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+Of course, this is more difficult to index (but only slightly and it is easily programmed). You also need not write the entire requirement in the Business Requirements column &#x2013; just the requirement&rsquo;s ID. You may think that for a larger system, this kind of cross-referencing may become difficult because you need to have a pretty firm grasp of the entire requirement&rsquo;s database in order to be able to identify the relevant requirements. However, you would then be assuming (a) that all requirements engineering is done before analysis/design in a waterfall methodology, (b) that you could write the use case without this awareness, and (c) that you cannot add requirements to the use case later and alter the main course of events accordingly. Neither of these are true.
+</p>
+
+<p>
+You may wonder why you <i>should</i> link use cases and requirements at all? Simply because you are <i>not</i> following a strict waterfall development methodology in a one-off development. When a requirement changes you want to be able to quickly find out where you have designed and implemented the requirement, and when you are implementing the use case you may have more questions, or you may have different idea of how to solve the problem, and then you need to check what was actually stated in the requirement (and who stated it so you can talk to them about it).
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Use Cases and Quality Attributes</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+Another issue that is not included in the default use cases are <i>quality attributes</i>. I suppose you <i>could</i> add it in the regular use case, so that every system response has a subordinate clause specifying the quality constraints. But why not re-use the idea suggested above. Quality requirements are &#x2013; once specified &#x2013; just ordinary requirements, so you can add them in the &ldquo;Business Requirements&rdquo; column for every system response. This makes it easy to add several quality constraints on each system response. Even better, you do not need to have the same quality constraints on the entire use case. For example, presenting the list of ice cream flavours MUST be done within two seconds, but accepting a credit card payment MAY take up to five seconds.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Use Case Diagrams</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+Roughly (and don&rsquo;t hold me to this, because there are many situations where this is not true) there will be one use case per feature in the system, for a loose definition of feature. (There, did I weasel out that sentence sufficiently to not say anything meaningful?)
+</p>
+
+<p>
+This means that there may be quite a lot of use cases, and it may become difficult to get an overview of them if all you have are their textual form. <i>Use Case Diagrams</i> are the UML answer, with the intention of visually clearing up:
+</p>
+
+<ul class="org-ul">
+<li>What the <i>boundaries</i> are of the system(s) (to which system does which use case belong)
+</li>
+<li>What <i>actors</i> are involved for each system and in each use case
+</li>
+<li>What <i>use cases</i> there are in each system
+</li>
+<li>What <i>relationships</i> there are between use cases, between use cases and actors, and betwen systems.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5"><span class="section-number-3">3.5</span> Use Case Reuse</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+When doing larger use cases, you may encounter smaller pieces of processes that are needed by the big use case but are not really dealing with the same problem. For example, what does money and payment have to do with ordering ice-cream (my kids struggle with this one too). There may be alternative ways of doing something, where each way in turn has a number of sub-steps. In order to keep the main use case clean and focused on one problem, and in order to create reusable bits of processes, you can break out behaviour from the main use case into sub-use-cases.
+</p>
+
+
+<div id="fig:UCInclude" class="figure">
+<p><img src="./images/FStructuringUC1.png" alt="FStructuringUC1.png" />
+</p>
+<p><span class="figure-number">Figure 2:</span> Example of a Use Case Diagram where the BuyItems use case includes CashPayment, CheckPayment, and CreditPayment.</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-6" class="outline-3">
+<h3 id="sec-3-6"><span class="section-number-3">3.6</span> Use Case Prioritisation</h3>
+<div class="outline-text-3" id="text-3-6">
+<p>
+Prioritising use cases is at first no different than prioritising requirements or user stories, the difference is that it is the first UML artefact available for you to prioritise. The ground rule is:
+</p>
+
+<div class="info">
+<p>
+First implement use cases that <i>significantly influence</i> the core system architecture.
+</p>
+
+</div>
+
+<p>
+This is pretty much the same advice as you would get in Agile development methodologies, with their focus on a Minimum Viable Product (MVP). The question is, of course, what does &ldquo;significantly influence&rdquo; mean? Larman suggests a few guidelines for what may increase the ranking of a use case:
+</p>
+
+<div class="info">
+<p>
+Increase the ranking of a use case if it
+</p>
+<ul class="org-ul">
+<li>has direct impact on architectural design
+<ul class="org-ul">
+<li>example: adds classes to domain layer, require persistent services
+</li>
+</ul>
+</li>
+<li>includes risky, time-critical, complex functions
+</li>
+<li>involves new research or technology
+</li>
+<li>represents primary business processes
+</li>
+<li>directly supports revenue or decreased costs
+</li>
+</ul>
+
+</div>
+
+<p>
+Also remember that you need not implement a use case completely in one iteration. The Minimum Viable Product in the ice cream example is, for example, to get a selection of ice creams and order one. Payment (and authentication etc. etc.) is not part of the MVP, so you can wait with this until a later iteration. If you look at the involved business requirements, this may make more sense to you.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-7" class="outline-3">
+<h3 id="sec-3-7"><span class="section-number-3">3.7</span> Story Points</h3>
+<div class="outline-text-3" id="text-3-7">
+<p>
+I think it is time I introduce another agile concept, namely that of <i>Story Points</i>. You will need this because once you have ranked your use cases, user stories, or requirements, you need a way to determine how much you should commit to in the sprint you are planning for.
+</p>
+
+<p>
+Decide on a unit. This may be &ldquo;hours to develop&rdquo;, &ldquo;<a href="http://spacequest.wikia.com/wiki/Buckazoid">Buckazoids</a>&rdquo;, &ldquo;<a href="https://en.wikipedia.org/wiki/Spanish_dollar">pieces of eight</a>&rdquo;, or just plain and simple &ldquo;Story points&rdquo;. Take the first item to estimate from your backlog and agree how many story points it is worth. With this as a base, you then have a relative point that you can assess the remainder of your items against (&ldquo;Is it more or less than item #1? How much more? Twice? Thrice?&rdquo;). A common advice is to use a series of possible values for how many story points an item may get. Commonly suggested is to use the fibonacci sequence (1, 2, 3, 5, 8, 13, 21, 34, 45) since it climbs quickly.
+</p>
+
+<p>
+<i>You will never use the story points outside your team</i>, so it does not matter that they are not absolute. Inside your team, you will use them to measure <i>velocity</i>, i.e. &ldquo;how many story points do you complete per week&rdquo;. First, you now have a nice measure of whether everything is ok in your team and in your product, if you are completing as many story points per week as you usually do (your average velocity). Second, you have a means with which to plan your iterations. If you know that your average velocity is <code>X</code> per week with a confidence interval of <code>+/- 10%</code> and your sprint is planned to last for <code>Y</code> weeks, then you know you will <i>at least</i> be able to commit to <code>0.9X * Y</code> story points in your sprint. Your manager will probably not be happy about this because they expect more from you. So you get closer to the upper bound <code>1.1X * Y</code> instead, and this makes the manager unhappy when you fail to meet your goal. I can&rsquo;t teach you how best to placate your manager, but this will at least give you an idea of which ballpark you have to play in.
+</p>
+
+<p>
+Of course, when you split up a UML use case into parts that can be implemented in separate iterations, you need to estimate the story points for each part. Good luck!
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Learning Material</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Book Chapters</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>C. Larman, <i>Applying UML and Patterns</i>, 3rd Edition, Chapters:
+<ol class="org-ol">
+<li value="4">Inception is Not the Requirements Phase         
+</li>
+<li>Evolutionary Requirements
+</li>
+<li>Use Cases
+</li>
+<li>Other Requirements
+</li>
+<li value="21">Test Driven Development and Refactoring
+</li>
+<li value="30">Relating Use Cases
+</li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Screencasts</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li><a href="https://play.bth.se/media/Use+Cases/1_d4tqygel/41750261">Use Cases</a>
+</li>
+<li><a href="https://play.bth.se/media/Structuring+Use+Cases/1_seaeffad">Structuring Use Cases</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Further Reading</h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li><a href="https://agilefaq.wordpress.com/2007/11/13/what-is-a-story-point/">What is a Story Point?</a>
+</li>
+<li><a href="https://www.mountaingoatsoftware.com/blog/what-are-story-points">What are Story Points (M. Cohn)</a>
+</li>
+<li><a href="https://www.mountaingoatsoftware.com/blog/story-points-are-still-about-effort">Story Points are Still about Effort (M. Cohn)</a>
+</li>
+<li><a href="https://www.mountaingoatsoftware.com/blog/the-main-benefit-of-story-points">The Main Benefit of Story Points (M. Cohn)</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Experiential Learning</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Sprint Test Plan</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
+</p>
+
+<p>
+Revisit and update your risks and contingencies section.
+</p>
+
+<p>
+Add and/or revise the following items to your glossary:
+</p>
+<ul class="org-ul">
+<li>Use Case
+</li>
+<li>Use Case Diagram
+</li>
+<li>Sub Use Case
+</li>
+<li>Test Case
+</li>
+<li>Quality Attribute
+<ul class="org-ul">
+<li>Quality Aspect
+</li>
+<li>Quality Requirement
+</li>
+<li>Quality Constraint
+</li>
+</ul>
+</li>
+<li>Minimum Viable Product (MVP) <sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>
+</li>
+<li>Story Points
+</li>
+<li>Velocity
+</li>
+</ul>
+
+<p>
+Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Self-Study: Use Cases</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Take a system that you are familiar with. List the use cases in this system in a Use Case Diagram, along with the actors involved. Pick a couple of use cases that requires you to interact with the system in several steps and complete the use cases with a &ldquo;main course of events&rdquo;. Think about alternative flows and add them too.
+</p>
+
+<p>
+Remember that all actors are not visible. For example, in a messaging application you would have both sender, recipient, and possibly forwarding agent as actors.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Self-Study: Planning</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+Gather your team. Decide on a system that you want to plan (for example, the system that you just listed the use cases for), and engage in a game of <a href="https://www.crisp.se/bocker-och-produkter/planning-poker">Planning Poker</a> to estimate the sizes of all the use cases.
+</p>
+
+<p>
+Give your use cases a rough priority, e.g. using the <a href="https://en.wikipedia.org/wiki/MoSCoW_method">MOSCoW method</a>, and see if you can divide your thusly created backlog into reasonably sized sprints.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> Assignment: Use Case Overview</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+<b>PA1415 Software Design</b>: In this part of the assignment you will continue with the requirements document that you have already created and transform your user stories into UML use cases.
+</p>
+
+<p>
+<b>PA1435 Object Oriented Design</b>: In this part of the assignment you will write UML use cases based on the system description for the assignments.
+</p>
+
+<p>
+<b>PA1434 Basic Object Oriented Design</b>: In this part of the assignment you will write UML use cases based on the system description for the assignments.
+</p>
+
+<p>
+<b>Tasks:</b>
+</p>
+<ol class="org-ol">
+<li>Create a <i>Use Case Diagram</i>
+<ul class="org-ul">
+<li>Identify all <i>actors</i> that are interacting with the system.
+</li>
+<li>Identify all <i>use cases</i> of the system (features).
+</li>
+<li>Identify which actors are involved in each use case.
+</li>
+<li>Identify any other relations between the use cases.
+</li>
+</ul>
+</li>
+<li>Briefly describe the actors in a dictionary.
+</li>
+<li>Describe the use cases in a high-level description, containing:
+<ul class="org-ul">
+<li>Use Case Name
+</li>
+<li>Primary Actor
+</li>
+<li>Brief Description
+</li>
+</ul>
+</li>
+<li>For students of <b>PA1415 Software Design</b>, link your user stories to the relevant use cases by adding an attribute:
+<ul class="org-ul">
+<li>Concerned User Stories
+</li>
+</ul>
+</li>
+</ol>
+
+<div class="info">
+<p>
+<b>Document Structure:</b>
+</p>
+
+<p>
+The title for this Assignment Document is: <i>Use Case Overview for System &lt;system name&gt;</i>
+The assignment document shall contain the following items:
+</p>
+
+<ol class="org-ol">
+<li>Title Page
+<ol class="org-ol">
+<li>Title: &lt;assignment document title&gt;
+</li>
+<li>Sub-title: &ldquo;Assignment in the course &lt;course code&gt;&lt;course name&gt;&rdquo;
+</li>
+<li>Date
+</li>
+<li>Authors and Author Contribution
+
+<p>
+Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Author Name</th>
+<th scope="col" class="left">Social Security Number</th>
+<th scope="col" class="left">Thinking</th>
+<th scope="col" class="left">Writing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</li>
+<li>System Description
+
+<p>
+A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
+</p>
+</li>
+
+<li value="3">Use Case Diagram
+</li>
+<li>Description of Actors
+</li>
+<li>High-Level Use Cases
+</li>
+<li>References
+</li>
+</ol>
+
+</div>
+
+<p>
+Commit and push this document to your project repository.
+</p>
+
+<div class="tip">
+<p>
+<b>Conditions of Satisfaction:</b>
+</p>
+
+<p>
+When marking this part of the assignment we are looking for the following:
+</p>
+
+<ol class="org-ol">
+<li value="0">Does the title page contain a table with authors and author contribution
+</li>
+<li>Size of assignment: Are there 15-25 high-level use cases?
+</li>
+<li>Are all relevant actors identified and described?
+</li>
+<li>Are all relevant use cases identified and briefly described?
+</li>
+<li>For each use case, are all the relevant actors linked?
+</li>
+<li>Is the use case diagram well formed?
+</li>
+<li>Do all the use cases have all attributes?
+</li>
+<li>Do all the use cases have unique and good names?
+</li>
+<li>Do all the use cases have a sufficient and proper description?
+</li>
+<li>(<b>PA1415</b>) Are the use cases linked to the relevant user stories?
+</li>
+<li>(<b>PA1415</b>) Are all user stories linked in at least one use case?
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-5" class="outline-3">
+<h3 id="sec-5-5"><span class="section-number-3">5.5</span> Assignment: Implementation Plan</h3>
+<div class="outline-text-3" id="text-5-5">
+<p>
+In this part of the assignment you will prioritise your use cases and plan your first sprints.
+</p>
+
+<p>
+<b>Tasks:</b>
+</p>
+<ol class="org-ol">
+<li>Order your UML use cases (created above) according to their importance.
+
+<p>
+<b>PA1415 Software Design</b> Make sure this order corresponds to the prioritised list of user stories that you have created earlier. You do not have to strictly adhere to the priorities of the user stories, but you need to document and motivate any major deviations that you do.
+</p>
+</li>
+
+<li>Motivate your ordering in terms of how this allows you to build a minimum viable product first.
+</li>
+<li>Assign story points to each use case.
+</li>
+<li>Decide and motivate how many story points you will have time for in this course (=your first iteration) and per iteration. Set a MAX, a MIN, and an AVERAGE value per iteration.
+</li>
+<li>Assign your use cases to iterations such that you
+<ol class="org-ol">
+<li>Create a minimum viable product in your first iteration (motivate why which this is the case).
+</li>
+<li>Have a reasonable amount of story points allocated per iteration, in relation to the MAX, MIN, and AVERAGE values defined.
+</li>
+</ol>
+</li>
+</ol>
+
+<div class="info">
+<p>
+<b>Document Structure:</b>
+</p>
+
+<p>
+The title for this Assignment Document is: <i>Implementation Plan for System &lt;system name&gt;</i>
+The assignment document shall contain the following items:
+</p>
+
+<ol class="org-ol">
+<li>Title Page
+<ol class="org-ol">
+<li>Title: &lt;assignment document title&gt;
+</li>
+<li>Sub-title: &ldquo;Assignment in the course &lt;course code&gt;&lt;course name&gt;&rdquo;
+</li>
+<li>Date
+</li>
+<li>Authors and Author Contribution
+
+<p>
+Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Author Name</th>
+<th scope="col" class="left">Social Security Number</th>
+<th scope="col" class="left">Thinking</th>
+<th scope="col" class="left">Writing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</li>
+<li>System Description
+
+<p>
+A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
+</p>
+</li>
+
+<li value="3">Prioritised List of Use Cases
+<ol class="org-ol">
+<li>Motivation for Priorities
+</li>
+<li>Use Cases
+
+<p>
+Include use case name and size in story points. Present the list ordered according to priority (most important first).
+</p>
+</li>
+</ol>
+</li>
+<li>Estimated Velocity Per Iteration
+
+<p>
+Here you list your MAX, MIN, and AVERAGE number of story points that you think you will have time for per iteration. Pay special attention to the first iteration since this is the one you will continue with in the rest of the course.
+</p>
+</li>
+
+<li>Implementation Plan
+<ol class="org-ol">
+<li>Motivation for Implementation Plan
+</li>
+<li>Iterations and Use Cases
+</li>
+</ol>
+</li>
+</ol>
+
+</div>
+
+<p>
+Commit and push this document to your project repository.
+</p>
+
+<div class="tip">
+<p>
+<b>Conditions of Satisfaction:</b>
+</p>
+
+<p>
+When marking this part of the assignment we are looking for the following:
+</p>
+
+<ol class="org-ol">
+<li value="0">Does the title page contain a table with authors and author contribution
+</li>
+<li>Size of assignment: Does the first iteration contain 5-10 use cases?
+</li>
+<li>Size of (future) assignments: Does the suggested iteration velocity in relation to the size in story points per use case represent a reasonable development speed?
+</li>
+<li>Is the relative size in story points reasonable for each use case?
+</li>
+<li>Does the first iteration contain a workable and acceptable Minimum Viable Product?
+</li>
+<li>Is there a reasonable amount of work (in terms of story points) assigned to each iteration.
+</li>
+<li>(<b>PA1415</b>) Does the order of implementation of the use cases correspond to the priorities of the involved user stories?
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-6" class="outline-3">
+<h3 id="sec-5-6"><span class="section-number-3">5.6</span> Assignment: Detailed Use Cases for First Iteration</h3>
+<div class="outline-text-3" id="text-5-6">
+<p>
+Describe in detail the use cases that you are focusing on in the first iteration.
+</p>
+
+<p>
+<b>Tasks:</b>
+</p>
+<ol class="org-ol">
+<li>Extend the use case descriptions for the use cases in your first iteration in your Implementation Plan so that they also contain the following attributes:
+<ul class="org-ul">
+<li>Preconditions
+</li>
+<li>Main Course of Events (or Main Success Scenario)
+</li>
+<li>Alternative Flow of Events (or Extensions)
+</li>
+<li>Special Requirements
+</li>
+</ul>
+</li>
+</ol>
+
+<div class="info">
+<p>
+<b>Document Structure:</b>
+</p>
+
+<p>
+The title for this Assignment Document is: <i>Detailed Use Cases (Iteration 1) for System &lt;system name&gt;</i>
+The assignment document shall contain the following items:
+</p>
+
+<ol class="org-ol">
+<li>Title Page
+<ol class="org-ol">
+<li>Title: &lt;assignment document title&gt;
+</li>
+<li>Sub-title: &ldquo;Assignment in the course &lt;course code&gt;&lt;course name&gt;&rdquo;
+</li>
+<li>Date
+</li>
+<li>Authors and Author Contribution
+
+<p>
+Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Author Name</th>
+<th scope="col" class="left">Social Security Number</th>
+<th scope="col" class="left">Thinking</th>
+<th scope="col" class="left">Writing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</li>
+<li>System Description
+
+<p>
+A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
+</p>
+</li>
+
+<li value="3">Detailed Use Cases
+
+<p>
+List your detailed use cases here.
+</p>
+</li>
+</ol>
+
+</div>
+
+<p>
+Commit and push this document to your project repository.
+</p>
+
+
+<div class="tip">
+<p>
+<b>Conditions of Satisfaction:</b>
+</p>
+
+<p>
+When marking this part of the assignment we are looking for the following:
+</p>
+
+<ol class="org-ol">
+<li value="0">Does the title page contain a table with authors and author contribution
+</li>
+<li>Size of assignment: Are all use cases in the first iteration from the Implementation Plan described?
+</li>
+<li>Are the preconditions relevant?
+</li>
+<li>Is it a reasonable main course of events?
+</li>
+<li>Does the main course of events end successfully?
+</li>
+<li>Does the alternative flow of events cover the obvious ways in which the use case can fail or take an alternate route?
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-7" class="outline-3">
+<h3 id="sec-5-7"><span class="section-number-3">5.7</span> Update Course Backlog</h3>
+<div class="outline-text-3" id="text-5-7">
+<p>
+How do you design a system from your use cases? What should you look for when you are trying to understand the structure of your system? What about the behaviour of the system?
+</p>
+
+<p>
+Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Sprint Acceptance Tests</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+You are done with this sprint when:
+</p>
+<ul class="org-ul">
+<li>You have created a &ldquo;Use Case Overview&rdquo; document
+</li>
+<li>You have created an &ldquo;Implementation Plan&rdquo; document
+</li>
+<li>You have created a &ldquo;Detailed Use Cases for First Iteration&rdquo; document
+</li>
+<li>You have committed/pushed these documents to your project repository
+</li>
+</ul>
+
+<p>
+You may also have
+</p>
+<ul class="org-ul">
+<li>Updated your Sprint Test Plan
+</li>
+<li>Updated your Course Backlog
+</li>
+<li>Written self-study Use Cases
+</li>
+<li>As self-study played planning poker.
+</li>
+</ul>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p>The term &ldquo;Minimum Viable Product&rdquo; may be new to some of you but not all, because you may be following a different path through the sprints. You can expect more of these terms that some of you already know about.</p></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Mikael Svahnberg</p>
+<p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
+<p class="date">Created: 2017-02-08 Wed 13:59</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

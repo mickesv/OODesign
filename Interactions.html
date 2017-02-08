@@ -1,0 +1,522 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Good Interactions</title>
+<!-- 2017-02-08 Wed 13:59 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Mikael Svahnberg" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="org/org.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Good Interactions</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. About This Sprint</a></li>
+<li><a href="#sec-2">2. User Stories covered in this Sprint</a></li>
+<li><a href="#sec-3">3. Introduction</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Fundamental Design Principles</a></li>
+<li><a href="#sec-3-2">3.2. Responsibility Driven Design</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. Learning Material</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Book Chapters</a></li>
+<li><a href="#sec-4-2">4.2. Screencasts</a></li>
+<li><a href="#sec-4-3">4.3. Further Reading </a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Experiential Learning</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Sprint Test Plan</a></li>
+<li><a href="#sec-5-2">5.2. Self-Study: GRASP Patterns</a></li>
+<li><a href="#sec-5-3">5.3. Update Course Backlog</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Sprint Acceptance Tests</a></li>
+</ul>
+</div>
+</div>
+<br/>
+
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> About This Sprint</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This sprint focus on how to identify what is a <i>good</i> design through the use of basic object oriented principles.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>As a software designer I want to create a design that adheres to basic design principles so that I am sure that it will &ldquo;hold&rdquo; when I add more functionality and start maintaining the system.
+</li>
+<li>As a software designer I want to understand how to best design the interaction between objects so that I can create a robust and maintainable system.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Introduction</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+The ordering between this sprint and the next is a bit off. In the screencast for this sprint I am discussing the dynamic behaviour in terms of UML Interaction Diagrams and the static structure in terms of UML Class Diagrams even though these aren&rsquo;t introduced until the next sprint. I do this because I want to save you some work, and because I think you will be able to grok this sprint anyway. The alternative would be for you to first create early versions of all your interaction diagrams and class diagrams, then learn more about design principles to make them good, and then go back and revise them. That&rsquo;s not how you are supposed to work with these design principles. Object Oriented design principles are so deeply ingrained in how we do OO design that we rarely even think about them once we know them &#x2013; we just do. You will not list that &ldquo;you have created class X according to design principle Y&rdquo; anywhere, since it is expected that you have used all principles all the time (or have had a very good reason not to use them). Therefore, let&rsquo;s briefly discuss them first.
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Fundamental Design Principles</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Some design principles have fancy names (you&rsquo;ll find them under Further Reading (Section <a href="#GIFurtherReading">4.3</a>), and they are often described one by one as if you can first apply one, then the next, and so on. In reality you work with all of them at once, and they are essentially different aspects of a few fundamental principles:
+</p>
+
+<table id="tab:FundamentalDesignPrinciples" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Fundamental Design Principles</caption>
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Principle</th>
+<th scope="col" class="left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Abstraction</td>
+<td class="left">Focus on relevant properties</td>
+</tr>
+
+<tr>
+<td class="left">Coupling and Cohesion</td>
+<td class="left">Independent entities, but where the internals are strongly related</td>
+</tr>
+
+<tr>
+<td class="left">Decomposition and Modularisation</td>
+<td class="left">Small entities with well defined and non-overlapping functionalities or responsibilities</td>
+</tr>
+
+<tr>
+<td class="left">Encapsulation</td>
+<td class="left">Hide the internals so they are inaccessible from outside the entity</td>
+</tr>
+
+<tr>
+<td class="left">Separation of Interface and Implementation</td>
+<td class="left">Separate the public interface from implementation details</td>
+</tr>
+
+<tr>
+<td class="left">Sufficiently, Completeness, and Primitiveness</td>
+<td class="left">Keep entities as small as possible, but not smaller. Entities should capture all important characteristica of an abstraction but nothing more.</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+To put this into the context of a single class, this means that a good class has:
+</p>
+<ul class="org-ul">
+<li>A single, well-defined abstraction and well-defined responsibilities
+<ul class="org-ul">
+<li>Tip: Let classes distribute work to other classes
+</li>
+<li>Tip: avoid &ldquo;God Classes&rdquo; that tries to do everything
+</li>
+</ul>
+</li>
+<li>Has low coupling to other classes
+<ul class="org-ul">
+<li>Tip: Minimise fan-out in a class
+</li>
+</ul>
+</li>
+<li>Has a sufficient and complete public interface to be able to access the behaviour and state relevant for the abstraction that the class models
+</li>
+<li>Has a primitive public interface that does not expose anything more than necessary to the outside.
+<ul class="org-ul">
+<li>Tip: All data should be hidden within the class.
+</li>
+<li>Tip: Do not clutter the public interface with items that users of that class are not interested in or able to use.
+</li>
+</ul>
+</li>
+<li>Has high cohesion (the methods and attributes belong strongly together)
+<ul class="org-ul">
+<li>Tip: Most of the methods defined on a class should be using most of the data in the class most of the time.
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Responsibility Driven Design</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+These are just some of the principles for how to define classes. Under Further Reading (Section <a href="#GIFurtherReading">4.3</a>) I have listed some more. Luckily, many of these have also been expressed in a slightly more accessible way in the course book. Larman calls them GRASP patterns, and the idea is that when you are doing your design you always try to define the responsibilities of the involved objects and classes according to these GRASP patterns. This is why he also refers to them as <i>Responsibility Driven Design</i>. The patterns are listed on the inside of the book cover:
+</p>
+
+<ul class="org-ul">
+<li>Information Expert
+</li>
+<li>Creator
+</li>
+<li>Controller
+</li>
+<li>Low Coupling
+</li>
+<li>High Cohesion
+</li>
+<li>Polymorphism
+</li>
+<li>Pure Fabrication
+</li>
+<li>Indirection
+</li>
+<li>Protected Variations
+</li>
+</ul>
+
+<p>
+Make sure you understand the principles of each one of these. Think about how you may apply them in different settings. Discuss them with your classmates, and use the course discussion forum. How might they impact your design?   
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Learning Material</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Book Chapters</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>C. Larman, <i>Applying UML and Patterns</i>, 3rd Edition, Chapters:
+<ol class="org-ol">
+<li value="17">GRASP: Designing Objects with Responsibilities
+</li>
+<li>Object Design Examples with GRASP
+</li>
+<li>Designing for Visibility
+</li>
+<li value="25">GRASP More Objects with Responsibilities
+</li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Screencasts</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li><a href="https://play.bth.se/media/DesignPatterns_GRASP/1_e4z8gitx">GRASP Patterns</a>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Further Reading <a id="GIFurtherReading" name="GIFurtherReading"></a></h3>
+<div class="outline-text-3" id="text-4-3">
+<ul class="org-ul">
+<li><a href="https://en.wikipedia.org/wiki/Law_of_Demeter">Law of Demeter</a>: Keep entities as ignorant as possible of other entities, don&rsquo;t let them talk to strangers.
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Liskov_substitution_principle">Liskow Substitution Principle</a>: Defines how sub- and supertypes can be used in each others place.
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Open/closed_principle">Open/Closed Principle</a>: Software Entities should be open for extensions but closed for modifications.
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Dependency_inversion_principle">Dependency Inversion Principle</a>: high-level (abstract) entities should not depend on more low-level (detailed) entities. Instead, the low-level entities should depend on the abstractions.
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Interface_segregation_principle">Interface Segregation Principle</a>: Prefer many smaller interfaces with well-defined roles instead of one big interface.
+</li>
+<li><a href="http://www.oodesign.com/single-responsibility-principle.html">Single Responsibility Principle</a>: Let each class take care of one single responsibility. Split classes that do more than one thing.
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Package_principles">Common Closure Principle</a>: Coupling and cohesion for packages (as opposed to individual classes)
+</li>
+<li><a href="http://stackoverflow.com/questions/383947/what-does-it-mean-to-program-to-an-interface">Program to an Interface, not an Implementation</a>: Define role-based interfaces and use these instead of &ldquo;direct links&rdquo; to the instantiated class. NOTE: Also read the &ldquo;Wizards and Warriors&rdquo; rant for a counter-argument.
+</li>
+<li><a href="https://ericlippert.com/2015/04/27/wizards-and-warriors-part-one/">Wizards and Warriors Part I</a> <a href="https://ericlippert.com/2015/04/30/wizards-and-warriors-part-two/">Part II</a> <a href="https://ericlippert.com/2015/05/04/wizards-and-warriors-part-three/">Part III</a> <a href="https://ericlippert.com/2015/05/07/wizards-and-warriors-part-four/">Part IV</a> <a href="https://ericlippert.com/2015/05/11/wizards-and-warriors-part-five/">Part V</a>: Introduces the need for an <a href="https://en.wikipedia.org/wiki/Entity_component_system">Entity Component System (ECS)</a>, which is a common game design pattern since the normal inheritance practices break down.
+</li>
+<li><a href="https://en.wikipedia.org/wiki/Composition_over_inheritance">Favour Object Composition over Class Inheritance</a>: The same pattern, with a different name.
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Experiential Learning</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Sprint Test Plan</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
+</p>
+
+<p>
+Revisit and update your risks and contingencies section.
+</p>
+
+<p>
+Add and/or revise the following items to your glossary:
+</p>
+<ul class="org-ul">
+<li>Abstraction
+</li>
+<li>Coupling and Cohesion
+</li>
+<li>Encapsulation
+</li>
+<li>Code Refactoring
+</li>
+<li>Design Principles
+</li>
+<li>Design Patterns
+</li>
+<li>Responsibility Driven Design
+</li>
+<li>GRASP Patterns
+<ul class="org-ul">
+<li>Information Expert
+</li>
+<li>Creator
+</li>
+<li>Controller
+</li>
+<li>Low Coupling
+</li>
+<li>High Cohesion
+</li>
+<li>Polymorphism
+</li>
+<li>Pure Fabrication
+</li>
+<li>Indirection
+</li>
+<li>Protected Variations
+</li>
+</ul>
+</li>
+</ul>
+
+<p>
+Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Self-Study: GRASP Patterns</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Use a small system that you know well, for exampe a Pacman game. Think about the GRASP patterns in the context of this game. For example:
+</p>
+<ul class="org-ul">
+<li>Who is the <i>information expert</i> on knowing the location of pacman on the game board?
+</li>
+<li>Who <i>creates</i> the ghosts?
+</li>
+<li>Who takes care of input and orchestrates navigation in the main menu (controller)?
+</li>
+<li>How should the ghosts be made aware of pacman&rsquo;s position so that you maintain low coupling and information expert?
+</li>
+<li>How do you design the game board so that it still has high cohesion?
+</li>
+<li>How does polymorphism work with the different ghosts?
+</li>
+<li>etc.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Update Course Backlog</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+Are there similar principles that can help you decide how a larger collection of classes can interact? How do you find the classes in the first place? How do you explore the interactions between objects?
+</p>
+
+<p>
+Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Sprint Acceptance Tests</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+You are done with this sprint when:
+</p>
+<ul class="org-ul">
+<li>You have studied the Fundamental Design Principles and understood them
+</li>
+<li>You have studied the GRASP patterns and understood them
+</li>
+</ul>
+
+<p>
+You may also have
+</p>
+<ul class="org-ul">
+<li>Reflected upon the GRASP patterns in the context of a small, well-known system.
+</li>
+<li>Updated your Sprint Test Plan
+</li>
+<li>Updated your Course Backlog   
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mikael Svahnberg</p>
+<p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
+<p class="date">Created: 2017-02-08 Wed 13:59</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

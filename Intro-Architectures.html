@@ -1,0 +1,644 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Introduction to Software Architectures</title>
+<!-- 2017-02-08 Wed 13:59 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Mikael Svahnberg" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="org/org.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Introduction to Software Architectures</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. About This Sprint</a></li>
+<li><a href="#sec-2">2. User Stories covered in this Sprint</a></li>
+<li><a href="#sec-3">3. Introduction</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Architecture as Decisions</a></li>
+<li><a href="#sec-3-2">3.2. Architecture Views</a></li>
+<li><a href="#sec-3-3">3.3. Working with the Views</a></li>
+<li><a href="#sec-3-4">3.4. Architecture Evaluation</a></li>
+<li><a href="#sec-3-5">3.5. Architecture Tactics</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. <span class="todo TODO">TODO</span> Learning Material</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Book Chapters</a></li>
+<li><a href="#sec-4-2">4.2. Books and Articles</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. <span class="todo TODO">TODO</span> Experiential Learning</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Sprint Test Plan</a></li>
+<li><a href="#sec-5-2">5.2. Update Course Backlog</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. <span class="todo TODO">TODO</span> Sprint Acceptance Tests</a></li>
+</ul>
+</div>
+</div>
+<br/>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> About This Sprint</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This sprint reviews how to describe a non-trivial software system in the form of a software architecture.
+</p>
+
+<p>
+For more information on this topic, see e.g. the course <code>PA1410 Software Architecture and Quality</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>As a software designer I want to be able to divide my design into manageable chunks so that I can get a better overview.
+</li>
+<li>As a software designer I want to address the quality requirements of the software system early on so that they are not missed.
+</li>
+<li>As a software designer I want to address the quality requirements of the software system in the most appropriate way to facilitate the rest of the development project.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Introduction</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+When developing software there are a number of challenges to keep in mind. For example, the project manager want to <i>reduce the development costs</i>, your marketing department will want to <i>reduce time-to market</i>, considering that your application is going to spend 90% of its lifespan in maintenance, your company will want to <i>decrease the maintenance costs</i>, and your product managers want to <i>increase system quality</i>. We can summarise these needs in what is known as the <a href="https://en.wikipedia.org/wiki/Project_management_triangle">Iron Triangle</a>. Ignoring Euclidean geometry, this can be <a href="http://paulhammant.com/2015/12/19/the-iron-triangle-is-actually-a-square-and-not-particularly-iron/">summarised as</a>: 
+</p>
+
+
+<div id="fig:IronTriangle" class="figure">
+<p><img src="./images/FIronTriangle.png" alt="FIronTriangle.png" />
+</p>
+<p><span class="figure-number">Figure 1:</span> The Iron Triangle of Software Development</p>
+</div>
+
+<p>
+In order to balance these requests (and many more) you, as software developers, take decisions (Note how only one of the challenges appear to be about software. I won&rsquo;t say any more about this for now, but I encourage you to think about how you would address the other challenges in your software). Software architecting is about identifying <i>which</i> business and technical decisions are necessary, and <i>finding solutions</i> that satisfy all stakeholders.
+</p>
+
+<p>
+The software architecture is a tool for <i>understanding</i> which decisions are necessary, for <i>planning</i> how to instantiate these decisions in your software, and for <i>communicating</i> your decisions to the rest of the development team. You also use them to <i>predict</i> quality, and identify opportunities for <i>reuse</i>.
+</p>
+
+<p>
+Going back to the iron triangle. Jan Bosch once said &ldquo;Functionality is easy.&rdquo; Anyone can implement functionality. It&rsquo;s just a matter of hacking away until you have the right functionality. It is the other three corners that require planning, and where a software architecture may help. Let&rsquo;s review each of the corners:
+</p>
+
+<dl class="org-dl">
+<dt> On Time </dt><dd>What features are most important to deliver first? How much time do you have? How can you structure the system so that you can develop features in parallel?
+</dd>
+<dt> On Budget </dt><dd>What resources do you have available? How do you structure the software to make best use of the available expertise? What can you buy? What must you build?
+</dd>
+<dt> On Quality </dt><dd>The obvious bit here is how you structure the software so that you can test it properly, but there is more to say here. The software architecture defines a <i>potential</i> to achieve certain quality attributes (for example, one structure may be good for reliability, another for modifiability, and a third for throughput). We may, in fact, define &ldquo;on time&rdquo; and &ldquo;on budget&rdquo; to also be specific quality requirements, that should be balanced alongside with performance, maintainability, reliability etc. <a href="https://en.wikipedia.org/wiki/ISO/IEC_9126">ISO9126</a> (and it&rsquo;s successor ISO 25010) goes one step further and also includes functionality as one quality attribute among the rest.
+</dd>
+</dl>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Architecture as Decisions</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+The first thing of a software architecture is thus that it consists of <i>conscious decisions</i> on how to address different concerns from different stakeholders. This includes decisions on concerns where you do not have the right competence available in-house, decisions on concerns where you need to deliver parts of the system in a certain order, decisions on concerns about how to achieve different quality requirements, and decisions on how to <i>balance</i> all these different concerns such that you focus on the most important concerns (side note: how do you prioritise your concerns?).
+</p>
+
+<p>
+I will even go so far as to say that the decisions <i>are</i> the software architecture. The rest is just instantiations of these decisions. The instantiation is important, since this brings together all of your decisions into one coherent system that you are able to communicate to others, and to evaluate to ensure that you actually satisfy the right balance of quality requirements.
+</p>
+
+<p>
+A more traditional definition is provided by the <a href="http://www.sei.cmu.edu/architecture/">Software Engineering Institute</a> (The definition below is from their book <i>Software Architecture in Practice</i> (Bass et al. 2012)):
+</p>
+
+<blockquote>
+<p>
+The software architecture of a program or computing system
+is the structure or structures of the system, which comprise
+software elements, the externally visible properties of those
+elements, and the relationships among them.
+</p>
+</blockquote>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Architecture Views</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+If you&rsquo;ve payed attention to the other sprints in this course, it should not come as a surprise to you that the software archtiecture is documented in a number of different ways, depending on what you are focusing on. Consider the maps below. All three represent London, but from different perspectives.
+</p>
+
+<p>
+<img src="./images/ILondon_AZMap.jpg" alt="ILondon_AZMap.jpg" />
+<img src="./images/ILondon_Tube.png" alt="ILondon_Tube.png" />
+<img src="./images/ILondon_River.jpg" alt="ILondon_River.jpg" />
+</p>
+
+<p>
+(There are also <a href="http://mappinglondon.co.uk/">Other maps of London</a> that are equally valid representations of the city. For example, there are sewage maps, electricity maps, gas maps, etc.)
+</p>
+
+<p>
+If you are sightseeing, you might use the river map and take a boat. If you are walking or driving, the A-Z map is probably your best friend. If you just want to get from point A to point B, you use the tube map.
+</p>
+
+<p>
+In the same way, you express your software architecture using different types of &ldquo;maps&rdquo; depending on what you intend to do.  Philippe Kruchten expressed this in 1994 as the &ldquo;4+1 view of architecture&rdquo;:
+</p>
+
+
+<div class="figure">
+<p><img src="./images/IKruchten.png" alt="IKruchten.png" />
+</p>
+</div>
+
+<p>
+This has influenced many design methodologies, including UML. The current best practice is to define a set of views (possibly from a suggested superset of potential views) that are relevant for your system. I am a bit old-fasioned, so I usually stick with a subset of Hofmeister et al. (2000)&rsquo;s views:
+</p>
+
+<dl class="org-dl">
+<dt> A Conceptual View </dt><dd>describing the system as a series of collaborating conceptual &ldquo;logical&rdquo; components.
+</dd>
+<dt> A Module View </dt><dd>describing the system as implementable modules corresponding to UML packages.
+</dd>
+<dt> An Execution View </dt><dd>studying the runtime behaviour of the modules.
+</dd>
+<dt> A Code View </dt><dd>focusing on the development and build environment.
+</dd>
+</dl>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Working with the Views</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+In UML, the &ldquo;Scenarios&rdquo; that Kruchten describes are your use cases. In Hofmeister et al. (2000), it corresponds to your decisions. In Bass et al. (2012) it is your architectural drivers. You use these scenarios (use cases, decisions, architectural drivers, etc.) to define <i>what</i> you need to model on an architecture level, and then you focus on different engineering concerns of these &ldquo;whats&rdquo; in each of the viewpoints. 
+</p>
+
+<div class="info">
+<p>
+<b>Engineering Concerns</b>
+</p>
+
+<ul class="org-ul">
+<li>Conceptual View
+<ul class="org-ul">
+<li>How does the system fulfill the requirements?
+</li>
+<li>How are COTS components to be integrated? How do they interact with the rest of the system?        
+</li>
+<li>How is domain specific hardware and/or software incorporated into the system?        
+</li>
+<li>How is functionality partitioned into product releases?        
+</li>
+<li>How does the system incorporate portions of the prior generations of the product and how will it support future generations?        
+</li>
+<li>How are product lines supported?        
+</li>
+<li>How can the impact of changes in requirements or the domain be minimized?        
+</li>
+</ul>
+</li>
+<li>Module View
+<ul class="org-ul">
+<li>How is the product mapped to the software platform?        
+</li>
+<li>What system support/services does it use, and exactly where?        
+</li>
+<li>How can testing be supported?        
+</li>
+<li>How can dependencies between modules be minimised?        
+</li>
+<li>How can reuse of modules and subsystems be maximised?        
+</li>
+<li>What techniques can be used to insulate the product from changes in COTS software, in the software platform, or changes to standards?
+</li>
+</ul>
+</li>
+<li>Execution View
+<ul class="org-ul">
+<li>How does the system meet its performance, recovery and reconfiguration requirements?        
+</li>
+<li>How can one balance resource usage (for example, load balancing)?        
+</li>
+<li>How can one achieve the necessary concurrency, replication and distribution without adding too much complexity to the control algorithms?        
+</li>
+<li>How can the impact of changes in the runtime platform be minimised?        
+</li>
+</ul>
+</li>
+<li>Code View
+<ul class="org-ul">
+<li>How can the time and effort for product upgrades be reduced?        
+</li>
+<li>How should product versions and releases be managed?        
+</li>
+<li>How can build time be reduced?        
+</li>
+<li>What tools are needed to support the development environment?        
+</li>
+<li>How are integration and testing supported?        
+</li>
+</ul>
+</li>
+</ul>
+
+</div>
+
+<p>
+Once you have the scenarios (decisions) for your first iteration ready, you basically work your way through the different views. There is an implicit order between them, because you need a conceptual overview before you can start defining modules, and you need the modules before you can start allocating these to your runtime platform. You also need the modules and the runtime overview before you start planning how to build, test, and integrate your system. However, it is also important to know that the decisions you take in the process of creating one view will impact the views you have already done, so you need to go back and revise in a highly iterative process.
+</p>
+
+
+<div class="figure">
+<p><img src="./images/IArchDesign.png" alt="IArchDesign.png" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Architecture Evaluation</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+You set out in your quest for architecture design with a well defined set of intentions; your (and your stakeholders) primary concerns. You have balanced these intentions against each other and the importance of each stakeholder, you have taken decisions on how to realise a system that satisfies these intentions, and you have instantiated your decisions in a number of different views of your system. 
+</p>
+
+<p>
+As a good engineer, you should not be satisfied here. The software architecture is a relatively cheap artefact to produce, and it has a considerable impact on your quality requirements. Your architecture is also expressed in several different views, and you need to integrate these views into a whole. Lindvall et al. (2003) distinguishes between <i>Early Architecture Evaluation</i> and <i>Late Architecture Evaluation</i>:
+</p>
+
+<div class="info">
+<p>
+<b>Early Architecture Evaluation</b>
+</p>
+<ul class="org-ul">
+<li>Do we meet the quality requirements on the system?
+</li>
+<li>Do all stakeholders share a common understanding of the system?
+</li>
+<li>Are all requirements accounted for?
+</li>
+<li>Are there any weak spots in ther architecture?
+</li>
+<li>Can the system (and/or the architecture) be improved?
+</li>
+<li>Does the development team have all the necessary resources?
+</li>
+<li>Should we let this project continue?
+</li>
+</ul>
+
+<p>
+<b>Late Architecture Evaluation</b>
+</p>
+<ul class="org-ul">
+<li>Hard metrics.
+</li>
+<li>How did we do? What needs to be improved for the next release?
+</li>
+</ul>
+
+</div>
+
+<p>
+There is a range of different evaluation methodologies available, from ad-hoc based &ldquo;looking at the architecture and trying to find challenges based on past experiences and logical reasoning&rdquo;, via more structured versions of this, up to simulation-based and mathematical models. The most commonly used is what is called <i>scenario-based</i>, which is a way to structure your experiences and focus your analysis into one scenario at a time.
+</p>
+
+<p>
+Once you have evaluated your architecture, you need to decide whether you satisfy your quality requirements (and your other engineering concerns) or not. If you do, then you are done and can continue building your system. If not, you transform the architecture. This means that you change the architecture in one or several ways in order to improve those qualities that were lacking in your evaluation. Then you re-evaluate to see whether your transformations meet their goal and that they did not negatively effect any other of your qualities.
+</p>
+
+
+<div id="fig:ArchEvalCycle" class="figure">
+<p><img src="./images/IArchEval.png" alt="IArchEval.png" />    
+</p>
+<p><span class="figure-number">Figure 4:</span> The Architecture Evaluation Cycle</p>
+</div>
+
+<div class="tip">
+<p>
+<b>A Good Software Architecture</b>
+</p>
+<ul class="org-ul">
+<li>Is based on conscious decisions
+</li>
+<li>Is evaluated to ensure that it satisfies the specific goals for the system
+</li>
+<li>Pays attention to current and future quality attributes
+</li>
+<li>Is well documented, with traceability to the architecture decisions
+</li>
+<li>Features well defined modules(components), with well defined interfaces and well defined responsibilities
+</li>
+<li>Is restricted to a small set of interaction patterns that are consistently used
+</li>
+</ul>
+
+</div>
+</div>
+</div>
+<div id="outline-container-sec-3-5" class="outline-3">
+<h3 id="sec-3-5"><span class="section-number-3">3.5</span> Architecture Tactics</h3>
+<div class="outline-text-3" id="text-3-5">
+<p>
+Bass et al. introduces one more crucial aid for designing your architecture, namely <i>Architecture Tactics</i>. When you have your architectural drivers and need to decide how to actually adress these in your software architecture, architectural tactics suggest solutions on an architectural level for different quality requirements. The tactics are described on a high level, so you need to work with them quite extensively in order to actually fit them into your system.
+</p>
+
+<p>
+For example, if <i>performance</i>  is a concern for you, Bass et al. suggest that you can focus on managing the resource demand (e.g. by reducing overhead, rate limit the incoming data, or be more efficient in your computations), you may manage the resources smarter (e.g. by introducing concurency), or you may divide the work better (e.g. with a different scheduling policy). Of course, you may decide to use several of these tactics at once. Which tactic to use depends on your system and your data.
+</p>
+
+<p>
+I suggest that you have a look in the Software Architecture in Practice book by Bass et al. and get an overview of the available tactics. These are good engineering principles that help you achieve your quality requirements in a more repeatable way.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> Learning Material</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Book Chapters</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>C. Larman, <i>Applying UML and Patterns</i>, 3rd Edition, Chapters:
+<ol class="org-ol">
+<li value="33">Architecture Analysis
+</li>
+<li>Logical Architecture Refinement
+</li>
+<li value="38">UML Deployment and Component Diagrams
+</li>
+<li>Documenting Architecture: UML &amp; the N+1 View Model
+</li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Books and Articles</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>L. Bass, P. Clements, and R. Kazman. <i>Software Architecture in Practice, Third Edition.</i> Addison-Wesley Publishing Co., Reading MA, 2012.
+</li>
+<li>C. Hofmeister, R. Nord, and D. Soni. <i>Applied Software Architecture.</i> Addison-Wesley, Reading MA, 2000.
+</li>
+<li>R. Kazman, L. Bass, M. Webb, and G. Abowd. <i>SAAM: A method for analyzing the properties of software architectures.</i> In Proceedings of the 16th international conference on Software engineering, pages 81–90. IEEE Computer Society Press, 1994.
+</li>
+<li>P.B. Kruchten, &ldquo;The 4+ 1 view model of architecture.&rdquo; <i>IEEE software</i> 12.6 (1995): 42-50.
+</li>
+<li>M. Lindvall, R. T. Tvedt, and P. Costa. An empirically-based process for software architecture evaluation. <i>Empirical Software Engineering</i>, 8:83–108, 2003.
+</li>
+<li>M. Svahnberg and F. Mårtensson. Six years of evaluating software architectures in student projects. <i>Journal of Systems &amp; Software</i>, 80(11):1893–1901, 2007.
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> <span class="todo TODO">TODO</span> Experiential Learning</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Sprint Test Plan</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
+</p>
+
+<p>
+Revisit and update your risks and contingencies section.
+</p>
+
+<p>
+Add and/or revise the following items to your glossary:
+</p>
+<ul class="org-ul">
+<li>Software Architecture
+</li>
+<li>The 4+1 Views of Architecture
+</li>
+<li>Architecture Viewpoints
+<ul class="org-ul">
+<li>Conceptual View
+</li>
+<li>Module View
+</li>
+<li>Execution View
+</li>
+<li>Code View
+</li>
+</ul>
+</li>
+<li>Quality Aspects
+<ul class="org-ul">
+<li>Quality Attribute
+</li>
+<li>Quality Requirement
+</li>
+</ul>
+</li>
+<li>Architecture Evaluation
+<ul class="org-ul">
+<li>Early Architecture Evaluation
+</li>
+<li>Late Architecture Evaluation
+</li>
+<li>SAAM/ATAM
+</li>
+</ul>
+</li>
+<li>Architecture Tactics
+</li>
+</ul>
+
+<p>
+Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Update Course Backlog</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Are there any common architecture styles? What are their qualities?
+</p>
+
+<p>
+Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> <span class="todo TODO">TODO</span> Sprint Acceptance Tests</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+You are done with this sprint when:
+</p>
+<ul class="org-ul">
+<li>You have 
+</li>
+</ul>
+
+<p>
+You may also have
+</p>
+<ul class="org-ul">
+<li>Updated your Sprint Test Plan
+</li>
+<li>Updated your Course Backlog   
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mikael Svahnberg</p>
+<p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
+<p class="date">Created: 2017-02-08 Wed 13:59</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

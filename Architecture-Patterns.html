@@ -1,0 +1,881 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Architecture Patterns</title>
+<!-- 2017-02-08 Wed 13:59 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Mikael Svahnberg" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="org/org.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Architecture Patterns</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. About This Sprint</a></li>
+<li><a href="#sec-2">2. User Stories covered in this Sprint</a></li>
+<li><a href="#sec-3">3. Introduction</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Architecture Patterns</a></li>
+<li><a href="#sec-3-2">3.2. Architecture Tactics</a></li>
+<li><a href="#sec-3-3">3.3. One More Thing&#x2026;</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. <span class="todo TODO">TODO</span> Learning Material</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Book Chapters</a></li>
+<li><a href="#sec-4-2">4.2. Further Reading</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Experiential Learning</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Sprint Test Plan</a></li>
+<li><a href="#sec-5-2">5.2. Self-Study: Architecture Challenges and Tactics</a></li>
+<li><a href="#sec-5-3">5.3. Assignment: Quality Attribute Scenarios</a></li>
+<li><a href="#sec-5-4">5.4. Assignment: Architecture Tactics</a></li>
+<li><a href="#sec-5-5">5.5. Update Course Backlog</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Sprint Acceptance Tests</a></li>
+</ul>
+</div>
+</div>
+<br/>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> About This Sprint</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This sprint covers different patterns that are useful for getting started with a software architecture.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>As a software architect I want to start my design with a well known structure so that I can be sure that I am addressing my quality requirements in the best way.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Introduction</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+I am going to address the user stories in this sprint from two different perspectives. Both of them backs up to how <a href="https://www.wikipedia.org/wiki/Christopher_Alexander">Christopher Alexander</a> described a pattern language for architectures (as used e.g. by Gamma et al. in the Design Pattern book). The first perspective is the common and widely used idea of architectural styles and architectural patterns as a design template. For example, if I describe a system as having a &ldquo;Layered Architecture&rdquo;, being a &ldquo;Pipes and Filters system&rdquo;, or a &ldquo;Model-View-Controller&rdquo; architecture, this means that the basic structure of the architecture is done according to these patterns. They can be described as ready-made solutions that describe the overall structure of your system, along with the roles and responsibilities of each component. This is the approach taken e.g. by Buschmann et al. (1996)
+</p>
+
+<p>
+The <i>second</i> perspective is the one that Bass et al. (2012) uses, where they describe patterns as specific building blocks that you use for specific purposes, and thus your overall architecture is composed by these smaller building blocks. They refer to these blocks as <i>Architecture Tactics</i>. The two perspectives are not mutually exclusive. You are likely to start with an overall architecture pattern to setup a <i>potential</i> for achieving a certain blend of quality requirements. As you continue to design your architecture, you will then encounter specific challenges that you need to design an architectural solution for, where you will apply architectural tactics to address the challenge.
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Architecture Patterns</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+I will not go through all of the architectural patterns or the tactics; there are simply too may of them, it will simply be a boring enumeration, and it does not help you understand them. It <i>is</i>, however, good to have an overview of the architectural styles, since these will be your starting point when creating (or approaching an existing) new system. Just as with design patterns, it is good to know their names, roughly how they organise your system, and what problem(s) they address, since this means that you will share a vocabulary with other software developers.
+</p>
+
+<div class="tip">
+<p>
+Study the Architectural Patterns in Buschmann et al. so you have a broad overview of the problems they address and how they are structured.
+</p>
+
+</div>
+
+<table id="tab:BuschmannPatterns" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 1:</span> Architectural Patterns in Buschmann et al.</caption>
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Pattern</th>
+<th scope="col" class="left">Brief Summary</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Layered</td>
+<td class="left">Decompose system into groups of subtasks that are on different levels of abstraction (such as closer to the user interface or closer to the metal)</td>
+</tr>
+
+<tr>
+<td class="left">Pipes and Filters</td>
+<td class="left">Process a data stream in a series of different steps</td>
+</tr>
+
+<tr>
+<td class="left">Blackboard</td>
+<td class="left">Several &ldquo;workers&rdquo; collaborating over a shared data set</td>
+</tr>
+
+<tr>
+<td class="left">Broker</td>
+<td class="left">Decouple distributed components</td>
+</tr>
+
+<tr>
+<td class="left">Model-View-Controller</td>
+<td class="left">Separate data and rules for data consistency from presentation and user input</td>
+</tr>
+
+<tr>
+<td class="left">Presentation-Abstraction-Control</td>
+<td class="left">Separate viewing and manipulating data into independent but cooperating agents</td>
+</tr>
+
+<tr>
+<td class="left">Microkernel</td>
+<td class="left">Support a minimal core where it is easy to plug in new components</td>
+</tr>
+
+<tr>
+<td class="left">Reflection</td>
+<td class="left">Separate the software into a self-aware &ldquo;knows how to configure and run jobs&rdquo; part and a &ldquo;knows how to do the job&rdquo; part</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Architecture Tactics</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+The architecture tactics are organised in a different way. The classic design patterns and architecture patterns are described with a generic problem, an example, a solution, and a discussion of the solution. Tactics start from the notion of <i>quality attribute scenarios</i>, which is a way to define the parameters of a quality requirement. Consider the example in Figure <a href="#fig:QAScenario">1</a>. In this scenario a user starts a transaction when the system is running as normal. The user expects the transaction to be processed within two seconds on average.
+</p>
+
+
+<div id="fig:QAScenario" class="figure">
+<p><img src="./images/IQAScenarioExample.png" alt="IQAScenarioExample.png" />
+</p>
+<p><span class="figure-number">Figure 1:</span> An example of a Quality Attribute Scenario</p>
+</div>
+
+<p>
+The next step is to find a tactic that can control the response such that the response measure is achieved. In the example in Figure <a href="#fig:QAScenario">1</a>, how may we ensure that transactions are processed within an average of two seconds? This is a performance issue, so we look in Bass et al. under Chapter 8, &ldquo;Performance&rdquo; and find the tactics listed in Table <a href="#tab:PerfTactics">2</a>. We then choose the tactic(s) that best suit our particular problem.
+</p>
+
+<table id="tab:PerfTactics" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<caption class="t-above"><span class="table-number">Table 2:</span> Performance Tactics from Bass et al.</caption>
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Overall Strategy</th>
+<th scope="col" class="left">Specific Tactics</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Control Resource Demand</td>
+<td class="left">Manage Sampling Rate</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">Limit Event Response</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">Prioritise Events</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">Reduce Overhead</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">Bound Execution Times</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">Increase Resource Efficiency</td>
+</tr>
+</tbody>
+<tbody>
+<tr>
+<td class="left">Manage Resources</td>
+<td class="left">Increase Resources</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">Introduce Concurrency</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">Maintain Multiple Copies of Computations</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">Maintain Multiple Copies of Data</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">Bound Queue Sizes</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">Schedule Resources</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+Notice that tactics do not tell you exactly which components are needed, or what responsibilities they should have. Instead they merely discuss the solution, and things to consider when using this particular solution. It is then up to you to define which components you will need to implement the tactic, and where in your overall architecture (e.g. which layers) they fit. Not only does this give you a freedom as software designer, it enabled Bass and his colleagues to discuss and categorise architecture solutions for quality requirements that were traditionally &ldquo;ignored&rdquo; because they could not be expressed as a set of interacting components.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> One More Thing&#x2026;</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+One part of architecture patterns which I have not mentioned yet is that just as there are basic design principles for object oriented designs, there are also good practices for architectures. C. Larman, <i>Applying UML and Patterns</i>, 3rd Edition summarises a set of these with respect to package design (which is as close to architectures as the Larman book goes). These principles should be applied even when working within a particular architecture pattern or when designing in a particular architecture tactic.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> Learning Material</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Book Chapters</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>C. Larman, <i>Applying UML and Patterns</i>, 3rd Edition, Chapters:
+<ol class="org-ol">
+<li value="35">Package Design
+</li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Further Reading</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>F. Buschmann, R. Meunier, H. Rohnert, P. Sommerlad, and M. Stahl. <i>Pattern-Oriented Software Architecture - A System of Patterns.</i> John Wiley &amp; Sons, Chichester UK, 1996.
+</li>
+<li>L. Bass, P. Clements, and R. Kazman. <i>Software Architecture in Practice, Third Edition.</i> Addison-Wesley Publishing Co., Reading MA, 2012.
+</li>
+<li>A. Brown, G. Wilson, <i>The Architecture of Open Source Applications</i>, available online at: <a href="http://www.aosabook.org/en/index.html">http://www.aosabook.org/en/index.html</a> .
+</li>
+<li><a href="http://www.ece.ubc.ca/~matei/EECE417/BASS/ch05.html">The chapter on architectural tactics (Chapter 5) from the Second Edition of Bass, Clements, and Kazman</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Experiential Learning</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Sprint Test Plan</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
+</p>
+
+<p>
+Revisit and update your risks and contingencies section.
+</p>
+
+<p>
+Add and/or revise the following items to your glossary:
+</p>
+<ul class="org-ul">
+<li>Architecture Pattern (also the individual architecture patterns mentioned above)
+</li>
+<li>Architecture Tactic (also the individual tactics for different quality attributes)
+</li>
+<li>Quality Attribute Scenario
+</li>
+</ul>
+
+<p>
+Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Self-Study: Architecture Challenges and Tactics</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Study the architecture of a couple of open-source systems in the AOSA-book (<a href="http://www.aosabook.org/en/index.html">http://www.aosabook.org/en/index.html</a>). Identify the main challenges they have with respect to:
+</p>
+
+<ul class="org-ul">
+<li>Modifiability
+</li>
+<li>Performance
+</li>
+<li>Testability
+</li>
+</ul>
+
+<p>
+You are free to study any of the systems, but you should be warned that not all of these texts actually describe the architecture of the applications or, if they do, in a way that enables evaluation with respect to quality attributes or tactics. I have previously used the following chapters for similar purposes in software architecture courses:
+</p>
+
+<ul class="org-ul">
+<li><a href="http://www.aosabook.org/en/nginx.html">Nginx</a>
+</li>
+<li><a href="http://www.aosabook.org/en/audacity.html">Audacity</a>
+</li>
+<li><a href="http://www.aosabook.org/en/graphite.html">Graphite</a>    
+</li>
+</ul>
+
+<p>
+Once you have identified the main challenges for the system, explore the different architecture tactics that might address the challenges (Unless you have access to the third edition of Bass et al., you may use <a href="http://www.ece.ubc.ca/~matei/EECE417/BASS/ch05.html">The chapter on architectural tactics (Chapter 5) from the Second Edition of Bass, Clements, and Kazman</a>). 
+</p>
+
+<p>
+How did they decide to address the challenge? Which architecture tactics best correspond to their solution? Exactly how is this tactic instantiated into a workable system architecture?
+</p>
+
+<p>
+The intention of this self-study task is that by going in one direction (from an already solved solution to a generic tactic) you also get experience in seeing how the other direction (going from the tactic to a workable solution) may be done.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Assignment: Quality Attribute Scenarios</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+List, briefly describe, and prioritise the most important quality attributes that you need to consider in your system. Develop quality attribute scenarios for the most important ones.
+</p>
+
+<p>
+<b>Tasks:</b>
+</p>
+<ul class="org-ul">
+<li>Identify the most important quality attributes for your system.
+</li>
+<li>Briefly describe each of them so that it is possible to understand what the quality attribute means in the context of your system and why it is imporant.
+</li>
+<li>Prioritise your quality attributes so you know which are the most important for your system.
+</li>
+<li>Develop <i>Quality Attribute Scenarios</i> for the top five most important quality attributes.
+</li>
+</ul>
+
+<div class="info">
+<p>
+<b>Document Structure:</b>
+</p>
+
+<p>
+The title for this Assignment Document is: <i>Quality Attribute Scenarios for System &lt;system name&gt;</i>
+The assignment document shall contain the following items:
+</p>
+
+<ol class="org-ol">
+<li>Title Page
+<ol class="org-ol">
+<li>Title: &lt;assignment document title&gt;
+</li>
+<li>Sub-title: &ldquo;Assignment in the course &lt;course code&gt;&lt;course name&gt;&rdquo;
+</li>
+<li>Date
+</li>
+<li>Authors and Author Contribution
+
+<p>
+Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Author Name</th>
+<th scope="col" class="left">Social Security Number</th>
+<th scope="col" class="left">Thinking</th>
+<th scope="col" class="left">Writing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</li>
+<li>System Description
+
+<p>
+A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
+</p>
+</li>
+
+<li value="3">Prioritised list of Quality Attributes
+
+<p>
+List your quality attributes in order of priority and briefly describe them.
+</p>
+</li>
+<li>Quality Attribute Scenarios
+
+<p>
+Your five most important quality attributes, expressed as quality attribute scenarios. This may be expressed as figures, but it is more useful if you present them in a table:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Aspect</th>
+<th scope="col" class="left">Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">Source</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Stimulus</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Artifact</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Environment</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Response</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">Response Measure</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+<b>Note:</b> You also need to explain your values with one or two sentences for each aspect.
+</p>
+</li>
+</ol>
+
+</div>
+
+<p>
+Commit and push this document to your project repository.
+</p>
+
+<div class="tip">
+<p>
+<b>Conditions of Satisfaction:</b>
+</p>
+
+<p>
+When marking this part of the assignment we are looking for the following:
+</p>
+
+<ol class="org-ol">
+<li value="0">Does the title page contain a table with authors and author contribution?
+</li>
+<li>Size of assignment: Are there more than five quality attributes listed?
+</li>
+<li>Size of assignment: Are there five quality attribute scenarios?
+</li>
+<li>Do the prioritisation of the quality attributes make sense with respect to the system?
+</li>
+<li>For each scenario: Are appropriate sources, stimuli, and artifacts listed?
+</li>
+<li>For each scenario: Is the environment reasonable?
+</li>
+<li>For each scenario: Is the response appropriate given the stimulus?
+</li>
+<li>For each scenario: Is the response measure reasonable given the type of response, the stimulus, and the environment?
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> Assignment: Architecture Tactics</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+Explore architectural solutions (in terms of architecture tactics) for your quality attribute scenarios.
+</p>
+
+<p>
+<b>Tasks:</b>
+</p>
+<ul class="org-ul">
+<li>For each quality attribute scenario, identify which architectural tactics (from Bass et al.) that might help you achieve the desired response measure.
+</li>
+<li>Explore how you would design the architecture of your system to make use of the identified tactics.
+</li>
+<li>Also consider what support you would need on the design level (in terms of classes and interactions between classes).
+</li>
+</ul>
+<div class="info">
+<p>
+<b>Document Structure:</b>
+</p>
+
+<p>
+The title for this Assignment Document is: <i>Architecture Tactics for System &lt;system name&gt;</i>
+The assignment document shall contain the following items:
+</p>
+
+<ol class="org-ol">
+<li>Title Page
+<ol class="org-ol">
+<li>Title: &lt;assignment document title&gt;
+</li>
+<li>Sub-title: &ldquo;Assignment in the course &lt;course code&gt;&lt;course name&gt;&rdquo;
+</li>
+<li>Date
+</li>
+<li>Authors and Author Contribution
+
+<p>
+Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Author Name</th>
+<th scope="col" class="left">Social Security Number</th>
+<th scope="col" class="left">Thinking</th>
+<th scope="col" class="left">Writing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</li>
+<li>System Description
+
+<p>
+A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
+</p>
+</li>
+
+<li value="3">Architecture Tactics
+<ol class="org-ol">
+<li>Tactics for Quality Attribute Scenario 1: &lt;quality attribute name&gt;
+
+<p>
+For each scenario:
+</p>
+<ul class="org-ul">
+<li>List and describe the tactics that may be relevant.
+</li>
+<li>Briefly discuss how you would use the tactic (or why you decide <i>not</i> to use this particular tactic).
+</li>
+<li>Identify key components and classes in your design that are affected by applying your selected tactics.
+</li>
+</ul>
+</li>
+
+<li>Tactics for Quality Attribute Scenario 2: &lt;quality attribute name&gt;
+</li>
+<li>Tactics for Quality Attribute Scenario 3: &lt;quality attribute name&gt;
+</li>
+<li>Tactics for Quality Attribute Scenario 4: &lt;quality attribute name&gt;
+</li>
+<li>Tactics for Quality Attribute Scenario 5: &lt;quality attribute name&gt;
+</li>
+</ol>
+</li>
+
+<li>Updated Architecture
+
+<p>
+Present an updated architecture (with as many views that are necessary) that includes the tactics you decided to use. Try to mark, in your architecture, which entities are involved in each tactic, and the responsibilities the entity have in relation to the tactic.
+</p>
+</li>
+</ol>
+
+</div>
+
+<p>
+Commit and push this document to your project repository.
+</p>
+
+<div class="tip">
+<p>
+<b>Conditions of Satisfaction:</b>
+</p>
+
+<p>
+When marking this part of the assignment we are looking for the following:
+</p>
+
+<ol class="org-ol">
+<li value="0">Does the title page contain a table with authors and author contribution?
+</li>
+<li>Size of assignment: Are two to three tactics explored for each of the five quality attribute scenarios?
+</li>
+<li>Will the discussed tactics address the challenges in each quality attribute scenario?
+</li>
+<li>Are the tactics adequately translated into a workable architecture and design for the particular system?
+</li>
+<li>Does the updated architecture have a reasonable potential to address the quality attribute scenarios?
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-5-5" class="outline-3">
+<h3 id="sec-5-5"><span class="section-number-3">5.5</span> Update Course Backlog</h3>
+<div class="outline-text-3" id="text-5-5">
+<p>
+This sprint, and the previous, describes a &ldquo;top-down&rdquo; approach to creating an architecture. By this I mean that you start with the problem and then you create an overall architecture, and then (theoretically) you continue by doing detailed design (e.g. with the help of RUP/UML) inside each component or module. How would this fit into a workflow that is primarily based on RUP/UML, which can be described as a more &ldquo;bottom-up&rdquo; approach?
+</p>
+
+<p>
+Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Sprint Acceptance Tests</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+You are done with this sprint when:
+</p>
+<ul class="org-ul">
+<li>You have created quality attribute scenarios for your most important quality attributes.
+</li>
+<li>You have explored architecture tactics that address your quality attribute scenarios.
+</li>
+</ul>
+
+<p>
+You may also have
+</p>
+<ul class="org-ul">
+<li>Explored architecture challenges and tactics for one or more open-source system.
+</li>
+<li>Updated your Sprint Test Plan
+</li>
+<li>Updated your Course Backlog   
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mikael Svahnberg</p>
+<p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
+<p class="date">Created: 2017-02-08 Wed 13:59</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

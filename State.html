@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>State Diagrams</title>
+<!-- 2017-02-08 Wed 13:59 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Mikael Svahnberg" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="org/org.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">State Diagrams</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. About This Sprint</a></li>
+<li><a href="#sec-2">2. User Stories covered in this Sprint</a></li>
+<li><a href="#sec-3">3. Introduction</a></li>
+<li><a href="#sec-4">4. Learning Material</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Book Chapters</a></li>
+<li><a href="#sec-4-2">4.2. Screencasts</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Experiential Learning</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Sprint Test Plan</a></li>
+<li><a href="#sec-5-2">5.2. Self-Study: Stateful Application</a></li>
+<li><a href="#sec-5-3">5.3. Assignment: Stateful Behaviour</a></li>
+<li><a href="#sec-5-4">5.4. Update Course Backlog</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Sprint Acceptance Tests</a></li>
+</ul>
+</div>
+</div>
+<br/>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> About This Sprint</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+In this sprint we study a design tool to help you understand stateful behaviour in your applications.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>As a software designer I want to document the states the application can be in so that I can better design them and get an overview of permissible transitions.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Introduction</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+For some applications, or for certain parts of some applications, it is meaningful to study the <i>states</i> your application can be in. Usually, your application may be in one state and have specific rules for when you can transition to another state.
+</p>
+
+<p>
+For example, if you come here by train, you probably have a several different states:
+</p>
+<ul class="org-ul">
+<li><i>Walking</i> to the train station
+</li>
+<li><i>Waiting</i> for the train
+</li>
+<li><i>Walking in the Train</i> to find a seat
+</li>
+<li><i>Sitting</i> in the train
+</li>
+<li><i>Walking</i> from your seat, out of the train, and up the hill to the Uni.
+</li>
+</ul>
+
+<p>
+It was tempting to also add &ldquo;Entering the train&rdquo;, and &ldquo;Exiting the train&rdquo;, but this would not be a good idea since these are more akin to <i>Events</i> than <i>States</i>. Incidentally, this is what most students get wrong in a state chart &#x2013; they mix up what is a state and what is an event.
+</p>
+
+<p>
+When you are walking to the train station, what may change your state to something else? If you see the train coming (this is an event), you may need to switch to the state
+</p>
+
+<ul class="org-ul">
+<li><i>Running</i> to the train station
+</li>
+</ul>
+
+<p>
+When you are waiting for the train, you can obviously not enter the train and start looking for a seat unless the train arrives (this is also an event).
+</p>
+
+<p>
+When you are sitting on the train, <i>arriving at a station</i> is an event that <i>could</i> trigger a transition to the &ldquo;walking from your seat and to the uni&rdquo; state, but only if you have arrived at the right station. This is a <i>condition</i> for the arrive at station event.
+</p>
+
+<p>
+Enough dry talk. Let&rsquo;s put this into a UML State Diagram:
+</p>
+
+
+<div id="fig:StateTrain" class="figure">
+<p><img src="./images/FStateTrain.png" alt="FStateTrain.png" />
+</p>
+<p><span class="figure-number">Figure 1:</span> A UML State Diagram for Catching a Train</p>
+</div>
+
+<p>
+You may not model your entire application as a state chart. In fact, you may not need to model it at all. Also, you may have several state charts that are not connected to each other (other than that they logically must be solvable in the same system).
+</p>
+
+<p>
+State charts are tricky. On one hand, they are a useful tool to visualise dynamic behaviour and to think about your system in terms of states and events. On the other hand, they don&rsquo;t really fit in with the other UML diagrams. Here&rsquo;s a list of questions I would like you to think about for a while. We may come back to these questions during a lecture, sinnce in order to understand the answers you also need to understand a lot more about software design:
+</p>
+
+<ul class="org-ul">
+<li>Are state diagrams an analysis tool, or are they a design tool?
+</li>
+<li>Can you get the states from a UML use case?
+</li>
+<li>Can you express the same in a state diagram as in a (system) sequence diagram? If so, what is the added value?
+</li>
+<li>Do you learn anything about what classes or what interactions between classes you need in your system from a state diagram?
+</li>
+</ul>
+
+<p>
+This sprint is smaller than many of the others because &#x2013; as you notice &#x2013; state diagrams are difficult to pin down. Rather than bundling State Diagrams with something else it makes more sense to keep them separate so that I may include the sprint in different parts of the course flow. Having said this, state charts are probably one of the older modelling techniques, and there is actually quite a lot written about different types of state charts and their cousin <a href="http://www.scholarpedia.org/article/Petri_net">Petri Nets</a>.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Learning Material</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Book Chapters</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>C. Larman, <i>Applying UML and Patterns</i>, 3rd Edition, Chapters:
+<ol class="org-ol">
+<li value="29">UML State Machine Diagrams
+</li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Screencasts</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li><a href="https://play.bth.se/media/StateDiagrams.mp4/1_ruht53d3">State Diagrams</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Experiential Learning</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Sprint Test Plan</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
+</p>
+
+<p>
+Revisit and update your risks and contingencies section.
+</p>
+
+<p>
+Add and/or revise the following items to your glossary:
+</p>
+<ul class="org-ul">
+<li>State Diagram (also: State Chart)
+</li>
+</ul>
+
+<p>
+Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Self-Study: Stateful Application</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Find a software application or a software game where you can easily identify different states. Try to model this in a state diagram.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Assignment: Stateful Behaviour</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+Is there any behaviour in your assignment system that exhibits a meaningful stateful behaviour? If so, model it in one or more UML State Diagrams.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> Update Course Backlog</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+How can you design your software such that the <i>states</i> are the central entity as opposed to the <i>concepts</i>?
+</p>
+
+<p>
+Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Sprint Acceptance Tests</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+You are done with this sprint when:
+</p>
+<ul class="org-ul">
+<li>You have reviewed your application for stateful behaviour
+</li>
+<li>You have optionally created UML State Diagrams for this behaviour.
+</li>
+</ul>
+
+<p>
+You may also have
+</p>
+<ul class="org-ul">
+<li>Updated your Sprint Test Plan
+</li>
+<li>Updated your Course Backlog
+</li>
+<li>Created one or more State Diagrams for different software applications.
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mikael Svahnberg</p>
+<p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
+<p class="date">Created: 2017-02-08 Wed 13:59</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

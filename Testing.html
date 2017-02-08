@@ -1,0 +1,553 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Testing</title>
+<!-- 2017-02-08 Wed 13:59 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Mikael Svahnberg" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="org/org.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Testing</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. About This Sprint</a></li>
+<li><a href="#sec-2">2. User Stories covered in this Sprint</a></li>
+<li><a href="#sec-3">3. Introduction</a>
+<ul>
+<li><a href="#sec-3-1">3.1. Types of Testing</a></li>
+<li><a href="#sec-3-2">3.2. Regression Testing</a></li>
+<li><a href="#sec-3-3">3.3. Tools for Automated Testing</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. <span class="todo TODO">TODO</span> Learning Material</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Book Chapters</a></li>
+<li><a href="#sec-4-2">4.2. Further Reading</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Experiential Learning</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Sprint Test Plan</a></li>
+<li><a href="#sec-5-2">5.2. Assignment: Create Test Suite</a></li>
+<li><a href="#sec-5-3">5.3. Update Course Backlog</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Sprint Acceptance Tests</a></li>
+</ul>
+</div>
+</div>
+<br/>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> About This Sprint</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+In this sprint we momentarily pause the steady onmarch of UML and instead focus on how to test the designed software.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>As a product manager I want to make sure that we are building software of high quality.
+</li>
+<li>As a product manager I want to make sure that fixed bugs do not re-appear so that I can build the product incrementally.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Introduction</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+This introduction is partially written with the help of my honourable esteemed colleague Dr. Simon Poulding. And when I say &ldquo;partially&rdquo; I mean that substantial parts of this introduction consists of texts that he has written and that I have creatively borrowed, brutally slaughtered, and put back into a different order. Not necessarily better, but different.
+</p>
+
+<p>
+I guess that all of you have heard of the importance of testing your code by now. The sad story is that many professional software developers have still only heard of the importance but not seen it in practice. In many cases, testing is something you tack on at the end of a project if there is time. Of course, since there never is time left at the end of a project, you ship the code and let the customers discover the faults instead. The situation has gotten better, but it is still not good. That&rsquo;s why I want to raise the topic already now in the course.
+</p>
+
+<p>
+One of the reasons for why testing is considered a time consuming activity is because you are doing manual testing. You have test protocols, you have dedicated testers who follow these protocols and conduct certain actions with the application in a certain order, and document the results. Obviously, we can do better than this. If we are testing the user interface, there are test harnesses for this that simulates button clicks, enters text into text boxes, and compares the end state of the user interface with images of predefined end states, etc (Actually, you might want to study the work of another colleague of mine, Emil Alégroth, on this particular topic).
+</p>
+
+<p>
+But even if we decide not to do automated testing of the user interface, we can attach a test harness that pretends to be the user interface.
+</p>
+
+
+<div id="fig:TestInterface" class="figure">
+<p><img src="./images/FSSDTest.png" alt="FSSDTest.png" />
+</p>
+<p><span class="figure-number">Figure 1:</span> A Testing Interface sitting next to the User Interface, acting like an alternative user interface.</p>
+</div>
+
+<p>
+Digging even further, we can use testing frameworks that intergate with our development environment. <a href="http://junit.org/">JUnit</a> is one example of this when plugged in to Eclipse. You can also run JUnit as a standalone application, which may sometimes have some advantages. It&rsquo;s nice and all to see the results of testing directly in your IDE, but you will also want to run these tests headlessly on an automated build server.
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Types of Testing</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+Which tool or method to use depends very much on what the intentions are of your testing. L. Crispin and J. Gregory <sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup> introduce four quadrants of (agile) testing that describes the types of testing that one may be doing (see Figure <a href="#fig:TestQuadrants">2</a>).
+</p>
+
+
+<div id="fig:TestQuadrants" class="figure">
+<p><img src="./images/FTestQuadrants.png" alt="FTestQuadrants.png" />
+</p>
+<p><span class="figure-number">Figure 2:</span> Agile Testing Quadrants (Adapted from Crispin &amp; Gregory 2009)</p>
+</div>
+
+<p>
+<b>Technology Facing &amp; Supporting the Team (lower left quadrant)</b>
+This quadrant represents testing defined by the programmers that verifies the functionality of
+individual units or components in the system in order to ensure the internal code quality.
+In many agile practices, this type of testing plays a central role through the technique of test-driven
+development (TDD). In TDD, the developer writes a test for a piece of functionality, and then
+develops the code to pass that test. More on this later.
+</p>
+
+<p>
+<b>Business Facing &amp; Supporting the Team (upper left quadrant)</b>
+This quadrant considers testing that in contrast to unit/component testing considers
+functionality at a higher level such that it is meaningful to the customer, and with the purpose of
+demonstrating that the functional behaviour of the system is consistent with the
+requirements.
+</p>
+
+<p>
+The tests in this quadrant may be derived from the user stories and examples provided by the
+customer team. Crispin and Gregory avoid the use of &ldquo;acceptance test&rdquo; that is often used for these
+types of tests on the basis that tests in other quadrants may also be used for this purpose.
+In addition, Crispin and Gregory consider prototypes etc. used as part of the dialogue with the
+customer to belong to this quadrant &#x2013; even mock-ups of, for example, a GUI on paper.
+</p>
+
+<p>
+<b>Business Facing &amp; Critique Product (upper right quadrant)</b>
+This quadrant encompasses manual testing that ensures that the system is really what the
+customer wants rather than simply meeting the team’s understanding of what the customer
+requires. Crispin and Gregory argue that exploratory testing &#x2013; unscripted and unconstrained
+testing guided by strategy and experience &#x2013; is a core form of testing in this quadrant.
+</p>
+
+<p>
+<b>Technology Facing &amp; Critique Product (lower right quadrant)</b>
+This quadrant considers types of tests related to non-functional aspects of the system such as
+security, performance, ability to handle load, scalability, reliability, safety, maintainability,
+interoperability etc.
+</p>
+
+<p>
+We are not going to go through all of these types of testing strategies in this course, but it gives you a map to understand how your selected test strategies fit together and what you ought to do to produce a sufficient test strategy for your project.
+</p>
+
+
+<div class="figure">
+<p><img src="./images/IUnitVsIntegration.gif" alt="IUnitVsIntegration.gif" />
+</p>
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Regression Testing</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+The lower half of Crispin &amp; Gregory&rsquo;s testing quadrants are particularly interesting because we are able to introduce <i>regression testing</i>. What this means is that we have a large set of test cases that we are able to execute automatically, for example daily or after each commit. The main benefit of this is that it instills confidence in the developers that what they just produced didn&rsquo;t accidentally break something else.
+</p>
+
+<p>
+I once attended a seminar with Prof. Hans van Vliet where he asked us &ldquo;what do you think takes the most time in software maintenance?&rdquo;
+</p>
+<ul class="org-ul">
+<li>Understanding what the problem is
+</li>
+<li>Understanding where to fix the problem
+</li>
+<li>Understanding how to fix the problem
+</li>
+<li>Understanding the cascade effects of fixing the problem.
+
+
+<div class="figure">
+<p><img src="./images/IRipple.jpg" alt="IRipple.jpg" />
+</p>
+</div>
+</li>
+</ul>
+
+<p>
+If you guessed &ldquo;understanding the cascade effects&rdquo; you guessed right, but that is slowly changing with the advent of tools for automated testing and development practices such as <i>Test Driven Development (TDD)</i>, but also by modern behaviour-driven test frameworks such as <a href="https://cucumber.io/">Cucumber</a>. The common denominator for these frameworks is that you write your tests early, and in executable format so that you can quickly re-run them. TDD takes it one step further with its very fast red-green-refactor cycle (basically write <i>one</i> line of tests that fails, then write the (small) code to pass, and then shape it up and put it in the right place etc.). Connect this back to Prof. van Vleet&rsquo;s question: You no longer need to understand the cascade effects because you have tests in place that will start failing.
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Tools for Automated Testing</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+Which tool to use for your automated testing is of course highly dependent on your choice of development platform, and you also need to work on different levels, as illustrated in Figure <a href="#fig:TestingLevels">5</a>. In this figure, the left-hand-side is what you would normally encounter during a build cycle, and this is also the parts where you can hope to automate. In fact, the only difference between testing &ldquo;Inside the IDE&rdquo; down to &ldquo;Nightly Builds&rdquo; is that you will run more test-cases during your nightlies than in the IDE, where you may focus only on the tests that are relevant for what you are doing right now. You will use the same testing tools.
+</p>
+
+
+<div id="fig:TestingLevels" class="figure">
+<p><img src="./images/FTestingLevels.png" alt="FTestingLevels.png" />
+</p>
+<p><span class="figure-number">Figure 5:</span> Testing on different Levels</p>
+</div>
+
+<p>
+What <i>will</i> differ, however, is the framework within which your tests are running. Obviously, if your tests are run on-the-fly in your IDE, this needs to be supported. Testing as part of the compilation cycle rarely requires much in terms of extra frameworks. For example <a href="https://www.gnu.org/software/make/">make</a>, <a href="https://cmake.org/">cmake</a>, <a href="http://ant.apache.org/">Ant</a>, and <a href="https://maven.apache.org/">Maven</a> are all capable of running your test suites according to your wishes, on your machine.
+</p>
+
+<p>
+&#x2026; But what if your machine environment is not the environment in which your system is intended to run? Well, then you need to set up a virtual machine (or a collection of machines if your deployment environment is more complex) to run the tests on. <a href="https://www.virtualbox.org/">VirtualBox</a> together with <a href="https://www.vagrantup.com/">Vagrant</a> have helped me on more than one occasion with this.
+</p>
+
+<p>
+Further down the stack, you want tools that can set up these virtual machines, download your code, build it, and run tests all in one go, e.g. when you do a commit. <a href="https://jenkins.io/">Jenkins</a> is a popular choice for this, if you have access to your own servers. For open source projects, <a href="https://travis-ci.org/getting_started">Travis CI</a> is an ok choice. I think they have some limit to 100 builds or so before you have to start paying, though. Jenkins and Travis work on a slightly different philosophy. In Jenkins you set up the project and the build steps through an admin interface on the Jenkins server. In Travis you create a build script as part of your repository. For raisins, I am partial to the latter, and have recently been exploring <a href="https://drone.io/">Drone.io</a> as a means to set up my own build server that works like Travis with a repository-based build script.
+</p>
+
+<p>
+But I digress.
+</p>
+
+<p>
+Backing up to the original topic, you will need to find an automated testing tool suitable for your programming language and your development environment. I list some tools below just to get you started.
+</p>
+
+<ul class="org-ul">
+<li>Java: <a href="http://junit.org/">JUnit</a>
+</li>
+<li>Node.js (JavaScript): <a href="https://mochajs.org/">Mocha</a> or <a href="http://jasmine.github.io/">Jasmine</a>
+</li>
+<li>JavaScript/JQuery (client side): <a href="https://qunitjs.com/">QUnit</a>
+</li>
+<li>C++, See e.g. the article <a href="http://gamesfromwithin.com/exploring-the-c-unit-testing-framework-jungle">Exploring the C++ Unit Testing Framework Jungle</a> for a good discussion of some test frameworks, and what you should require from them
+</li>
+<li>Emacs Lisp: <a href="https://www.gnu.org/software/emacs/manual/ert.html">ERT</a>
+</li>
+<li>Or you can go to <a href="https://en.wikipedia.org/wiki/List_of_unit_testing_frameworks">Wikipedia and see even more choices</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> Learning Material</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Book Chapters</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>C. Larman, <i>Applying UML and Patterns</i>, 3rd Edition, Chapters:
+<ol class="org-ol">
+<li value="21">Test-Driven Development and Refactoring            
+</li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Further Reading</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li><a href="http://blog.cleancoder.com/uncle-bob/2014/12/17/TheCyclesOfTDD.html">The Cycles of TDD, by R.C. Martin</a>
+</li>
+<li><a href="http://www.jamesshore.com/Blog/Microsoft-Gets-TDD-Completely-Wrong.html">Microsoft Gets TDD Completely Wrong, by James Shore</a> (Note: This article is not Microsoft bashing&trade; &#x2013; they are only one among many to get it wrong)
+</li>
+<li><a href="https://groups.yahoo.com/neo/groups/extremeprogramming/conversations/topics/111829">Guidelines for Unit Tests, by Michael Feathers</a>
+</li>
+<li><a href="http://gamesfromwithin.com/exploring-the-c-unit-testing-framework-jungle">Exploring the C++ Unit Testing Framework Jungle, by Noel Llopis</a>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Experiential Learning</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Sprint Test Plan</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
+</p>
+
+<p>
+Revisit and update your risks and contingencies section.
+</p>
+
+<p>
+Add and/or revise the following items to your glossary:
+</p>
+<ul class="org-ul">
+<li>Unit Testing
+</li>
+<li>Exploratory Testing
+</li>
+<li>Automated Testing
+</li>
+<li>Regression Testing
+</li>
+<li>Test Driven Development (TDD)
+</li>
+<li>Automated Test Frameworks
+</li>
+<li>Continuous Integration
+</li>
+</ul>
+
+<p>
+Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Assignment: Create Test Suite</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Create a regression test suite. You will continue to use and extend this test suite later in the course. At this stage, you are focussing on adding test cases for your API endpoints. Use the system events from your System Sequence Diagrams as API endpoints, and express the tests in your chosen test framework. 
+</p>
+
+<p>
+<b>Tasks:</b>
+</p>
+<ol class="org-ol">
+<li>List all the system events from all the system sequence diagrams.
+</li>
+<li>For each system event, identify preconditions (e.g. if the system event depends on that another event is triggered first).
+</li>
+<li>For each system event, identify what inputs are allowed.
+</li>
+<li>For each system event, identify what outputs are expected.
+</li>
+<li>For each system event, Write one or several test in your test framework that tests for the allowed inputs and the expected outputs.
+</li>
+</ol>
+
+<p>
+Commit and push this document to your project repository.
+</p>
+
+<div class="tip">
+<p>
+<b>Conditions of Satisfaction:</b>
+</p>
+
+<p>
+When marking this part of the assignment we are looking for the following:
+</p>
+
+<ol class="org-ol">
+<li>size of assignment: Are there test cases for all system events from all the system sequence diagrams?
+</li>
+<li>For each test case: Does it test normal input as well as explore boundary values?
+</li>
+<li>For each test case: Does the test case evaluate a meaningful behaviour?
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Update Course Backlog</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+How do can you come to an understanding of what the system needs to to as a response to a system event? What will change in the system, and how?
+Are there meaningful tests you can do for your UML documentation? How would you automate this?
+</p>
+
+<p>
+Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Sprint Acceptance Tests</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+You are done with this sprint when:
+</p>
+<ul class="org-ul">
+<li>You bave created an automated test suite for your API endpoints
+</li>
+<li>You have committed/pushed this suite to your project repository
+</li>
+</ul>
+
+<p>
+You may also have
+</p>
+<ul class="org-ul">
+<li>Updated your Sprint Test Plan
+</li>
+<li>Updated your Course Backlog
+</li>
+<li>Set up a continuous integration solution to run your tests on commit   
+</li>
+</ul>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+Lisa Crispin, Janet Gregory, &ldquo;Agile Testing &#x2013; A Practical Guide for Testers and Agile Teams&rdquo;, Pearson Education, 2009.
+</p></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<p class="author">Author: Mikael Svahnberg</p>
+<p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
+<p class="date">Created: 2017-02-08 Wed 13:59</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

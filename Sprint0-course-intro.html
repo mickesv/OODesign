@@ -1,0 +1,804 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Sprint 0: Course Introduction</title>
+<!-- 2017-02-08 Wed 13:59 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Mikael Svahnberg" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="org/org.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Sprint 0: Course Introduction</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. About This Sprint</a></li>
+<li><a href="#sec-2">2. User Stories covered in this Sprint</a></li>
+<li><a href="#sec-3">3. Introduction</a></li>
+<li><a href="#sec-4">4. Learning Material</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Course Structure</a></li>
+<li><a href="#sec-4-2">4.2. Learning Outcomes</a></li>
+<li><a href="#sec-4-3">4.3. What should I do with the Sprint Test Plan?</a></li>
+<li><a href="#sec-4-4">4.4. What is this &ldquo;Course Backlog&rdquo; thing?</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Experiential Learning</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Create Infrastructure</a></li>
+<li><a href="#sec-5-2">5.2. Sprint Test Plan</a></li>
+<li><a href="#sec-5-3">5.3. Buy Course Books</a></li>
+<li><a href="#sec-5-4">5.4. Form Groups</a></li>
+<li><a href="#sec-5-5">5.5. Update Course Backlog</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Sprint Acceptance Tests</a></li>
+</ul>
+</div>
+</div>
+<br/>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> About This Sprint</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This sprint introduces the course and the course structure.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>As a student I want to pass this course.
+</li>
+<li>As a student I want to understand how this course is structured so that I can quickly find the information I need to learn the subject.
+</li>
+<li>As a student I want to know why this topic is important so that I can be properly motivated.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Introduction</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+Welcome to the course!
+</p>
+
+<p>
+Of course you want to pass the course, and I want you to too. This document is intended to give an overview of how the course is structured, and give you a &ldquo;map&rdquo; of sorts to the rest of the course material. It is my hope that this will help you find the material you want easily so that you can focus on learning each part of the course.
+</p>
+
+<p>
+The course is divided into a series of <i>Sprints</i>, that is, short iterations that focus on a small number of issues per sprint. I have borrowed this term from an agile development methodology called <a href="https://en.wikipedia.org/wiki/Scrum_(software_development)">Scrum</a>, which is something you will learn more about in this course and are sure to encounter in your future career as well.
+</p>
+
+<p>
+Speaking of agile, there are a few other things I have borrowed from there as well. The <i>User Stories</i> that each sprint document starts with is one such thing. A user story is a sort of stylised requirement, and I use them to set you into the right frame of mind for each sprint. As you notice, the user story contains information about which <i>perspective</i> you should have, the <i>goals</i> you should achieve, and a brief explanation of <i>why</i> this goal is important.
+</p>
+
+<p>
+Related to this is the <i>Sprint Acceptance Tests</i> that you find at the bottom of each sprint document. These acceptance tests tell you how we plan on ensuring that the goal of the sprint has been reached.
+</p>
+
+<p>
+The bulk of the sprint consists of <i>Learning Material</i>, and <i>Experiential Learning</i>. Learning material are book chapters, videos, blog posts, etc. that you can use to learn more about the topic in the sprint. Experiential Learning (which is not a good name, but I can&rsquo;t think of any better) consists of different activities you should <i>do</i> as part of the sprint. Some of these activities are just practice activities. Others are activities that will help you organise the material better. Others again are those activities that we (as teachers) would like to look at to assess your progress. Let me repeat this:
+</p>
+
+<div class="note">
+<p>
+Experiential Learning are things you are supposed to <i>do</i>, and includes:
+</p>
+<ul class="org-ul">
+<li>Things you do for practice
+</li>
+<li>Things you do to organise the material
+</li>
+<li>Things you may submit as assignments to the teachers for marking
+</li>
+</ul>
+
+</div>
+
+<p>
+You will note that in some sprints you are expected to produce an assignment document and commit/push it to your project repository without actually submitting it for marking. These documents are intermediate steps, and you will be using the knowledge gained from them when creating the documents that <i>will</i> be marked. In some cases, we will go back to them when marking a subsequent assignment to see that you have not missed anything. In other cases, we will go back to them to be able to follow your reasoning in your submission. I try to ensure that the overhead of creating these documents (as opposed to just doing the analysis/design work) is minimal. <b>Please</b> do not skip these documents just because they are not submitted; they are a helpful and sometimes necessary tool to be able to continue.
+</p>
+
+<p>
+Exactly what documents you should deliver for marking is detailed in a set of <i>Release Sprints</i>, where you package and submit the previously created material.
+</p>
+
+<p>
+Some activities are started during this initial sprint, and then I ask you to revisit them during every subsequent sprint. The idea with these activities are to help you structure your learning, and give you a means to follow your own progress.
+</p>
+
+<p>
+So, without further ado, let&rsquo;s get started with the learning material. <i>Good Luck!</i>
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> Learning Material</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Course Structure</h3>
+<div class="outline-text-3" id="text-4-1">
+<p>
+The course has an online presence as well as a campus existense.
+</p>
+
+<p>
+The online presence consists of these pages, and is organised as a set of sprints, where each sprint focus on a small topic and a few user stories. In each sprint there are things to read and watch, as well as activities to do. The result of some of those activities will be submitted as assignments for marking. This is further detailed in <i>Release Sprints</i> where instructions about which documents to deliver are given.
+</p>
+
+<p>
+The campus existense consists of lectures (that I try to run as seminars) and exercises. My idea is that you first study the online material, and then we can have lively discussions during the lectures/seminars. Basically, you go through the design notation and a basic understanding of the topic with the online material and then we discuss together what makes a <i>good</i> design.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Learning Outcomes</h3>
+<div class="outline-text-3" id="text-4-2">
+<p>
+These pages address the needs of the following courses:
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="right" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Course code</th>
+<th scope="col" class="left">Name</th>
+<th scope="col" class="right">Size</th>
+<th scope="col" class="left">Programme</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">PA1415</td>
+<td class="left">Programvarudesign</td>
+<td class="right">7.5</td>
+<td class="left">BSc i Spelprogrammering, BSc i IT-Säkerhet</td>
+</tr>
+
+<tr>
+<td class="left">PA1434</td>
+<td class="left">Grunder i Objektorienterad Design</td>
+<td class="right">4</td>
+<td class="left">CI i IndEk</td>
+</tr>
+
+<tr>
+<td class="left">PA1435</td>
+<td class="left">Objektorienterad Design</td>
+<td class="right">6</td>
+<td class="left">CI i Spel- och Programvaruteknik, CI i Industriell Ekonomi</td>
+</tr>
+
+<tr>
+<td class="left">PA1443</td>
+<td class="left">Introduktion till Programvarudesign och Arkitektur</td>
+<td class="right">5</td>
+<td class="left">BSc i Programvaruteknik</td>
+</tr>
+</tbody>
+</table>
+
+
+<p>
+The following learning outcomes apply to the different courses. As you notice, the PA1435 version is of a newer format, but also contains less focus on requirements engineering, project management, and testing activities. This will of course to some extent influence what you are expected to do and deliver, but will only have a limited effect on the lecture series since the topics are still quite intertwined.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Course Code</th>
+<th scope="col" class="left">Learning Outcomes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">PA1415</td>
+<td class="left">- på en grundläggande nivå i grupp kunna ta fram krav på en programvara och uttrycka dem i en kravspecifikation</td>
+</tr>
+
+<tr>
+<td class="left">PA1415</td>
+<td class="left">- i grupp producera en översiktlig utvecklingsprojektplan baserat på en kravspecifikation</td>
+</tr>
+
+<tr>
+<td class="left">PA1415 (PA1435/PA1434)</td>
+<td class="left">- i grupp kunna skapa en detaljerad objektorienterad design för ett mjukvaruprogram</td>
+</tr>
+
+<tr>
+<td class="left">PA1415</td>
+<td class="left">- i grupp kunna implementera ett mjukvaruprogram inom rimlig tid, baserat på en kravspecifikation och en objektorienterad design</td>
+</tr>
+
+<tr>
+<td class="left">PA1415 (PA1443)</td>
+<td class="left">- på en grundläggande nivå i grupp kunna planera och genomföra testning av producerad programvara, baserat på en kravspecifikation</td>
+</tr>
+
+<tr>
+<td class="left">PA1415 (PA1435/PA1434)</td>
+<td class="left">- skapa och analysera objektorienterade artefakter uttryckta i UML</td>
+</tr>
+
+<tr>
+<td class="left">PA1415 (PA1435/PA1434/ PA1443)</td>
+<td class="left">- kunna motivera och använda designmönster i utvecklingen av mjukvarusystem</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left"><b>Kunskap och förståelse</b></td>
+</tr>
+
+<tr>
+<td class="left">PA1435/PA1434/ PA1443</td>
+<td class="left">- kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling.</td>
+</tr>
+
+<tr>
+<td class="left">PA1435/PA1434</td>
+<td class="left">- kunna visa förståelse för UML som modelleringsspråk.</td>
+</tr>
+
+<tr>
+<td class="left">PA1435/PA1434/ PA1443</td>
+<td class="left">- kunna visa kunskap om grundläggande designprinciper.</td>
+</tr>
+
+<tr>
+<td class="left">PA1435/PA1434/ PA1443</td>
+<td class="left">- kunna visa kunskap om grundläggande designmönster.</td>
+</tr>
+
+<tr>
+<td class="left">PA1443</td>
+<td class="left">- kunna visa kunskap om grundläggande mjukvaruarkitekturstilar</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left"><b>Färdigheter och förmåga</b></td>
+</tr>
+
+<tr>
+<td class="left">PA1435/PA1434/ PA1443</td>
+<td class="left">- kunna uttrycka strukturen och beteendet hos ett system i termer av objektorienterade koncept.</td>
+</tr>
+
+<tr>
+<td class="left">PA1435/PA1434</td>
+<td class="left">- kunna korrekt använda UML för att uttrycka struktur och beteende hos ett system.</td>
+</tr>
+
+<tr>
+<td class="left">PA1435/PA1434</td>
+<td class="left">- kunna korrekt transformera en objektorienterad design till källkod.</td>
+</tr>
+
+<tr>
+<td class="left">PA1435/PA1434</td>
+<td class="left">- kunna tillämpa designprinciper och designmönster i allmänhet och inom en särskild domän.</td>
+</tr>
+
+<tr>
+<td class="left">PA1443</td>
+<td class="left">- kunna tillämpa grundläggande designmönster i en objektorienterad design.</td>
+</tr>
+
+<tr>
+<td class="left">PA1443</td>
+<td class="left">- kunna skapa en objektorienterad design för ett system enligt goda objektorienterade designprinciper</td>
+</tr>
+
+<tr>
+<td class="left">PA1443</td>
+<td class="left">- kunna tillämpa grundläggande arkitekturstilar för ett mjukvarusystem</td>
+</tr>
+
+<tr>
+<td class="left">PA1443</td>
+<td class="left">- kunna resonera om de kvalitetsegenskaper ett system med en viss arkitekturstil har eller bör ha</td>
+</tr>
+
+<tr>
+<td class="left">PA1443</td>
+<td class="left">- kunna resonera om och skapa en grundläggande testplan för ett objektorienterat system</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left"><b>Värderingsförmåga och förhållningssätt</b></td>
+</tr>
+
+<tr>
+<td class="left">PA1435/ PA1434</td>
+<td class="left">- kunna analysera källkod för eventuella förbättringar.</td>
+</tr>
+
+<tr>
+<td class="left">PA1435/PA1434/ PA1443</td>
+<td class="left">- kunna analysera och kritiskt diskutera en design för eventuella förbättringar.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> What should I do with the Sprint Test Plan?</h3>
+<div class="outline-text-3" id="text-4-3">
+<p>
+The Sprint Test Plan is a way to get an overview of your expectations in the course, in relation to the provided material, and align it with my expectations as course responsible and examiner. In some sense, it is also your strategy for learning the topics. I will not mark your Sprint Test Plan &#x2013; you are creating and maintaining this for your own sake.
+</p>
+
+<p>
+The Sprint Test Plan will be revisited during every sprint, so that you have an updated record of what you need to learn to pass the course.
+</p>
+
+<p>
+I am loosely basing my suggestion for the Sprint Test Plan document on the IEEE 829-2008 standard. Feel free to add other information to it if you think it is relevant.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-4-4" class="outline-3">
+<h3 id="sec-4-4"><span class="section-number-3">4.4</span> What is this &ldquo;Course Backlog&rdquo; thing?</h3>
+<div class="outline-text-3" id="text-4-4">
+<p>
+As you study, I expect that you will get more questions, or additional information sources (blog pages etc.) that you would like to read, and I hope you will also get ideas for places where you would like to test what you have learnt. Put these into a course backlog document (it will help if you put them in a roughly prioritised order), and then spend time during each sprint to resolve your backlog items.
+</p>
+
+<p>
+At the end of the course, it is my hope that your backlog contains pointers to yourself with how you should go forward with the knowledge gained. For example, how can you use what you have learnt in upcoming courses? Are there any particularly interesting things you have found that you would like to study more? Are there any courses you are interested in taking as a consequence of taking this course? Are there any courses you would like to <i>replace</i> in your education as a consequence of taking this course? Are there any ideas you can use for your bachelor or master&rsquo;s thesis?
+</p>
+
+<p>
+The course backlog is revisited in every sprint. I will not mark it; you create it for your own benefit.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Experiential Learning</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Create Infrastructure</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+<b>Introduction.</b> In your future career you are going to use configuration management systems such as <a href="http://svnbook.red-bean.com/">Subversion</a> or <a href="https://git-scm.com/">Git</a>, so why not start already now? This gives you an easy way to share work between your colleagues, and opens up for me to review your work even before you have submitted it.
+</p>
+
+<p>
+If you also write your documents in for example <a href="https://daringfireball.net/projects/markdown/">Markdown</a>, they are formatted for you by github. Myself, I am partial to <a href="http://orgmode.org/">Org-mode</a> and <a href="https://www.gnu.org/software/emacs/">Emacs</a>, especially because of the nice integration with <a href="http://plantuml.com/">PlantUML</a> for generating design diagrams and the excellent export facilities. Org-mode is also nicely supported by github.
+</p>
+
+<p>
+<b>Things to do:</b>
+</p>
+<ul class="org-ul">
+<li><a href="https://education.github.com/">Create an account on Github</a> (or use your existing one)
+</li>
+<li>Create a Project for the course <code>OOD-&lt;course code&gt;-&lt;your name&gt;</code>
+</li>
+<li>Invite me (<a href="https://github.com/mickesv">mickesv</a>) to the project
+</li>
+<li>checkout your project and create a directory structure:
+<ul class="org-ul">
+<li><code>/Assignments/</code>
+</li>
+<li><code>/SprintTestPlan/</code>
+</li>
+<li><code>/CourseBacklog/</code>
+</li>
+</ul>
+</li>
+<li>add a file to each directory, otherwise you will not be able to commit them. For example, add an empty <code>.gitignore</code> file to each directory.
+</li>
+<li>commit and push
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Sprint Test Plan</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Create a document with the following sections:
+</p>
+<ul class="org-ul">
+<li><i>Test Items.</i> These are the assignments you are expected to submit for marking. It will probably be a good idea if you are able to tag them with the corresponding sprint, so that you can easily find them.
+</li>
+<li><i>Features to be Tested.</i> These are the user stories at the top of every sprint. Describe each of these features in terms of the object oriented modelling concepts or software development concepts that you need to master before you can satisfy the user story.
+</li>
+<li><i>Approach.</i> Here, you will describe <i>your</i> strategy for ensuring that you have learnt the material in the sprint. How do you ensure that you are confident that the assignments you submit will pass with the grade you are aiming for?
+</li>
+<li><i>Item Pass/Fail Criteria.</i> What do you have to be able to show to yourself to ensure that you have learnt the material in the sprint? What do you have to show in the submitted assignments?
+</li>
+<li><i>Schedule.</i> When do you plan on passing each test item and feature?
+</li>
+<li><i>Planning Risks and Contingencies.</i> Are there any foreseeable risks that may limit your ability to pass the course on time? What is your contingency plan?
+</li>
+<li><i>Glossary.</i> In this section you will build up a glossary of important terms in the course that you can use when studying. I suggest you collaborate with the rest of the class in the course discussion forum (on It&rsquo;s Learning) and post your terms and definitions there so that they can be discussed.
+</li>
+</ul>
+
+<p>
+In this sprint, the following items can be added already (you may think of more items, please add them too):
+</p>
+
+<ul class="org-ul">
+<li>Test Items
+<ul class="org-ul">
+<li>Exam <a href="https://studentportal.bth.se/web/studentportal.nsf/web.xsp/tentamen_under_kommande_veckor">Check Date</a>
+</li>
+<li>Exam Re-sit <a href="https://studentportal.bth.se/web/studentportal.nsf/web.xsp/tentamen_under_kommande_veckor">Check Date</a>
+</li>
+</ul>
+</li>
+<li>Approach
+<ul class="org-ul">
+<li>Outline your plan for reading the book and doing the sprints in time to be ready for the exam.
+</li>
+<li>Describe your plan for joining a group of students (for the group assignments, and for study groups) with the same ambition level as you yourself have.
+</li>
+</ul>
+</li>
+<li>Item Pass/Fail Criteria
+<ul class="org-ul">
+<li>Outline your ambition level; what grade are you aiming for?
+</li>
+</ul>
+</li>
+<li>Schedule
+<ul class="org-ul">
+<li>Dates for assignment submissions are available on It&rsquo;s Learning. Copy them here.
+</li>
+<li>Add the exam dates.
+</li>
+</ul>
+</li>
+<li>Planning Risks and Contingencies
+<ul class="org-ul">
+<li>Do you plan on taking any vacations (e.g., skiing trip, easter, ascension day, etc.)? When will you study more to compensate for this? Are your team-mates informed and ok with that you contribute less during these vacations?
+</li>
+<li>What is the expected workload for the courses you may be taking in parallel? Does your plan for <i>this</i> course accomodate your plans for the other courses?
+</li>
+<li>Do you have time available if you are asked to complete your submitted assignments with more information?
+</li>
+<li>Are there any other risks you see at this stage?
+</li>
+</ul>
+</li>
+<li>Glossary
+<ul class="org-ul">
+<li>Scrum
+</li>
+<li>Sprint
+</li>
+<li>User Story
+</li>
+<li>Test Plan
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Buy Course Books</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+<b>Main Literature (Both Courses)</b>
+</p>
+
+<div class="figure">
+<p><img src="./images/ILarman.jpg" alt="ILarman.jpg" width="100" style="float:left;margin-right:1em;" />
+</p>
+</div>
+
+<p>
+C. Larman, <i>Applying UML and Patterns</i>, Prentice Hall, 3rd Edition.
+</p>
+
+<p>
+This book is a complete guide to all things UML, with plenty of examples and detailed descriptions of all diagrams and how to think when using them. The reading instructions in each sprint are based on the 3rd edition, but I recommend you to try to find an older edition since they are essentially the same but with less text.
+</p>
+<br/><br/><br/><br/><br/><br/>
+
+<p>
+<b>Reference Literature (PA1415)</b>
+</p>
+
+<div class="figure">
+<p><img src="./images/ISommerville.jpg" alt="ISommerville.jpg" width="100" style="float:left;margin-right:1em;" />
+</p>
+</div>
+
+<p>
+I. Sommerville, <i>Software Engineering</i>, Pearson, 8th edition, 2006.
+</p>
+
+<p>
+There is also a 9th and a 10th edition (and, of course, the preceeding editions). It does not really matter which one you get. You will use this book as a reference to look up e.g. how a GANTT chart works in case the internet is down.
+</p>
+<br/><br/><br/><br/><br/><br/>
+
+<p>
+<b>Reference Literature (PA1435)</b>
+</p>
+
+<div class="figure">
+<p><img src="./images/IGamma.jpg" alt="IGamma.jpg" width="100" style="float:left;margin-right:1em;" />
+</p>
+</div>
+
+<p>
+Gamma, Helm, Johnson, Vlissides, <i>Design Patterns, Elements of Reusable Object-Oriented Software</i>, Addison-Wesley Professional.
+</p>
+
+<p>
+This book, also called the Gang of Four book is <i>the</i> reference work when it comes to design patterns. You will be using this book a lot in your future career. If you want to save some money, the most common design patterns are also covered in C. Larman (and these are the ones we will be focusing on in these courses).
+</p>
+
+<p>
+<i>Note to PA1415:</i> I warmly recommend that you too get this book even if it is not oficially part of &ldquo;your&rdquo; course plan.
+</p>
+<br/><br/><br/><br/><br/><br/>
+
+
+<div class="figure">
+<p><img src="./images/INystrom.jpg" alt="INystrom.jpg" width="100" style="float:left;margin-right:1em;" />
+</p>
+</div>
+
+<p>
+R. Nystrom, <i>Game Programming Patterns</i>, Genever Benning, 2014.
+</p>
+
+<p>
+Also Available at: <a href="http://gameprogrammingpatterns.com/contents.html">http://gameprogrammingpatterns.com/contents.html</a>
+</p>
+<br/><br/><br/><br/><br/><br/>
+
+&nbsp;
+</div>
+</div>
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> Form Groups</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+We expect the assignments to be done in <i>groups of three to five people</i>. Use the following (in this order) to find and/or form a group:
+</p>
+
+<ol class="org-ol">
+<li>Your friends
+</li>
+<li>It&rsquo;s Learning
+</li>
+<li>First Classroom Lecture
+</li>
+<li>Course Teacher
+</li>
+</ol>
+
+<p>
+Decide in your group how to deal with configuration management (e.g., who creates the git repository (remember to share it with me)), and decide on a schedule for when and how often you plan on working. If you know that you need to be out of touch for some reason (e.g. spring break), agree within the team how to handle this.        
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-5" class="outline-3">
+<h3 id="sec-5-5"><span class="section-number-3">5.5</span> Update Course Backlog</h3>
+<div class="outline-text-3" id="text-5-5">
+<p>
+Where do you go from here? Are there any questions already now that you want answered? Add them, along with a brief strategy for how to find an answer.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Sprint Acceptance Tests</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+You are done with this sprint when:
+</p>
+<ul class="org-ul">
+<li>You have bought the literature you want/need for the course.
+</li>
+<li>You have joined a group.
+</li>
+<li>You have created a github account, created a project repository, and committed/pushed the directory structure.
+</li>
+<li>You have read the Learning Materials
+</li>
+</ul>
+
+<p>
+You may also have
+</p>
+<ul class="org-ul">
+<li>Created a Sprint Test Plan
+</li>
+<li>Created a Course Backlog
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mikael Svahnberg</p>
+<p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
+<p class="date">Created: 2017-02-08 Wed 13:59</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

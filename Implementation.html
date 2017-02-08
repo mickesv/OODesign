@@ -1,0 +1,534 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Implementation and Designing the User Interface</title>
+<!-- 2017-02-08 Wed 13:59 -->
+<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta  name="generator" content="Org-mode" />
+<meta  name="author" content="Mikael Svahnberg" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  pre.src-sh:before    { content: 'sh'; }
+  pre.src-bash:before  { content: 'sh'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-R:before     { content: 'R'; }
+  pre.src-perl:before  { content: 'Perl'; }
+  pre.src-java:before  { content: 'Java'; }
+  pre.src-sql:before   { content: 'SQL'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.right  { text-align: center;  }
+  th.left   { text-align: center;   }
+  th.center { text-align: center; }
+  td.right  { text-align: right;  }
+  td.left   { text-align: left;   }
+  td.center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara:nth-child(2) { display: inline; }
+  .footpara { display: block; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  /*]]>*/-->
+</style>
+<link rel="stylesheet" type="text/css" href="org/org.css" />
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">Implementation and Designing the User Interface</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1. About This Sprint</a></li>
+<li><a href="#sec-2">2. User Stories covered in this Sprint</a></li>
+<li><a href="#sec-3">3. Introduction</a>
+<ul>
+<li><a href="#sec-3-1">3.1. User Interface</a></li>
+<li><a href="#sec-3-2">3.2. Connecting User Interface to Design</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">4. <span class="todo TODO">TODO</span> Learning Material</a>
+<ul>
+<li><a href="#sec-4-1">4.1. Book Chapters</a></li>
+<li><a href="#sec-4-2">4.2. <span class="todo TODO">TODO</span> Screencasts</a></li>
+<li><a href="#sec-4-3">4.3. <span class="todo TODO">TODO</span> Lectures</a></li>
+</ul>
+</li>
+<li><a href="#sec-5">5. Experiential Learning</a>
+<ul>
+<li><a href="#sec-5-1">5.1. Sprint Test Plan</a></li>
+<li><a href="#sec-5-2">5.2. Self-Study: Small GUI Application</a></li>
+<li><a href="#sec-5-3">5.3. Update Course Backlog</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">6. Sprint Acceptance Tests</a></li>
+</ul>
+</div>
+</div>
+<br/>
+
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> About This Sprint</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This sprint describes how a user interface can be designed to fit in with the UML use cases.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
+<div class="outline-text-2" id="text-2">
+<ul class="org-ul">
+<li>As a user interface designer I want to map the software design to the user interface design so that all necessary inputs and outputs are included.
+</li>
+<li>As a software designer I want to separate the user interface code from the domain specific code so that I can easily integrate with auto-generated user interface code.
+</li>
+<li>As a software designer I want to separate the user interface code from the domain specific code so that I can easily port the system to other (user interface) platforms.
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Introduction</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+This sprint is not about user interface design; this is too important a topic to cover half-assedly at the end of a course on object oriented design. This sprint is about doing a rough sketch of the user interface and connecting this with the user interface, and how to connect this with the rest of your design in a meaningful way.
+</p>
+
+<p>
+In older versions of C. Larman, <i>Applying UML and Patterns</i>, 3rd Edition, this was referred to as <i>Real Use Cases</i>. It is not always necessary to do these, nor is this the only way of designing the user interface. The reason I include this as a sprint is that it raises a few interesting points that need to be addressed in the design and the future implementation. Given that the most recent version of C. Larman, <i>Applying UML and Patterns</i>, 3rd Edition does not include Real Use Cases, it may not be that important after all.
+</p>
+
+<p>
+More interesting, however, is how you connect your user interface to your design in a clean and re-usable manner, as is discussed below.
+</p>
+</div>
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> User Interface</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+The core idea of real use cases is that you make a sketch of the user interface, with all the inputs and buttons and connect to your use cases. For example, consider the user interface in Figure <a href="#fig:UISketch">1</a>. As a side note, the PlantUML code to generate Figure <a href="#fig:UISketch">1</a> is presented below:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-plantuml">salt
+{+
+{ Drinks-R-Us }
+
+{+ Choose Beverage
+ (X) Coffee
+ () Tea
+ () Water
+} | {+ Choose Size
+ () Small
+ (X) Medium
+ () Large
+}
+
+{ [ ] Milk | [ ] Sugar }
+
+[Brew!] | [Tea, Earl Grey, Hot]
+}
+</pre>
+</div>
+
+
+<div id="fig:UISketch" class="figure">
+<p><img src="./images/FUISketch.png" alt="FUISketch.png" />
+</p>
+<p><span class="figure-number">Figure 1:</span> Draft User Interface</p>
+</div>
+
+<p>
+I include this code to show you that you do not have to be extremely accurate or use graphical user interface builders to generate a sketch to continue working with. On the other hand, if you <i>are</i> using something like QT Builder, you may just as well do your sketches there and save yourself the effort of translating them thither at a later stage.
+</p>
+
+<p>
+The next step is to annotate the sketch so you can refer to the different elements in text (see Figure <a href="#fig:UISketchAnnotate">2</a>). We can now revisit the UML Use Case and describe where the information is entered and how it is sent onwards in the system (for clarity I have expressed this in <b>bold</b> text in the use case).
+</p>
+
+
+<div id="fig:UISketchAnnotate" class="figure">
+<p><img src="./images/IUISketchAnnotated.png" alt="IUISketchAnnotated.png" />
+</p>
+<p><span class="figure-number">Figure 2:</span> Annotated for Easy Reference</p>
+</div>
+
+<div class="info">
+<dl class="org-dl">
+<dt> Use Case </dt><dd>Order Beverage
+</dd>
+<dt> Actors </dt><dd>Thirsty User
+</dd>
+<dt> Description </dt><dd>A Thirsty User arrives at the Drinks-R-Us machine and orders something to drink. They decide what drink they want, the size of their cup, and whether they want milk or sugar with it.
+</dd>
+<dt> Main Course of Events </dt><dd><table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Actor</th>
+<th scope="col" class="left">System</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">1. A Thirsty User arrives at the DRU machine</td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">2. The system informs about available choices.</td>
+</tr>
+
+<tr>
+<td class="left">3. The Thirsty User orders Coffee <b>in Selector 1</b></td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">4. The system registers the choice of beverage.</td>
+</tr>
+
+<tr>
+<td class="left">5. The Thirsty User selects a large cup <b>in Selector 2</b></td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">6. The system registers the cup size.</td>
+</tr>
+
+<tr>
+<td class="left">7. The Thirsty User selects Sugar <b>by pressing &ldquo;sugar&rdquo; in Selector 3</b></td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">8. The system registers that sugar should be added.</td>
+</tr>
+
+<tr>
+<td class="left">9. The Thirsty User indicates that they is done <b>by pressing Button 4 (Brew!)</b></td>
+<td class="left">&#xa0;</td>
+</tr>
+
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">10. The system brews a large cup of coffee with sugar.</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+
+</div>
+</div>
+</div>
+
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Connecting User Interface to Design</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+From a software design standpoint, it is interesting to look at what happens in the system as a response to events in the user interface. On a high-level, it is easy to draw a conceptual image of this, as in Figure <a href="#fig:UIDesignConnection">3</a>.
+</p>
+
+
+<div id="fig:UIDesignConnection" class="figure">
+<p><img src="./images/IUIDesignConnection.png" alt="IUIDesignConnection.png" />
+</p>
+<p><span class="figure-number">Figure 3:</span> Conceptual overview of how the user interface is connected to the rest of the system.</p>
+</div>
+
+<p>
+But how does this work in practice? What part of the system is responsible for owning and creating instances of the user interface? The normal view is that events are sent from the user interface the domain logic. Typically you want to disconnect this one step further, for example to enable automated creation of the classes that deal with user interfaces (belive me, you do not want to go in and touch boilerplate code). This is where the <code>UIConnection</code> class comes into play (and I agree that it is a crappy name for it). This is a class that is clean from any of the ugly user interface code (create a <i>button</i>, position it <i>there</i>, and when <i>this</i> event happens, call <i>that</i> method), and will only get called when an event is generated that involves the actual domain logic. It is the job of this class to make sense of all the options that may be made in the user interface, and text that is entered, and then pass this downwards to the domain logic layer.
+</p>
+
+<p>
+A few things are noteworthy here. First of all, there is a desire to keep the <code>BrewController</code> &ldquo;clean&rdquo;, with only a small set of functions and a well defined interface (high cohesion). The natural optimisation to do here is thus to only deal with user input once the &ldquo;Brew&rdquo; button is clicked. Rather than going back and forth between the logic layer and the user interface for every entry in the user interface &#x2013; as the use case actually dictates &#x2013; there is a tendency to present a &ldquo;dumb&rdquo; user interface that only tells you when you are finished what you have done wrong. This is also the bare minimum user interface that you can replace with other forms of communication (for example, a web API endpoint such as <code>http://drinksrus.com/brew?beverage=cofee&amp;size=large&amp;sugar=t</code>, or a command line interface <code>brew --size large --sugar coffee</code>). Since you still need to do input sanitation, this is still the minimum viable product that you somehow need to start building anyway.
+</p>
+
+<p>
+But what if you really need to implement the use case as specified? What if you also have textboxes and want to do some form of type-ahead in those text boxes? Then you need to add methods to the <code>BrewController</code> for each step in the use case, possibly with a state variable so that you cannot select the size of the cup unless you first have selected a beverage. The type-ahead can be done in two ways. You can either send a call to BrewController after every keypress and get an array of what is likely being typed, or you can send an array to the user interface already from the start with all possible alternatives. The former requires a lower initial bandwidth, whereas the latter has lower requirements on a continuous connection and continuous bandwidth. To the best of my knowledge most web-apps use the former (round-trip to the server for every keypress) these days, especially with the help of websockets.
+</p>
+
+<p>
+There are some more forces at play here, and I go through some of them in the accompanying screencast with the help of an example application. Noteworthy are the questions of how you connect the different components with as low coupling as possible, how you tweak the generic design patterns so that you can also piggy-back information on events, and how you sometimes need to work around restrictions in the programming language to make things work.
+</p>
+
+<p>
+Taken together all of this can become rather complex to comprehend, as is typically the case when you are trying to integrate different frameworks with each other (consider the user interface as one framework, and your domain functionality as another. You may also have further frameworks that you need to connect with your code). One key obstacle is what is known as the &ldquo;Hollywood principle&rdquo;, that many frameworks assume. This means that you, once you&rsquo;ve configured things at startup, hand over control to the framework who then lends it back to you when an event occurs. Of course, this is more difficult to to if you have two or more frameworks each expecting to be in control of your application.
+</p>
+
+<p>
+This may be why most texts on object oriented design are quite happy to teach the principles of good design and responsibility-driven design, but conveniently stops at the level of the <code>BrewController</code>, leaving everything above this level to the poor programmer.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> Learning Material</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="outline-container-sec-4-1" class="outline-3">
+<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Book Chapters</h3>
+<div class="outline-text-3" id="text-4-1">
+<ul class="org-ul">
+<li>C. Larman, <i>Applying UML and Patterns</i>, 3rd Edition, Chapters:
+<ol class="org-ol">
+<li value="20">Mapping Designs to Code
+</li>
+<li>Test-Driven Development and Refactoring
+</li>
+</ol>
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-2" class="outline-3">
+<h3 id="sec-4-2"><span class="section-number-3">4.2</span> <span class="todo TODO">TODO</span> Screencasts</h3>
+<div class="outline-text-3" id="text-4-2">
+<ul class="org-ul">
+<li>Go through the MVC Dictionary app
+</li>
+</ul>
+</div>
+</div>
+<div id="outline-container-sec-4-3" class="outline-3">
+<h3 id="sec-4-3"><span class="section-number-3">4.3</span> <span class="todo TODO">TODO</span> Lectures</h3>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> Experiential Learning</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Sprint Test Plan</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
+</p>
+
+<p>
+Revisit and update your risks and contingencies section.
+</p>
+
+<p>
+Add and/or revise the following items to your glossary:
+</p>
+<ul class="org-ul">
+<li>User Interface
+</li>
+<li>Observer Pattern
+</li>
+<li>Layered Architecture
+</li>
+<li>Model-View-Controller Architecture
+</li>
+</ul>
+
+<p>
+Make sure you understand what each item is, the notation for them, and how to use them either in isolation or together with the other concepts.    
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Self-Study: Small GUI Application</h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Make a small GUI application in your programming language of choice to test how a user interface is constructed and connected to the &ldquo;designed&rdquo; bits of an application.
+</p>
+
+<p>
+For example, build a &ldquo;yow&rdquo; counter:
+</p>
+
+
+<div class="figure">
+<p><img src="./images/FYowCounterUI.png" alt="FYowCounterUI.png" />
+</p>
+</div>
+
+<p>
+With the classes:
+</p>
+
+<div class="figure">
+<p><img src="./images/FYowDesign.png" alt="FYowDesign.png" />
+</p>
+</div>
+
+
+<p>
+Now, figure out:
+</p>
+<ul class="org-ul">
+<li>how you should connect the YowController to the <code>Yow</code> button without violating any design principles.
+</li>
+<li>how, by using an <code>observer</code> pattern, you can get the YowGUI to update the yowcounter.
+</li>
+</ul>
+
+<p>
+As an additional exercise, which software architecture patterns have I used here? Are there any that are more suitable? How does this change your implementation?
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Update Course Backlog</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+You do not have a choice; you need to understand the design and your choice of programming platform well enough so that you can implement your system. What challenges can you expect during implementation?
+</p>
+
+<p>
+Are there any other questions that you want answered? Add them, along with a brief strategy for how to find an answer.    
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> Sprint Acceptance Tests</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+You are done with this sprint when:
+</p>
+<ul class="org-ul">
+<li>You have built a small GUI application as self-study.
+</li>
+</ul>
+
+<p>
+You may also have
+</p>
+<ul class="org-ul">
+<li>Updated your Sprint Test Plan
+</li>
+<li>Updated your Course Backlog   
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="author">Author: Mikael Svahnberg</p>
+<p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
+<p class="date">Created: 2017-02-08 Wed 13:59</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>
