@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>Introduction to Software Architectures</title>
-<!-- 2017-02-14 Tue 11:13 -->
+<!-- 2017-02-17 Fri 10:25 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <meta  name="author" content="Mikael Svahnberg" />
@@ -160,13 +160,15 @@ for the JavaScript code in this tag.
 <li><a href="#sec-4-2">4.2. Books and Articles</a></li>
 </ul>
 </li>
-<li><a href="#sec-5">5. <span class="todo TODO">TODO</span> Experiential Learning</a>
+<li><a href="#sec-5">5. Experiential Learning</a>
 <ul>
 <li><a href="#sec-5-1">5.1. Sprint Test Plan</a></li>
-<li><a href="#sec-5-2">5.2. Update Course Backlog</a></li>
+<li><a href="#sec-5-2">5.2. Assignment: Create Initial Software Architecture</a></li>
+<li><a href="#sec-5-3">5.3. Assignment: Evaluate Initial Software Architecture</a></li>
+<li><a href="#sec-5-4">5.4. Update Course Backlog</a></li>
 </ul>
 </li>
-<li><a href="#sec-6">6. <span class="todo TODO">TODO</span> Sprint Acceptance Tests</a></li>
+<li><a href="#sec-6">6. Sprint Acceptance Tests</a></li>
 </ul>
 </div>
 </div>
@@ -537,7 +539,7 @@ I suggest that you have a look in the Software Architecture in Practice book by 
 </div>
 </div>
 <div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> <span class="todo TODO">TODO</span> Experiential Learning</h2>
+<h2 id="sec-5"><span class="section-number-2">5</span> Experiential Learning</h2>
 <div class="outline-text-2" id="text-5">
 </div><div id="outline-container-sec-5-1" class="outline-3">
 <h3 id="sec-5-1"><span class="section-number-3">5.1</span> Sprint Test Plan</h3>
@@ -598,10 +600,296 @@ Make sure you understand what each item is, the notation for them, and how to us
 </div>
 </div>
 <div id="outline-container-sec-5-2" class="outline-3">
-<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Update Course Backlog</h3>
+<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Assignment: Create Initial Software Architecture</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
-Are there any common architecture styles? What are their qualities?
+Create an initial software architecture for your system.
+</p>
+
+<p>
+<b>Tasks:</b>
+</p>
+<ul class="org-ul">
+<li>Which quality attributes are relevant for your system?
+</li>
+<li>Based on what you currently know, structure your system into different modules that have high coherence and low coupling.
+<ul class="org-ul">
+<li>Try to think about localising specific areas of functionality into separate modules.
+</li>
+</ul>
+</li>
+<li>Do you need to model your system from different viewpoints (e.g. modules, threads and processes, data flow)?
+<ul class="org-ul">
+<li>If so, create a model for each viewpoint.
+</li>
+<li>Make sure your viewpoints are consistent with each other.
+</li>
+<li>If you do not need several viewpoints, then why not?
+</li>
+</ul>
+</li>
+<li>Motivate and reason about what traits in your system makes it require or not require specific viewpoints.
+</li>
+</ul>
+
+<div class="info">
+<p>
+<b>Document Structure:</b>
+</p>
+
+<p>
+The title for this Assignment Document is: <i>Initial Software Architecture for System &lt;system name&gt;</i>
+The assignment document shall contain the following items:
+</p>
+
+<ol class="org-ol">
+<li>Title Page
+<ol class="org-ol">
+<li>Title: &lt;assignment document title&gt;
+</li>
+<li>Sub-title: &ldquo;Assignment in the course &lt;course code&gt;&lt;course name&gt;&rdquo;
+</li>
+<li>Date
+</li>
+<li>Authors and Author Contribution
+
+<p>
+Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Author Name</th>
+<th scope="col" class="left">Social Security Number</th>
+<th scope="col" class="left">Thinking</th>
+<th scope="col" class="left">Writing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</li>
+<li>System Description
+
+<p>
+A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
+</p>
+</li>
+
+<li value="3">Quality Attributes
+Discuss quality attributes that are important for your system. Motivate why.
+</li>
+<li>Viewpoints
+Discuss your choices of viewpoints.
+</li>
+<li>Viewpoints
+<ul class="org-ul">
+<li>Create one section for each of your viewpoints.
+</li>
+<li>Model your system from the perspective of the viewpoint in a suitable notation (tip: You may find the UML Package notation useful)
+</li>
+<li>Describe the entities in your model. Remember that associations between entities also carry meaning in an architecture model and needs to be explained.
+</li>
+<li>Describe which particular design concerns that you are addressing with the help of the viewpoint.
+</li>
+</ul>
+</li>
+</ol>
+
+</div>
+
+<p>
+Commit and push this document to your project repository.
+</p>
+
+<div class="tip">
+<p>
+<b>Conditions of Satisfaction:</b>
+When marking this part of the assignment we are looking for the following:
+</p>
+
+<ol class="org-ol">
+<li value="0">Does the title page contain a table with authors and author contribution?
+</li>
+<li>Size of assignment: Is the system described from at least one and preferrably two to three viewpoints?
+</li>
+<li>Size of assignment: Does each viewpoint contain 5-15 entities?
+</li>
+<li>Are important quality attributes described and motivated?
+</li>
+<li>Are the viewpoints motivated? Is there a reasoning about why or why not certain viewpoints are needed?
+</li>
+<li>Is there a legend for each viewpoint that describes the types of entities and connections?
+</li>
+<li>Are the entities and connections in each viewpoint described?
+</li>
+<li>Does each viewpoint/entity have high cohesion and low coupling?
+</li>
+<li>Is there a described strategy for how classes are allocated to different modules/entities?
+</li>
+<li>IS this strategy followed?
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-3" class="outline-3">
+<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Assignment: Evaluate Initial Software Architecture</h3>
+<div class="outline-text-3" id="text-5-3">
+<p>
+Evaluate your software architecture based on your initial list of quality attrbutes.
+</p>
+
+<p>
+<b>Tasks:</b>
+</p>
+<ul class="org-ul">
+<li>For each quality attribute, how can you evaluate your architecture to see whether you meet your requirements or not?
+</li>
+<li>For each quality attribute, evaluate your architecture according to what you just decided.
+</li>
+<li>For each quality attribute and evaluation, reason about how you can improve your architecture to further meet your quality goals.
+</li>
+</ul>
+
+<div class="info">
+<p>
+<b>Document Structure:</b>
+</p>
+
+<p>
+The title for this Assignment Document is: <i>Evaluation of Initial Software Architecture for System &lt;system name&gt;</i>
+The assignment document shall contain the following items:
+</p>
+
+<ol class="org-ol">
+<li>Title Page
+<ol class="org-ol">
+<li>Title: &lt;assignment document title&gt;
+</li>
+<li>Sub-title: &ldquo;Assignment in the course &lt;course code&gt;&lt;course name&gt;&rdquo;
+</li>
+<li>Date
+</li>
+<li>Authors and Author Contribution
+
+<p>
+Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
+</p>
+
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+
+<col  class="left" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Author Name</th>
+<th scope="col" class="left">Social Security Number</th>
+<th scope="col" class="left">Thinking</th>
+<th scope="col" class="left">Writing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+<td class="left">&#xa0;</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ol>
+</li>
+<li>System Description
+
+<p>
+A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
+</p>
+</li>
+
+<li value="3">Quality Attributes
+<ul class="org-ul">
+<li>Create one section for each quality attribute
+</li>
+<li>Describe how you plan on evaluating your architecture with respect to the quality attribute, and why this is a sufficient evaluation strategy.
+</li>
+<li>Evaluate your architecture, using relevant viewpoints, according to your evaluation strategy.
+</li>
+<li>Summarise your evaluation and any bottlenecks you find.
+</li>
+<li>Reason about how your architecture can be improved to remove the identified bottlenecks.
+</li>
+</ul>
+</li>
+</ol>
+
+</div>
+
+<p>
+Commit and push this document to your project repository.
+</p>
+
+<div class="tip">
+<p>
+<b>Conditions of Satisfaction:</b>
+When marking this part of the assignment we are looking for the following:
+</p>
+
+<ol class="org-ol">
+<li value="0">Does the title page contain a table with authors and author contribution?
+</li>
+<li>Size of assignment: Is the architecture evaluated from the perspective of 3-5 quality attrbutes?
+</li>
+<li>For each quality attribute, is the chosen evaluation strategy motivated?
+</li>
+<li>For each quality attribute, is the chosen evaluation strategy sufficient?
+</li>
+<li>For each quality attribute, is the architecture sufficiently evaluated using the described evaluation strategy?
+</li>
+<li>For each quality attribute, are the findings from the evaluation summarised?
+</li>
+<li>For each quality attribute, is there a sufficient reasoning about how to improve the architecture?
+</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div id="outline-container-sec-5-4" class="outline-3">
+<h3 id="sec-5-4"><span class="section-number-3">5.4</span> Update Course Backlog</h3>
+<div class="outline-text-3" id="text-5-4">
+<p>
+Are there any common architecture styles? What are their qualities? How can you deal with (new) functionality that uses several of the components in the system (for example, a new feature may require a new UI dialogue, new business logic on several levels, new database connections, new tables in the database)?
 </p>
 
 <p>
@@ -611,20 +899,29 @@ Are there any other questions that you want answered? Add them, along with a bri
 </div>
 </div>
 <div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> <span class="todo TODO">TODO</span> Sprint Acceptance Tests</h2>
+<h2 id="sec-6"><span class="section-number-2">6</span> Sprint Acceptance Tests</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 You are done with this sprint when:
 </p>
 <ul class="org-ul">
-<li>You have 
+<li>You have considered which quality attributes are relevant for your system.
+</li>
+<li>You have created an initial software architecture for your system.
+</li>
+<li>You have evaluated your initial software architecture.
+</li>
+<li>You have committed/pushed the created documents to your project repository
 </li>
 </ul>
+
 
 <p>
 You may also have
 </p>
 <ul class="org-ul">
+<li>Improved your initial software architecture based on your evaluation.
+</li>
 <li>Updated your Sprint Test Plan
 </li>
 <li>Updated your Course Backlog   
@@ -636,7 +933,7 @@ You may also have
 <div id="postamble" class="status">
 <p class="author">Author: Mikael Svahnberg</p>
 <p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
-<p class="date">Created: 2017-02-14 Tue 11:13</p>
+<p class="date">Created: 2017-02-17 Fri 10:25</p>
 <p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
