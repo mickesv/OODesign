@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-01-19 Fri 10:59 -->
+<!-- 2018-01-23 Tue 11:49 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Getting Started with Git</title>
@@ -303,10 +303,10 @@ This text provides a brief introduction to git. This is not something you <i>nee
 <div id="outline-container-org003571b" class="outline-2">
 <h2 id="org003571b"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
 <div class="outline-text-2" id="text-2">
-<p>
-As a student I want to understand how to work with git because it is required of me in this cours.
-As a student I want to understand how to work with git so that I increase my employability.
-</p>
+<ul class="org-ul">
+<li>As a student I want to understand how to work with git because it is required of me in this cours.</li>
+<li>As a student I want to understand how to work with git so that I increase my employability.</li>
+</ul>
 </div>
 </div>
 <div id="outline-container-org57b41e1" class="outline-2">
@@ -340,15 +340,6 @@ In git, your working copy is in fact a clone of the entire repository, with the 
 Central to most configuration management, and git in particular, is the concept of <i>branching</i>. Consider the repository below:
 </p>
 
-<div class="org-src-container">
-<pre class="src src-dot">digraph {
-rankdir=LR;
-size=6;
-node [colorscheme=<span style="color: #CC9393;">"accent4"</span>, style=radial, fillcolor=1];
-a -&gt; b -&gt; c -&gt; d;
-}
-</pre>
-</div>
 
 
 <div class="figure">
@@ -361,17 +352,6 @@ a -&gt; b -&gt; c -&gt; d;
 Each node in this graph represents one <i>commit</i> (i.e., one &ldquo;upload&rdquo; of files to the repository).  As you can see, all commits build directly upon the previous commit. Now let&rsquo;s say you are working on a bugfix on the commit made in <code>b</code>. In this case you do not want to worry about what was added in <code>c</code> or in <code>d</code>. So you create a <i>branch</i> and continue working here:
 </p>
 
-<div class="org-src-container">
-<pre class="src src-dot">digraph {
-rankdir=LR;
-size=6;
-node [colorscheme=<span style="color: #CC9393;">"accent4"</span>, style=radial, fillcolor=1];
-a -&gt; b -&gt; c -&gt; d;
-node [fillcolor=2];
-b -&gt; e -&gt; f -&gt; g -&gt; h;
-}
-</pre>
-</div>
 
 
 <div class="figure">
@@ -384,18 +364,6 @@ b -&gt; e -&gt; f -&gt; g -&gt; h;
 Now we have two branches. We have what subversion would call the trunk <code>a-b-c-d</code>, and we have a branch <code>e-f-g-h</code>. This means that others can continue working from the trunk, and you do not have to worry about what they are doing until it is time to <i>merge</i> back into the trunk:
 </p>
 
-<div class="org-src-container">
-<pre class="src src-dot">digraph {
-rankdir=LR;
-size=6;
-node [colorscheme=<span style="color: #CC9393;">"accent4"</span>, style=radial, fillcolor=1];
-a -&gt; b -&gt; c -&gt; d -&gt; i -&gt; j -&gt; k -&gt; l -&gt; m;
-node [fillcolor=2];
-b -&gt; e -&gt; f -&gt; g -&gt; h;
-h-&gt; m;
-}
-</pre>
-</div>
 
 
 <div class="figure">
@@ -415,21 +383,6 @@ In fact, when you first download your working copy, or <i>clone</i> the reposito
 Branches have names. The default names are <code>master</code> and <code>origin/master</code>. If you create more branches, you get to give them your own names:
 </p>
 
-<div class="org-src-container">
-<pre class="src src-dot">digraph {
-rankdir=LR;
-size=6;
-node [colorscheme=<span style="color: #CC9393;">"accent4"</span>, style=radial, fillcolor=1];
-<span style="color: #CC9393;">"origin/master: a"</span> -&gt; b -&gt; c -&gt; d -&gt; i -&gt; j -&gt; k -&gt; l -&gt; m;
-node [fillcolor=2];
-b -&gt; <span style="color: #CC9393;">"master: e"</span> -&gt; f -&gt; g -&gt; h;
-h-&gt; m;
-node [fillcolor=3];
-<span style="color: #CC9393;">"master: e"</span> -&gt; <span style="color: #CC9393;">"myFixBranch: n"</span> -&gt; o;
-o-&gt; f;
-}
-</pre>
-</div>
 
 
 <div class="figure">
@@ -481,24 +434,6 @@ Anything you do, from now on, will be done on the <code>myNewBranch</code> branc
 This is expected behaviour. Consider the graph below:
 </p>
 
-<div class="org-src-container">
-<pre class="src src-dot">digraph {
-rankdir=LR;
-size=6;
-node [colorscheme=<span style="color: #CC9393;">"accent4"</span>, style=radial, fillcolor=1];
-
-a [label=<span style="color: #CC9393;">"Branch &lt;master&gt;: Commit of files a,b,c"</span>]
-b [label=<span style="color: #CC9393;">"Commit of files d,e"</span>]
-d [label=<span style="color: #CC9393;">"Commit of files a,c"</span>]
-
-node [fillcolor=2];
-c [label=<span style="color: #CC9393;">"Branch &lt;la branche&gt;: Commit of files g,f"</span>]
-
-a-&gt;b-&gt;d
-a-&gt;c
-}
-</pre>
-</div>
 
 
 <div class="figure">
@@ -517,6 +452,7 @@ Thus, when checking out <code>la branche</code> your filesystem will be populate
 </div>
 </div>
 </div>
+
 <div id="outline-container-orgda2225f" class="outline-3">
 <h3 id="orgda2225f"><span class="section-number-3">3.3</span> Committing and the Staging Area</h3>
 <div class="outline-text-3" id="text-3-3">
@@ -665,7 +601,7 @@ There are plenty of tutorials for git and github online. For example, you may lo
 </p>
 
 <ul class="org-ul">
-<li><a href="http://git-scm.com/docs/gittutorial">http://git-scm.com/docs/gittutorial</a></li>
+<li><a href="https://git-scm.com/docs/gittutorial">https://git-scm.com/docs/gittutorial</a></li>
 <li><a href="http://www.vogella.com/tutorials/Git/article.html">http://www.vogella.com/tutorials/Git/article.html</a></li>
 </ul>
 </div>
@@ -778,7 +714,7 @@ Shirley there must be an &ldquo;easier&rdquo; way than <code>git remote add orig
 
 <ol class="org-ol">
 <li value="3"><p>
-There is. Go to your project homepage on github. Locate the &ldquo;Clone or Download&rdquo; button:
+There is, and don&rsquo;t call me Shirley. Go to your project homepage on github. Locate the &ldquo;Clone or Download&rdquo; button:
 </p>
 
 
@@ -830,7 +766,7 @@ $ ls                        <span style="color: #5F7F5F;"># </span><span style="
 <h3 id="org9139654"><span class="section-number-3">5.4</span> Use the Web Interface</h3>
 <div class="outline-text-3" id="text-5-4">
 <p>
-For regular documents it is also possible to use the web interface on github to create new documents and upload images etc. In this case, you will probably write your documents in <a href="http://daringfireball.net/projects/markdown/">Markdown</a>. More info on this can be found on the following links:
+For regular documents it is also possible to use the web interface on github to create new documents and upload images etc. In this case, you will probably write your documents in <a href="https://daringfireball.net/projects/markdown/">Markdown</a>. More info on this can be found on the following links:
 </p>
 
 <ul class="org-ul">
@@ -860,7 +796,7 @@ For regular documents it is also possible to use the web interface on github to 
 <div id="postamble" class="status">
 <p class="author">Author: Mikael Svahnberg</p>
 <p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
-<p class="date">Created: 2018-01-19 Fri 10:59</p>
+<p class="date">Created: 2018-01-23 Tue 11:49</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
