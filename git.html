@@ -3,23 +3,30 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2018-01-19 Fri 10:59 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Getting Started with Git</title>
-<!-- 2017-04-03 Mon 15:13 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Mikael Svahnberg" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Mikael Svahnberg" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -46,27 +53,111 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -86,6 +177,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="org/org.css" />
@@ -95,7 +187,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -136,48 +228,28 @@ for the JavaScript code in this tag.
  }
 /*]]>*///-->
 </script>
-<script type="text/javascript" src="http://orgmode.org/mathjax/MathJax.js"></script>
-<script type="text/javascript">
-<!--/*--><![CDATA[/*><!--*/
+<script type="text/x-mathjax-config">
     MathJax.Hub.Config({
-        // Only one of the two following lines, depending on user settings
-        // First allows browser-native MathML display, second forces HTML/CSS
-        //  config: ["MMLorHTML.js"], jax: ["input/TeX"],
-            jax: ["input/TeX", "output/HTML-CSS"],
-        extensions: ["tex2jax.js","TeX/AMSmath.js","TeX/AMSsymbols.js",
-                     "TeX/noUndefined.js"],
-        tex2jax: {
-            inlineMath: [ ["\\(","\\)"] ],
-            displayMath: [ ['$$','$$'], ["\\[","\\]"], ["\\begin{displaymath}","\\end{displaymath}"] ],
-            skipTags: ["script","noscript","style","textarea","pre","code"],
-            ignoreClass: "tex2jax_ignore",
-            processEscapes: false,
-            processEnvironments: true,
-            preview: "TeX"
-        },
-        showProcessingMessages: true,
         displayAlign: "center",
-        displayIndent: "2em",
+        displayIndent: "0em",
 
-        "HTML-CSS": {
-             scale: 100,
-             availableFonts: ["STIX","TeX"],
-             preferredFont: "TeX",
-             webFont: "TeX",
-             imageFont: "TeX",
-             showMathMenu: true,
-        },
-        MMLorHTML: {
-             prefer: {
-                 MSIE:    "MML",
-                 Firefox: "MML",
-                 Opera:   "HTML",
-                 other:   "HTML"
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
              }
-        }
-    });
-/*]]>*///-->
+});
 </script>
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="content">
@@ -186,47 +258,50 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. About This Text</a></li>
-<li><a href="#sec-2">2. User Stories covered in this Sprint</a></li>
-<li><a href="#sec-3">3. Introduction</a>
+<li><a href="#org67da7dd">1. About This Text</a></li>
+<li><a href="#org003571b">2. User Stories covered in this Sprint</a></li>
+<li><a href="#org57b41e1">3. Introduction</a>
 <ul>
-<li><a href="#sec-3-1">3.1. Working Copy vs Repository</a></li>
-<li><a href="#sec-3-2">3.2. Branching</a></li>
-<li><a href="#sec-3-3">3.3. Committing and the Staging Area</a></li>
-<li><a href="#sec-3-4">3.4. Clone, Fetch, Pull and Push</a></li>
+<li><a href="#orgee597cf">3.1. Working Copy vs Repository</a></li>
+<li><a href="#orgce1d053">3.2. Branching</a></li>
+<li><a href="#orgda2225f">3.3. Committing and the Staging Area</a></li>
+<li><a href="#org71fbf13">3.4. Clone, Fetch, Pull and Push</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">4. Learning Material</a>
+<li><a href="#org82a51f1">4. Learning Material</a>
 <ul>
-<li><a href="#sec-4-1">4.1. Further Reading</a></li>
-<li><a href="#sec-4-2">4.2. Further Further Reading</a></li>
-<li><a href="#sec-4-3">4.3. Tools</a></li>
+<li><a href="#orga1e2ad4">4.1. Further Reading</a></li>
+<li><a href="#org99f0ba3">4.2. Further Further Reading</a></li>
+<li><a href="#org776e040">4.3. Tools</a></li>
 </ul>
 </li>
-<li><a href="#sec-5">5. Experiential Learning</a>
+<li><a href="#orgf7b1828">5. Experiential Learning</a>
 <ul>
-<li><a href="#sec-5-1">5.1. Getting started with Git and Github</a></li>
-<li><a href="#sec-5-2">5.2. Work locally</a></li>
-<li><a href="#sec-5-3">5.3. Working with origin</a></li>
-<li><a href="#sec-5-4">5.4. Use the Web Interface</a></li>
+<li><a href="#org6644b53">5.1. Getting started with Git and Github</a></li>
+<li><a href="#org861d967">5.2. Work locally</a></li>
+<li><a href="#orgcfdc98e">5.3. Working with origin</a></li>
+<li><a href="#org9139654">5.4. Use the Web Interface</a></li>
 </ul>
 </li>
-<li><a href="#sec-6">6. Acceptance Tests</a></li>
+<li><a href="#org891db81">6. Acceptance Tests</a></li>
 </ul>
 </div>
 </div>
+<div class="org">
 <br/>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> About This Text</h2>
+</div>
+
+<div id="outline-container-org67da7dd" class="outline-2">
+<h2 id="org67da7dd"><span class="section-number-2">1</span> About This Text</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This text provides a brief introduction to git. This is not something you <i>need</i> to learn in this course, but is provided for your convenience.
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
+<div id="outline-container-org003571b" class="outline-2">
+<h2 id="org003571b"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
 <div class="outline-text-2" id="text-2">
 <p>
 As a student I want to understand how to work with git because it is required of me in this cours.
@@ -234,16 +309,16 @@ As a student I want to understand how to work with git so that I increase my emp
 </p>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Introduction</h2>
+<div id="outline-container-org57b41e1" class="outline-2">
+<h2 id="org57b41e1"><span class="section-number-2">3</span> Introduction</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 The basic idea with configuration management is that it enables collaboration over the same files, and it keeps track of which versions of files (=configurations) are available and perhaps released to specific customers.
 </p>
 </div>
 
-<div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Working Copy vs Repository</h3>
+<div id="outline-container-orgee597cf" class="outline-3">
+<h3 id="orgee597cf"><span class="section-number-3">3.1</span> Working Copy vs Repository</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 Borrowing a bit of terminology from subversion, the files you have on your hard drive are a <i>working copy</i> of a project. It is called thus because it is a copy of what is available in the configuration management system, and you are able to work on it. When you are done with whatever feature you are implementing, you upload your working copy back into the configuration management system, thus creating new versions of the touched files there.
@@ -254,8 +329,8 @@ The collection of all your files in the configuration management system is calle
 </p>
 </div>
 </div>
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Branching</h3>
+<div id="outline-container-orgce1d053" class="outline-3">
+<h3 id="orgce1d053"><span class="section-number-3">3.2</span> Branching</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 In git, your working copy is in fact a clone of the entire repository, with the entire history. This means that you can move back and forth between versions, and between different configurations of all files.
@@ -264,6 +339,16 @@ In git, your working copy is in fact a clone of the entire repository, with the 
 <p>
 Central to most configuration management, and git in particular, is the concept of <i>branching</i>. Consider the repository below:
 </p>
+
+<div class="org-src-container">
+<pre class="src src-dot">digraph {
+rankdir=LR;
+size=6;
+node [colorscheme=<span style="color: #CC9393;">"accent4"</span>, style=radial, fillcolor=1];
+a -&gt; b -&gt; c -&gt; d;
+}
+</pre>
+</div>
 
 
 <div class="figure">
@@ -276,6 +361,18 @@ Central to most configuration management, and git in particular, is the concept 
 Each node in this graph represents one <i>commit</i> (i.e., one &ldquo;upload&rdquo; of files to the repository).  As you can see, all commits build directly upon the previous commit. Now let&rsquo;s say you are working on a bugfix on the commit made in <code>b</code>. In this case you do not want to worry about what was added in <code>c</code> or in <code>d</code>. So you create a <i>branch</i> and continue working here:
 </p>
 
+<div class="org-src-container">
+<pre class="src src-dot">digraph {
+rankdir=LR;
+size=6;
+node [colorscheme=<span style="color: #CC9393;">"accent4"</span>, style=radial, fillcolor=1];
+a -&gt; b -&gt; c -&gt; d;
+node [fillcolor=2];
+b -&gt; e -&gt; f -&gt; g -&gt; h;
+}
+</pre>
+</div>
+
 
 <div class="figure">
 <p><img src="./images/FGitBranch1.png" alt="FGitBranch1.png" />
@@ -286,6 +383,19 @@ Each node in this graph represents one <i>commit</i> (i.e., one &ldquo;upload&rd
 <p>
 Now we have two branches. We have what subversion would call the trunk <code>a-b-c-d</code>, and we have a branch <code>e-f-g-h</code>. This means that others can continue working from the trunk, and you do not have to worry about what they are doing until it is time to <i>merge</i> back into the trunk:
 </p>
+
+<div class="org-src-container">
+<pre class="src src-dot">digraph {
+rankdir=LR;
+size=6;
+node [colorscheme=<span style="color: #CC9393;">"accent4"</span>, style=radial, fillcolor=1];
+a -&gt; b -&gt; c -&gt; d -&gt; i -&gt; j -&gt; k -&gt; l -&gt; m;
+node [fillcolor=2];
+b -&gt; e -&gt; f -&gt; g -&gt; h;
+h-&gt; m;
+}
+</pre>
+</div>
 
 
 <div class="figure">
@@ -305,6 +415,22 @@ In fact, when you first download your working copy, or <i>clone</i> the reposito
 Branches have names. The default names are <code>master</code> and <code>origin/master</code>. If you create more branches, you get to give them your own names:
 </p>
 
+<div class="org-src-container">
+<pre class="src src-dot">digraph {
+rankdir=LR;
+size=6;
+node [colorscheme=<span style="color: #CC9393;">"accent4"</span>, style=radial, fillcolor=1];
+<span style="color: #CC9393;">"origin/master: a"</span> -&gt; b -&gt; c -&gt; d -&gt; i -&gt; j -&gt; k -&gt; l -&gt; m;
+node [fillcolor=2];
+b -&gt; <span style="color: #CC9393;">"master: e"</span> -&gt; f -&gt; g -&gt; h;
+h-&gt; m;
+node [fillcolor=3];
+<span style="color: #CC9393;">"master: e"</span> -&gt; <span style="color: #CC9393;">"myFixBranch: n"</span> -&gt; o;
+o-&gt; f;
+}
+</pre>
+</div>
+
 
 <div class="figure">
 <p><img src="./images/FGitBranch3.png" alt="FGitBranch3.png" />
@@ -315,9 +441,8 @@ Branches have names. The default names are <code>master</code> and <code>origin/
 To create a new branch, you use the command <code>git branch</code>:
 </p>
 <div class="org-src-container">
-
 <pre class="src src-bash">$ git branch myNewBranch
-$ git branch --list -a        # list all branches
+$ git branch --list -a        <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">list all branches</span>
  * master
    myNewBranch
    remotes/origin/HEAD -&gt; origin/master
@@ -331,9 +456,8 @@ $ git branch --list -a        # list all branches
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-bash">$ git checkout myNewBranch
-Switched to branch 'myNewBranch'
+Switched to branch <span style="color: #CC9393;">'myNewBranch'</span>
 
 $ git branch --list -a
    master
@@ -357,6 +481,25 @@ Anything you do, from now on, will be done on the <code>myNewBranch</code> branc
 This is expected behaviour. Consider the graph below:
 </p>
 
+<div class="org-src-container">
+<pre class="src src-dot">digraph {
+rankdir=LR;
+size=6;
+node [colorscheme=<span style="color: #CC9393;">"accent4"</span>, style=radial, fillcolor=1];
+
+a [label=<span style="color: #CC9393;">"Branch &lt;master&gt;: Commit of files a,b,c"</span>]
+b [label=<span style="color: #CC9393;">"Commit of files d,e"</span>]
+d [label=<span style="color: #CC9393;">"Commit of files a,c"</span>]
+
+node [fillcolor=2];
+c [label=<span style="color: #CC9393;">"Branch &lt;la branche&gt;: Commit of files g,f"</span>]
+
+a-&gt;b-&gt;d
+a-&gt;c
+}
+</pre>
+</div>
+
 
 <div class="figure">
 <p><img src="./images/FGitBranching.png" alt="FGitBranching.png" />
@@ -374,27 +517,26 @@ Thus, when checking out <code>la branche</code> your filesystem will be populate
 </div>
 </div>
 </div>
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Committing and the Staging Area</h3>
+<div id="outline-container-orgda2225f" class="outline-3">
+<h3 id="orgda2225f"><span class="section-number-3">3.3</span> Committing and the Staging Area</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 When you commit your files, you take copies of the files you have on your disk and put them under configuration management. In git, this is a two-stage process, where you first <i>stage</i> your changes, and then <i>commit</i> your staged files. You use the <i>staging area</i> to make sure that you have all the right files (you can even stage individual lines of files) in a meaninful way. Let&rsquo;s say that you happened to work on two different bugs in two different files but forgot to commit, or you solved both of them simultaneously. Then you can add the first file to the staging area and commit it as one commit, and then move on to the second file, stage this file and commit it in a separate commit.
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-bash">$ touch somefile.txt
-$ git add somefile.txt     # somefile.txt is now staged
-$ git status               # let's see what we've got
+$ git add somefile.txt     <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">somefile.txt is now staged</span>
+$ git status               <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">let's see what we've got</span>
 On branch master
-Your branch is up-to-date with 'origin/master'.
+Your branch is up-to-date with <span style="color: #CC9393;">'origin/master'</span>.
 Changes to be committed:
-  (use "git reset HEAD &lt;file&gt;..." to unstage)
+  (use <span style="color: #CC9393;">"git reset HEAD &lt;file&gt;..."</span> to unstage)
 
-	new file:   somefile.txt
+  new file:   somefile.txt
 
-$ git commit -m "added somefile.txt. Resolves issue #33"
-[master 9ccbf98] added somefile.txt. Resolves issue #33
+$ git commit -m <span style="color: #CC9393;">"added somefile.txt. Resolves issue #33"</span>
+[master 9ccbf98] added somefile.txt. Resolves issue <span style="color: #5F7F5F;">#</span><span style="color: #7F9F7F;">33</span>
  Committer: Mikael Svahnberg
  1 file changed, 0 insertions(+), 0 deletions(-)
  create mode 100644 somefile.txt
@@ -408,11 +550,10 @@ Congratulations, you have now committed a file to your local <code>master</code>
 
 
 <div class="org-src-container">
-
 <pre class="src src-bash">$ git log --oneline --graph
- * 9ccbf98 added somefile.txt. Resolves issue #33
- *   fc34201 Merge branch 'master' of github.com:mickesv/jenkinsTest
- |\
+ * 9ccbf98 added somefile.txt. Resolves issue <span style="color: #5F7F5F;">#</span><span style="color: #7F9F7F;">33</span>
+ *   fc34201 Merge branch <span style="color: #CC9393;">'master'</span> of github.com:mickesv/jenkinsTest
+ |<span style="color: #CC9393;">\</span>
  | * 958486a Create newfile.txt
  * | ee4f1cd tst
  |/
@@ -422,8 +563,8 @@ Congratulations, you have now committed a file to your local <code>master</code>
 </div>
 </div>
 
-<div id="outline-container-sec-3-4" class="outline-3">
-<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Clone, Fetch, Pull and Push</h3>
+<div id="outline-container-org71fbf13" class="outline-3">
+<h3 id="org71fbf13"><span class="section-number-3">3.4</span> Clone, Fetch, Pull and Push</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 As stated you <i>clone</i> a repository to get a local branch. When you have created a repository in github, the link to the project is available in a menu:
@@ -440,10 +581,9 @@ Use this link in your favourite git tool, or on the command line:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-bash">$ git clone git@github.com:mickesv/jenkinsTest.git
 
-Cloning into 'jenkinsTest'...
+Cloning into <span style="color: #CC9393;">'jenkinsTest'</span>...
 remote: Counting objects: 198, done.
 remote: Total 198 (delta 0), reused 0 (delta 0), pack-reused 198
 Receiving objects: 100% (198/198), 1.80 MiB | 1.52 MiB/s, done.
@@ -456,7 +596,6 @@ To see what has happened on the <code>origin</code> server,  you need to <i>fetc
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-bash">$ git fetch origin
 
 remote: Counting objects: 3, done.
@@ -473,11 +612,10 @@ The trouble is that you have now fetched everyting from origin, but it is still 
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-bash">$ git status
 On branch master
-Your branch is ahead of 'origin/master' by 1 commit.
-  (use "git push" to publish your local commits)
+Your branch is ahead of <span style="color: #CC9393;">'origin/master'</span> by 1 commit.
+  (use <span style="color: #CC9393;">"git push"</span> to publish your local commits)
 nothing to commit, working tree clean
 </pre>
 </div>
@@ -487,9 +625,8 @@ In order to sync and join <code>origin/master</code> and <code>master</code> you
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-bash">$ git pull
-Merge made by the 'recursive' strategy.
+Merge made by the <span style="color: #CC9393;">'recursive'</span> strategy.
  newfile.txt | 1 +
  1 file changed, 1 insertion(+)
  create mode 100644 newfile.txt
@@ -501,7 +638,6 @@ IF necessary, this will create a merge between <code>origin/master</code> and <c
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-bash">$ git push
 Counting objects: 5, done.
 Delta compression using up to 4 threads.
@@ -517,137 +653,117 @@ To github.com:mickesv/jenkinsTest.git
 </div>
 </div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Learning Material</h2>
+<div id="outline-container-org82a51f1" class="outline-2">
+<h2 id="org82a51f1"><span class="section-number-2">4</span> Learning Material</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Further Reading</h3>
+</div>
+<div id="outline-container-orga1e2ad4" class="outline-3">
+<h3 id="orga1e2ad4"><span class="section-number-3">4.1</span> Further Reading</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 There are plenty of tutorials for git and github online. For example, you may look at:
 </p>
 
 <ul class="org-ul">
-<li><a href="http://git-scm.com/docs/gittutorial">http://git-scm.com/docs/gittutorial</a>
-</li>
-<li><a href="http://www.vogella.com/tutorials/Git/article.html">http://www.vogella.com/tutorials/Git/article.html</a>
-</li>
+<li><a href="http://git-scm.com/docs/gittutorial">http://git-scm.com/docs/gittutorial</a></li>
+<li><a href="http://www.vogella.com/tutorials/Git/article.html">http://www.vogella.com/tutorials/Git/article.html</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-4-2" class="outline-3">
-<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Further Further Reading</h3>
+<div id="outline-container-org99f0ba3" class="outline-3">
+<h3 id="org99f0ba3"><span class="section-number-3">4.2</span> Further Further Reading</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
-<li><a href="https://blogs.msdn.microsoft.com/bharry/2017/02/03/scaling-git-and-some-back-story/">Scaling Git (and some Back Story)</a>
-</li>
+<li><a href="https://blogs.msdn.microsoft.com/bharry/2017/02/03/scaling-git-and-some-back-story/">Scaling Git (and some Back Story)</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-4-3" class="outline-3">
-<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Tools</h3>
+<div id="outline-container-org776e040" class="outline-3">
+<h3 id="org776e040"><span class="section-number-3">4.3</span> Tools</h3>
 <div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
-<li><a href="https://www.sourcetreeapp.com/">SourceTree</a>
-</li>
-<li><a href="https://desktop.github.com/">Github Desktop</a>
-</li>
-<li><a href="https://www.gitkraken.com/">GitKraken</a>
-</li>
-<li><a href="https://tortoisegit.org/">TortoiseGit</a>
-</li>
-<li>Other; there are <a href="https://git-scm.com/downloads/guis">plenty more tools</a> if you search for &ldquo;git gui tool&rdquo;. You can also find tools that are integrated into your IDE. Find and use one you like.
-</li>
+<li><a href="https://www.sourcetreeapp.com/">SourceTree</a></li>
+<li><a href="https://desktop.github.com/">Github Desktop</a></li>
+<li><a href="https://www.gitkraken.com/">GitKraken</a></li>
+<li><a href="https://tortoisegit.org/">TortoiseGit</a></li>
+<li>Other; there are <a href="https://git-scm.com/downloads/guis">plenty more tools</a> if you search for &ldquo;git gui tool&rdquo;. You can also find tools that are integrated into your IDE. Find and use one you like.</li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> Experiential Learning</h2>
+<div id="outline-container-orgf7b1828" class="outline-2">
+<h2 id="orgf7b1828"><span class="section-number-2">5</span> Experiential Learning</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 The exercises below uses command-line git. If you prefer to use a tool instead, then do so. The point is to get a feel of cloning, staging, committing, merging, pushing, fetching, and pulling.
 </p>
 </div>
 
-<div id="outline-container-sec-5-1" class="outline-3">
-<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Getting started with Git and Github</h3>
+<div id="outline-container-org6644b53" class="outline-3">
+<h3 id="org6644b53"><span class="section-number-3">5.1</span> Getting started with Git and Github</h3>
 <div class="outline-text-3" id="text-5-1">
 <ol class="org-ol">
 <li>Create an account on Github: <a href="https://education.github.com/">https://education.github.com/</a>
-   (Use your BTH address for simplicity&rsquo;s sake)
-</li>
-<li>Download and install git: <a href="http://git-scm.com/downloads">http://git-scm.com/downloads</a>
-</li>
-<li>In a terminal application, tell git your name and email address:
-</li>
+(Use your BTH address for simplicity&rsquo;s sake)</li>
+<li>Download and install git: <a href="http://git-scm.com/downloads">http://git-scm.com/downloads</a></li>
+<li>In a terminal application, tell git your name and email address:</li>
 </ol>
 
 <div class="org-src-container">
-
-<pre class="src src-bash">$ git config --global user.name "YOUR NAME"
-$ git config --global user.email "YOUR EMAIL ADDRESS"
+<pre class="src src-bash">$ git config --global user.name <span style="color: #CC9393;">"YOUR NAME"</span>
+$ git config --global user.email <span style="color: #CC9393;">"YOUR EMAIL ADDRESS"</span>
 </pre>
 </div>
 
 <ol class="org-ol">
-<li value="4">Pair git with github: <a href="https://help.github.com/articles/which-remote-url-should-i-use/">https://help.github.com/articles/which-remote-url-should-i-use/</a>
-</li>
+<li value="4">Pair git with github: <a href="https://help.github.com/articles/which-remote-url-should-i-use/">https://help.github.com/articles/which-remote-url-should-i-use/</a></li>
 <li>Create a repository on github. <a href="https://github.com/new">https://github.com/new</a>
-   This is where you will keep the code for your assignments in this course. Thus, you may want to name it with e.g. the course code and some text. 
-</li>
-<li>In your terminal app, create a directory with the same name as your repo.
-</li>
-<li>enter it and tell git to initialise an empty local repository.
-</li>
+This is where you will keep the code for your assignments in this course. Thus, you may want to name it with e.g. the course code and some text.</li>
+<li>In your terminal app, create a directory with the same name as your repo.</li>
+<li>enter it and tell git to initialise an empty local repository.</li>
 </ol>
 
 <div class="org-src-container">
-
-<pre class="src src-bash">$ mkdir PA1432Assignments &amp;&amp; cd PA1432Assignments
+<pre class="src src-bash">$ mkdir PA1432Assignments &amp;&amp; <span style="color: #DCDCCC; font-weight: bold;">cd</span> PA1432Assignments
 $ git init
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-2" class="outline-3">
-<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Work locally</h3>
+<div id="outline-container-org861d967" class="outline-3">
+<h3 id="org861d967"><span class="section-number-3">5.2</span> Work locally</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 You are now good to go. Start creating some files and directories. Things you may want to try:
 </p>
 
 <div class="org-src-container">
-
 <pre class="src src-bash">git status
 git add &lt;filename&gt;
-git commit -m "&lt;commit message&gt;"
+git commit -m <span style="color: #CC9393;">"&lt;commit message&gt;"</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-3" class="outline-3">
-<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Working with origin</h3>
+<div id="outline-container-orgcfdc98e" class="outline-3">
+<h3 id="orgcfdc98e"><span class="section-number-3">5.3</span> Working with origin</h3>
 <div class="outline-text-3" id="text-5-3">
 <p>
 Connect your local repository to your github repository:
 </p>
 <ol class="org-ol">
-<li>Add origin and verify it:
-</li>
+<li>Add origin and verify it:</li>
 </ol>
 <div class="org-src-container">
-
 <pre class="src src-bash">$ git remote add origin https://github.com/username/projectname.git
 $ git remote -v
 </pre>
 </div>
 
 <ol class="org-ol">
-<li value="2">You can now push your changes to the remote:
-</li>
+<li value="2">You can now push your changes to the remote:</li>
 </ol>
 <pre class="example">
 $ git push origin master
@@ -661,78 +777,71 @@ Shirley there must be an &ldquo;easier&rdquo; way than <code>git remote add orig
 </div>
 
 <ol class="org-ol">
-<li value="3">There is. Go to your project homepage on github. Locate the &ldquo;Clone or Download&rdquo; button:
+<li value="3"><p>
+There is. Go to your project homepage on github. Locate the &ldquo;Clone or Download&rdquo; button:
+</p>
 
 
 <div class="figure">
 <p><img src="./images/IGithubClone2.png" alt="IGithubClone2.png" />
 </p>
-</div>
-</li>
+</div></li>
 </ol>
 
 
 <ol class="org-ol">
-<li value="4">create a new directory (not in your current project directory), and clone the repository thither.
-</li>
+<li value="4">create a new directory (not in your current project directory), and clone the repository thither.</li>
 </ol>
 
 <div class="org-src-container">
-
 <pre class="src src-bash">$ cd ..
-$ mkdir tmp &amp;&amp; cd tmp
+$ mkdir tmp &amp;&amp; <span style="color: #DCDCCC; font-weight: bold;">cd</span> tmp
 $ git clone https://github.com/username/projectname.git
 </pre>
 </div>
 
 
 <ol class="org-ol">
-<li value="5">Make some changes to your repository, then add/push them.
-</li>
+<li value="5">Make some changes to your repository, then add/push them.</li>
 </ol>
 
 <div class="org-src-container">
-
-<pre class="src src-bash">$ git add .                            # Add all modified files
-$ git commit -m "made more changes"
+<pre class="src src-bash">$ git add .                            <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Add all modified files</span>
+$ git commit -m <span style="color: #CC9393;">"made more changes"</span>
 $ git push origin master
 </pre>
 </div>
 
 <ol class="org-ol">
-<li value="6">Now, go to your previous copy and see what the status is.
-</li>
+<li value="6">Now, go to your previous copy and see what the status is.</li>
 </ol>
 
 <div class="org-src-container">
-
 <pre class="src src-bash">$ cd ../../projectname
-$ ls                        # Note that your changes in the other dir are not visible
+$ ls                        <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">Note that your changes in the other dir are not visible</span>
 $ git pull
-$ ls                        # now they are
+$ ls                        <span style="color: #5F7F5F;"># </span><span style="color: #7F9F7F;">now they are</span>
 </pre>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-5-4" class="outline-3">
-<h3 id="sec-5-4"><span class="section-number-3">5.4</span> Use the Web Interface</h3>
+<div id="outline-container-org9139654" class="outline-3">
+<h3 id="org9139654"><span class="section-number-3">5.4</span> Use the Web Interface</h3>
 <div class="outline-text-3" id="text-5-4">
 <p>
 For regular documents it is also possible to use the web interface on github to create new documents and upload images etc. In this case, you will probably write your documents in <a href="http://daringfireball.net/projects/markdown/">Markdown</a>. More info on this can be found on the following links:
 </p>
 
 <ul class="org-ul">
-<li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a>
-</li>
-<li><a href="https://help.github.com/categories/writing-on-github/">https://help.github.com/categories/writing-on-github/</a>
-</li>
+<li><a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet</a></li>
+<li><a href="https://help.github.com/categories/writing-on-github/">https://help.github.com/categories/writing-on-github/</a></li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> Acceptance Tests</h2>
+<div id="outline-container-org891db81" class="outline-2">
+<h2 id="org891db81"><span class="section-number-2">6</span> Acceptance Tests</h2>
 <div class="outline-text-2" id="text-6">
 
 <div class="figure">
@@ -751,8 +860,7 @@ For regular documents it is also possible to use the web interface on github to 
 <div id="postamble" class="status">
 <p class="author">Author: Mikael Svahnberg</p>
 <p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
-<p class="date">Created: 2017-04-03 Mon 15:13</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="date">Created: 2018-01-19 Fri 10:59</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

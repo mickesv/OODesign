@@ -3,23 +3,30 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2018-01-23 Tue 10:33 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Concepts and Events</title>
-<!-- 2017-05-31 Wed 11:26 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Mikael Svahnberg" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Mikael Svahnberg" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -46,27 +53,111 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -86,6 +177,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="org/org.css" />
@@ -95,7 +187,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -144,62 +236,60 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. About This Sprint</a></li>
-<li><a href="#sec-2">2. User Stories covered in this Sprint</a></li>
-<li><a href="#sec-3">3. Introduction</a>
+<li><a href="#org066f9fb">1. About This Sprint</a></li>
+<li><a href="#orgef103e9">2. User Stories covered in this Sprint</a></li>
+<li><a href="#orgde1c0ea">3. Introduction</a>
 <ul>
-<li><a href="#sec-3-1">3.1. Concepts, Classes and Objects</a></li>
-<li><a href="#sec-3-2">3.2. Don&rsquo;t bite off more than you can chew!</a></li>
-<li><a href="#sec-3-3">3.3. Events and System Events</a></li>
-<li><a href="#sec-3-4">3.4. Attaching a User Interface</a></li>
-<li><a href="#sec-3-5">3.5. Testing</a></li>
-<li><a href="#sec-3-6">3.6. Summary</a></li>
+<li><a href="#org934bdc0">3.1. Concepts, Classes and Objects</a></li>
+<li><a href="#orgdbd1ee7">3.2. Don&rsquo;t bite off more than you can chew!</a></li>
+<li><a href="#orgfdf213f">3.3. Events and System Events</a></li>
+<li><a href="#org122bdc2">3.4. Attaching a User Interface</a></li>
+<li><a href="#org4ae8115">3.5. Testing</a></li>
+<li><a href="#org79573e1">3.6. Summary</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">4. Learning Material</a>
+<li><a href="#org5438777">4. Learning Material</a>
 <ul>
-<li><a href="#sec-4-1">4.1. Book Chapters</a></li>
-<li><a href="#sec-4-2">4.2. Screencasts</a></li>
-<li><a href="#sec-4-3">4.3. Further Reading</a></li>
+<li><a href="#org5d9b28f">4.1. Book Chapters</a></li>
+<li><a href="#org05abf18">4.2. Screencasts</a></li>
+<li><a href="#org904c097">4.3. Further Reading</a></li>
 </ul>
 </li>
-<li><a href="#sec-5">5. Experiential Learning</a>
+<li><a href="#orgde06a91">5. Experiential Learning</a>
 <ul>
-<li><a href="#sec-5-1">5.1. Sprint Test Plan</a></li>
-<li><a href="#sec-5-2">5.2. Assignment: Domain Model</a></li>
-<li><a href="#sec-5-3">5.3. Assignment: System Sequence Diagrams</a></li>
-<li><a href="#sec-5-4">5.4. Update Course Backlog</a></li>
+<li><a href="#org13abd10">5.1. Sprint Test Plan</a></li>
+<li><a href="#orge094cd0">5.2. Update Course Backlog</a></li>
 </ul>
 </li>
-<li><a href="#sec-6">6. Sprint Acceptance Tests</a></li>
+<li><a href="#orgbe001d4">6. Sprint Acceptance Tests</a></li>
 </ul>
 </div>
 </div>
+<div class="org">
 <br/>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> About This Sprint</h2>
+</div>
+
+<div id="outline-container-org066f9fb" class="outline-2">
+<h2 id="org066f9fb"><span class="section-number-2">1</span> About This Sprint</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This sprint introduces a system analysis view of the real world, and describes how to use the UML use cases as a means for finding out what is relevant to model from the real world for the system you are designing.
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
+<div id="outline-container-orgef103e9" class="outline-2">
+<h2 id="orgef103e9"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
-<li>As a software designer I want to document my understanding of the problem domain so that I can easily transform this into an object oriented software system.
-</li>
-<li>As a software designer I want to understand how users plan on interacting with the system so that I can design the right API endpoints.
-</li>
-<li>As a product manager I want to make sure that fixed bugs do not re-appear so that I can build the product incrementally.
-</li>
+<li>As a software designer I want to document my understanding of the problem domain so that I can easily transform this into an object oriented software system.</li>
+<li>As a software designer I want to understand how users plan on interacting with the system so that I can design the right API endpoints.</li>
+<li>As a product manager I want to make sure that fixed bugs do not re-appear so that I can build the product incrementally.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Introduction</h2>
+<div id="outline-container-orgde1c0ea" class="outline-2">
+<h2 id="orgde1c0ea"><span class="section-number-2">3</span> Introduction</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 A large part of the allure of object oriented programming is because it so closely mimics the real world. We are used to seeing objects around us, and are used to viewing objects in terms of what we can do to them. Another important realisation in object oriented programming is the notion that <i>each</i> object in the real world may carry its own <i>state</i>. The state of a real world object may be many things such as its position, its owner, its colour(s), whether it is whole or broken, how it is broken, and so on. But ultimately all of these properties of one object are unique for that particular object, and we do not expect it to be in any other way. Before object oriented programming, this was quite a challenge to achieve in a programming language.
@@ -220,8 +310,8 @@ The inverse is not necessarily true, though. You will be adding stuff to your so
 </div>
 </div>
 
-<div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Concepts, Classes and Objects</h3>
+<div id="outline-container-org934bdc0" class="outline-3">
+<h3 id="org934bdc0"><span class="section-number-3">3.1</span> Concepts, Classes and Objects</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 An important starting point for building an object oriented system is thus to look at the real world and see what objects there are. From these objects we try to find out what common types they belong to (I will refrain from an excursion to <a href="https://en.wikipedia.org/wiki/Theory_of_Forms">Plato and his idea-world</a>). Those are the <i>Concepts</i> that we should model.
@@ -244,11 +334,10 @@ Similarly to classes, a concept can be seen as the archetype of a set of objects
 </p>
 
 <div class="org-src-container">
-
-<pre class="src src-cpp">std::set&lt;Car*&gt; myCars;
-myCars.insert(new Car("Volvo 244"));
-myCars.insert(new Car("Ford Fiesta"));
-myCars.insert(new Car("VolksWagen Golf"));
+<pre class="src src-cpp"><span style="color: #BFEBBF;">std</span>::<span style="color: #7CB8BB;">set</span>&lt;<span style="color: #7CB8BB;">Car</span>*&gt; <span style="color: #DFAF8F;">myCars</span>;
+myCars.insert(<span style="color: #F0DFAF; font-weight: bold;">new</span> <span style="color: #7CB8BB;">Car</span>(<span style="color: #CC9393;">"Volvo 244"</span>));
+myCars.insert(<span style="color: #F0DFAF; font-weight: bold;">new</span> <span style="color: #7CB8BB;">Car</span>(<span style="color: #CC9393;">"Ford Fiesta"</span>));
+myCars.insert(<span style="color: #F0DFAF; font-weight: bold;">new</span> <span style="color: #7CB8BB;">Car</span>(<span style="color: #CC9393;">"VolksWagen Golf"</span>));
 </pre>
 </div>
 
@@ -262,8 +351,8 @@ As you continue with your analysis, you will learn more about the domain and the
 </div>
 </div>
 
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Don&rsquo;t bite off more than you can chew!</h3>
+<div id="outline-container-orgdbd1ee7" class="outline-3">
+<h3 id="orgdbd1ee7"><span class="section-number-3">3.2</span> Don&rsquo;t bite off more than you can chew!</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 Remember that this is still early days. You have just started coming to grips with what you should be doing and, above all, <i>you have not produced a single thing which has any value to the customer yet!</i> Therefore you should not try to model the whole world and <i>all</i> the concepts in the world. You should stick to the immediate problem domain (which is why we also refer to the conceptual model as a <i>Domain Model</i>).
@@ -292,8 +381,8 @@ Personally, I would also suggest that you look ahead a little so that you are at
 </p>
 </div>
 </div>
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Events and System Events</h3>
+<div id="outline-container-orgfdf213f" class="outline-3">
+<h3 id="orgfdf213f"><span class="section-number-3">3.3</span> Events and System Events</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 Another thing which we get from the use cases is our API endpoints. Of all the things that a user may do around the system, what does actually the system have to react to? We call those things <i>System Events</i>. Since they may come in a particular order, we can view them as a sequence of system events, and this we model in a <i>System Sequence Diagram</i>.
@@ -307,35 +396,35 @@ Consider the following course of events from a UML use case:
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">User</th>
-<th scope="col" class="left">System</th>
+<th scope="col" class="org-left">User</th>
+<th scope="col" class="org-left">System</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left">1. User approaches replicator.</td>
-<td class="left">2. System bleeps friendlily.</td>
+<td class="org-left">1. User approaches replicator.</td>
+<td class="org-left">2. System bleeps friendlily.</td>
 </tr>
 
 <tr>
-<td class="left">3. User orders Tea.</td>
-<td class="left">4. System asks &ldquo;which flavour?&rdquo;</td>
+<td class="org-left">3. User orders Tea.</td>
+<td class="org-left">4. System asks &ldquo;which flavour?&rdquo;</td>
 </tr>
 
 <tr>
-<td class="left">5. User decides &ldquo;Earl Grey&rdquo;</td>
-<td class="left">6. System asks &ldquo;what temperature?&rdquo;</td>
+<td class="org-left">5. User decides &ldquo;Earl Grey&rdquo;</td>
+<td class="org-left">6. System asks &ldquo;what temperature?&rdquo;</td>
 </tr>
 
 <tr>
-<td class="left">7. User decides &ldquo;Hot!&rdquo;</td>
-<td class="left">8. System bleeps acknowledgingly and delivers the ordered beverage.</td>
+<td class="org-left">7. User decides &ldquo;Hot!&rdquo;</td>
+<td class="org-left">8. System bleeps acknowledgingly and delivers the ordered beverage.</td>
 </tr>
 </tbody>
 </table>
@@ -344,14 +433,10 @@ Consider the following course of events from a UML use case:
 The system events we may generate from this are:
 </p>
 <ul class="org-ul">
-<li>initiateTransaction()
-</li>
-<li>orderBeverage(&ldquo;Tea&rdquo;)
-</li>
-<li>setFlavour(&ldquo;Earl Grey&rdquo;)
-</li>
-<li>setTemperature(&ldquo;Hot!&rdquo;)
-</li>
+<li>initiateTransaction()</li>
+<li>orderBeverage(&ldquo;Tea&rdquo;)</li>
+<li>setFlavour(&ldquo;Earl Grey&rdquo;)</li>
+<li>setTemperature(&ldquo;Hot!&rdquo;)</li>
 </ul>
 
 <p>
@@ -363,10 +448,11 @@ Expressing this in a system sequence diagram:
 </p>
 
 
-<div id="fig:SSDTea" class="figure">
+
+<div id="org7e8ce47" class="figure">
 <p><img src="images/FTeaSSD.png" alt="FTeaSSD.png" />
 </p>
-<p><span class="figure-number">Figure 3:</span> System Sequence Diagram</p>
+<p><span class="figure-number">Figure 3: </span>System Sequence Diagram</p>
 </div>
 
 <div class="note">
@@ -381,8 +467,8 @@ We will come back to <i>Sequence Diagrams</i> later, where we use the same notat
 </p>
 </div>
 </div>
-<div id="outline-container-sec-3-4" class="outline-3">
-<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Attaching a User Interface</h3>
+<div id="outline-container-org122bdc2" class="outline-3">
+<h3 id="org122bdc2"><span class="section-number-3">3.4</span> Attaching a User Interface</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 So what&rsquo;s the point of expressing this as method calls? We&rsquo;re still just doing analysis, aren&rsquo;t we?
@@ -397,10 +483,10 @@ Second, by modelling the system events as method calls we are creating a powerfu
 </p>
 
 
-<div id="fig:Layered" class="figure">
+<div id="org51dfc77" class="figure">
 <p><img src="./images/FLayered.png" alt="FLayered.png" />
 </p>
-<p><span class="figure-number">Figure 4:</span> Layered Architecture Style</p>
+<p><span class="figure-number">Figure 4: </span>Layered Architecture Style</p>
 </div>
 
 
@@ -424,22 +510,24 @@ Moreover, you have done this without having decided how you are going to build y
 </p>
 </div>
 </div>
-<div id="outline-container-sec-3-5" class="outline-3">
-<h3 id="sec-3-5"><span class="section-number-3">3.5</span> Testing</h3>
+
+<div id="outline-container-org4ae8115" class="outline-3">
+<h3 id="org4ae8115"><span class="section-number-3">3.5</span> Testing</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 In this sprint, we have introduced two new models; domain models and system sequence diagrams. Both of these are useful for testing purposes. The domain model shows you how you think the <i>problem domain</i> functions. When constructing your tests, this is a better starting point than what you eventually end up implementing. More importantly, the domain model divides your problem domain into smaller entities, <i>concepts</i>, that are possible to <i>unit test</i>. Later on, you can combine your already tested units and run <i>integration tests</i> to make sure the units work together.
 </p>
 
 <p>
-Your system sequence diagrams tell you what API endpoints you have in the system. These are an excellent starting point for writing your regression tests. Consider the Layered architecture model in Figure <a href="#fig:Layered">4</a> once more. Remember that we specified the API for the Application Logic in the System Sequence Diagram? So why not just &ldquo;push&rdquo; the user interface to one side and attach a testing interface there instead? Why not indeed.
+Your system sequence diagrams tell you what API endpoints you have in the system. These are an excellent starting point for writing your regression tests. Consider the Layered architecture model in Figure <a href="#org51dfc77">4</a> once more. Remember that we specified the API for the Application Logic in the System Sequence Diagram? So why not just &ldquo;push&rdquo; the user interface to one side and attach a testing interface there instead? Why not indeed.
 </p>
 
 
-<div id="fig:SSDTest" class="figure">
+
+<div id="org038ea3c" class="figure">
 <p><img src="./images/FSSDTest.png" alt="FSSDTest.png" />
 </p>
-<p><span class="figure-number">Figure 5:</span> Adding a Testing Interface to the Layered Architecture</p>
+<p><span class="figure-number">Figure 5: </span>Adding a Testing Interface to the Layered Architecture</p>
 </div>
 
 <p>
@@ -448,69 +536,65 @@ In one go you have enabled automated testing of your application. Technically, y
 </div>
 </div>
 
-<div id="outline-container-sec-3-6" class="outline-3">
-<h3 id="sec-3-6"><span class="section-number-3">3.6</span> Summary</h3>
+<div id="outline-container-org79573e1" class="outline-3">
+<h3 id="org79573e1"><span class="section-number-3">3.6</span> Summary</h3>
 <div class="outline-text-3" id="text-3-6">
 <p>
-We are thus able to start building a chain of analysis efforts and UML diagrams, where what we learn in one diagram is put to use when creating the next one, as illustrated in Figure <a href="#fig:DesignChainSSD">6</a>. Of course, this chain is equally valuable going backwards: In order to find out more about a particular test case and why it is written the way it is, you go back to the UML use case. If this is not enough, you look at the involved requirements, or &#x2013; via the requirements &#x2013; contact the original source of the requirement to ask further questions.
+We are thus able to start building a chain of analysis efforts and UML diagrams, where what we learn in one diagram is put to use when creating the next one, as illustrated in Figure <a href="#orgef270c9">6</a>. Of course, this chain is equally valuable going backwards: In order to find out more about a particular test case and why it is written the way it is, you go back to the UML use case. If this is not enough, you look at the involved requirements, or &#x2013; via the requirements &#x2013; contact the original source of the requirement to ask further questions.
 </p>
 
 
-<div id="fig:DesignChainSSD" class="figure">
+
+<div id="orgef270c9" class="figure">
 <p><img src="./images/FDesignChainSSD.png" alt="FDesignChainSSD.png" />
 </p>
-<p><span class="figure-number">Figure 6:</span> A Chain of Design Elements.</p>
+<p><span class="figure-number">Figure 6: </span>A Chain of Design Elements.</p>
 </div>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Learning Material</h2>
+<div id="outline-container-org5438777" class="outline-2">
+<h2 id="org5438777"><span class="section-number-2">4</span> Learning Material</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Book Chapters</h3>
+</div>
+<div id="outline-container-org5d9b28f" class="outline-3">
+<h3 id="org5d9b28f"><span class="section-number-3">4.1</span> Book Chapters</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>C. Larman, <i>Applying UML and Patterns</i>, 3rd Edition, Chapters:
 <ol class="org-ol">
-<li value="8">Iteration 1 &#x2013; Basics
-</li>
-<li>Domain Models
-</li>
-<li>System Sequence Diagrams
-</li>
-</ol>
-</li>
+<li value="8">Iteration 1 &#x2013; Basics</li>
+<li>Domain Models</li>
+<li>System Sequence Diagrams</li>
+</ol></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-4-2" class="outline-3">
-<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Screencasts</h3>
+<div id="outline-container-org05abf18" class="outline-3">
+<h3 id="org05abf18"><span class="section-number-3">4.2</span> Screencasts</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
-<li><a href="https://play.bth.se/media/Concept+and+Classes/1_m237spjq/41750261">Concepts and Classes</a>
-</li>
-<li><a href="https://play.bth.se/media/SystemSequenceDiagrams.mp4/1_99i0cfv7/41750261">System Sequence Diagrams</a>
-</li>
+<li><a href="https://play.bth.se/media/Concept+and+Classes/1_m237spjq/41750261">Concepts and Classes</a></li>
+<li><a href="https://play.bth.se/media/SystemSequenceDiagrams.mp4/1_99i0cfv7/41750261">System Sequence Diagrams</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-4-3" class="outline-3">
-<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Further Reading</h3>
+<div id="outline-container-org904c097" class="outline-3">
+<h3 id="org904c097"><span class="section-number-3">4.3</span> Further Reading</h3>
 <div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
-<li><a href="http://steve-yegge.blogspot.se/2006/03/execution-in-kingdom-of-nouns.html">Execution in the Kingdom of Nouns (Steve Yegge)</a>
-</li>
+<li><a href="http://steve-yegge.blogspot.se/2006/03/execution-in-kingdom-of-nouns.html">Execution in the Kingdom of Nouns (Steve Yegge)</a></li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> Experiential Learning</h2>
+<div id="outline-container-orgde06a91" class="outline-2">
+<h2 id="orgde06a91"><span class="section-number-2">5</span> Experiential Learning</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-sec-5-1" class="outline-3">
-<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Sprint Test Plan</h3>
+</div>
+<div id="outline-container-org13abd10" class="outline-3">
+<h3 id="org13abd10"><span class="section-number-3">5.1</span> Sprint Test Plan</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
@@ -524,42 +608,25 @@ Revisit and update your risks and contingencies section.
 Add and/or revise the following items to your glossary:
 </p>
 <ul class="org-ul">
-<li>Concept
-</li>
-<li>Class
-</li>
-<li>Instance
-</li>
-<li>Object
-</li>
-<li>Object state
-</li>
-<li>Class Diagram
-</li>
-<li>Domain Model (Also: Conceptual Model)
-</li>
-<li>System Sequence Diagram
-</li>
-<li>System Event
-</li>
-<li>Black Box
-</li>
+<li>Concept</li>
+<li>Class</li>
+<li>Instance</li>
+<li>Object</li>
+<li>Object state</li>
+<li>Class Diagram</li>
+<li>Domain Model (Also: Conceptual Model)</li>
+<li>System Sequence Diagram</li>
+<li>System Event</li>
+<li>Black Box</li>
 <li>Software Architecture
 <ul class="org-ul">
-<li>Layered Software Architecture
-</li>
-<li>Model-View-Controller Software Architecture
-</li>
-<li>Pipes-and-Filters Software Architecture
-</li>
-</ul>
-</li>
-<li>Unit Testing
-</li>
-<li>Regression Testing
-</li>
-<li>Integration Testing
-</li>
+<li>Layered Software Architecture</li>
+<li>Model-View-Controller Software Architecture</li>
+<li>Pipes-and-Filters Software Architecture</li>
+</ul></li>
+<li>Unit Testing</li>
+<li>Regression Testing</li>
+<li>Integration Testing</li>
 </ul>
 
 <p>
@@ -567,329 +634,9 @@ Make sure you understand what each item is, the notation for them, and how to us
 </p>
 </div>
 </div>
-<div id="outline-container-sec-5-2" class="outline-3">
-<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Assignment: Domain Model</h3>
+<div id="outline-container-orge094cd0" class="outline-3">
+<h3 id="orge094cd0"><span class="section-number-3">5.2</span> Update Course Backlog</h3>
 <div class="outline-text-3" id="text-5-2">
-<p>
-Create a UML Domain Model from the UML Use Cases you have selected for your first iteration. Remember that those should represent a minimum viable product and so you ought to exercise the most important concepts based on these use cases.
-</p>
-
-
-<p>
-<b>Tasks:</b>
-</p>
-<ol class="org-ol">
-<li>Start with a domain model based on your understanding of the involved use cases.
-</li>
-<li>Chapters 9.5 to 9.13 in C. Larman, <i>Applying UML and Patterns</i>, 3rd Edition provides guidelines for how to find domain concepts. Apply each of these guidelines in turn, and <i>document</i> what you find through each guideline.
-</li>
-<li>Add associations between your concepts (use the guidelines in chapters 9.14 in C. Larman, <i>Applying UML and Patterns</i>, 3rd Edition) with names and (where applicable) roles. Add multiplicity indicators where they are obvious, but do not go overboard with this.
-</li>
-</ol>
-
-
-<div class="info">
-<p>
-<b>Document Structure:</b>
-</p>
-
-<p>
-The title for this Assignment Document is: <i>Domain Model for System &lt;system name&gt;</i>
-.
-</p>
-
-<p>
-The assignment document shall contain the following items:
-</p>
-
-<ol class="org-ol">
-<li>Title Page
-<ol class="org-ol">
-<li>Title: &lt;assignment document title&gt;
-</li>
-<li>Sub-title: &ldquo;Assignment in the course &lt;course code&gt;&lt;course name&gt;&rdquo;
-</li>
-<li>Date
-</li>
-<li>Authors and Author Contribution
-
-<p>
-Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
-</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Author Name</th>
-<th scope="col" class="left">Social Security Number</th>
-<th scope="col" class="left">Thinking</th>
-<th scope="col" class="left">Writing</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-</tr>
-</tbody>
-</table>
-</li>
-</ol>
-</li>
-<li>System Description
-
-<p>
-A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
-</p>
-</li>
-
-<li value="3">Initial Domain Model
-
-<p>
-Your initial model before you apply the guidelines from C. Larman, <i>Applying UML and Patterns</i>, 3rd Edition. Use the UML Class Diagram notation for your Domain Model.
-</p>
-</li>
-
-<li>Guidelines Applied
-
-<p>
-List each guideline and the concepts you identify with the help of this guideline. Keep this simple but easy to read. For example, a table may work nicely:
-</p>
-
-<p>
-Guideline:Use a Category List
-</p>
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Category</th>
-<th scope="col" class="left">Identified Concepts</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="left">Business Transactions</td>
-<td class="left">VogonPoetry</td>
-</tr>
-
-<tr>
-<td class="left">Product or Service</td>
-<td class="left">Tea, Doughnut Hole</td>
-</tr>
-</tbody>
-</table>
-</li>
-
-<li>Completed Domain Model
-
-<p>
-Add the concepts identified through the guidelines to your initial domain model and present it here. Add associations, association names, association roles, and multiplicity. <b>Note</b> that you may also have attributes in your concepts.
-</p>
-
-<p>
-Use the UML Class Diagram notation for your Domain Model.
-</p>
-</li>
-</ol>
-
-</div>
-
-<p>
-Commit and push this document to your project repository.
-</p>
-
-<div class="tip">
-<p>
-<b>Conditions of Satisfaction:</b>
-</p>
-
-<p>
-When marking this part of the assignment we are looking for the following:
-</p>
-
-<ol class="org-ol">
-<li value="0">Does the title page contain a table with authors and author contribution
-</li>
-<li>Size of assignment: Does the domain model contain 20-30 domain concepts
-</li>
-<li>Are all concepts and associations modelled correctly
-</li>
-<li>Do all associations have relevant names
-</li>
-<li>Where applicable: Are the roles involved in associations specified and corect
-</li>
-<li>Where applicable: Are multiplicity indicators used correctly
-</li>
-</ol>
-
-</div>
-</div>
-</div>
-<div id="outline-container-sec-5-3" class="outline-3">
-<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Assignment: System Sequence Diagrams</h3>
-<div class="outline-text-3" id="text-5-3">
-<p>
-Create UML System Sequence Diagrams from your UML Use Cases in your first iteration. Create one System Sequence Diagram for each Use Case.
-</p>
-
-<p>
-<b>Tasks:</b>
-</p>
-<ol class="org-ol">
-<li>For each Use Case, create one System Sequence Diagram.
-</li>
-<li>Add the <code>:System</code>, and all involved Actors.
-</li>
-<li>Identify the system events from the use case, name the corresponding method call, and add it to your system sequence diagram from the right actor to the <code>:System</code>
-</li>
-<li>Add return messages from the <code>:System</code> to the actors.
-</li>
-<li>Add loops if applicable.
-</li>
-</ol>
-
-<div class="info">
-<p>
-<b>Document Structure:</b>
-</p>
-
-<p>
-The title for this Assignment Document is: <i>System Sequence Diagrams for System &lt;system name&gt;</i>
-.
-</p>
-
-<p>
-The assignment document shall contain the following items:
-</p>
-
-<ol class="org-ol">
-<li>Title Page
-<ol class="org-ol">
-<li>Title: &lt;assignment document title&gt;
-</li>
-<li>Sub-title: &ldquo;Assignment in the course &lt;course code&gt;&lt;course name&gt;&rdquo;
-</li>
-<li>Date
-</li>
-<li>Authors and Author Contribution
-
-<p>
-Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
-</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Author Name</th>
-<th scope="col" class="left">Social Security Number</th>
-<th scope="col" class="left">Thinking</th>
-<th scope="col" class="left">Writing</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-</tr>
-</tbody>
-</table>
-</li>
-</ol>
-</li>
-<li>System Description
-
-<p>
-A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
-</p>
-</li>
-
-<li value="3">System Sequence Diagrams
-<ul class="org-ul">
-<li>System Sequence Diagram for Use Case &lt;name 1&gt;
-</li>
-<li>System Sequence Diagram for Use Case &lt;name 2&gt;
-</li>
-<li>System Sequence Diagram for Use Case &lt;name &#x2026; &gt;
-</li>
-<li>System Sequence Diagram for Use Case &lt;name n&gt;
-</li>
-</ul>
-</li>
-</ol>
-
-</div>
-
-<p>
-Commit and push this document to your project repository.
-</p>
-
-<div class="tip">
-<p>
-<b>Conditions of Satisfaction:</b>
-</p>
-
-<p>
-When marking this part of the assignment we are looking for the following:
-</p>
-
-<ol class="org-ol">
-<li value="0">Does the title page contain a table with authors and author contribution
-</li>
-<li>size of assignment: Do all Use Cases in Iteration 1 have a corresponding System Sequence Diagram
-</li>
-<li>Are all actors in each use case represented in the system sequece diagrams
-</li>
-<li>Is the system treated as a black box
-</li>
-<li>Do all system events in each use case have a corresponding system event in the same order as in the use case
-</li>
-<li>Are the system events aptly named
-</li>
-<li>Are the return messages from the system sufficiently descriptive
-</li>
-<li>Is the loop construct used correctly
-</li>
-</ol>
-
-</div>
-</div>
-</div>
-<div id="outline-container-sec-5-4" class="outline-3">
-<h3 id="sec-5-4"><span class="section-number-3">5.4</span> Update Course Backlog</h3>
-<div class="outline-text-3" id="text-5-4">
 <p>
 What&rsquo;s the next step? What do you need to do in order to understand how to implement the system based on your system sequence diagrams?
 </p>
@@ -900,29 +647,23 @@ Are there any other questions that you want answered? Add them, along with a bri
 </div>
 </div>
 </div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> Sprint Acceptance Tests</h2>
+<div id="outline-container-orgbe001d4" class="outline-2">
+<h2 id="orgbe001d4"><span class="section-number-2">6</span> Sprint Acceptance Tests</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 You are done with this sprint when:
 </p>
 <ul class="org-ul">
-<li>You have created the Domain Model document
-</li>
-<li>You have created the System Sequence Diagram document
-</li>
-<li>You have committed/pushed these documents to your project repository
-</li>
+<li>You understand how to use your UML use cases to identify system events, that will trigger a series of interactions inside the system.</li>
+<li>You understand how to start identifying candidate entities for this internal structure through the use of a Domain Model.</li>
 </ul>
 
 <p>
 You may also have
 </p>
 <ul class="org-ul">
-<li>Updated your Sprint Test Plan
-</li>
-<li>Updated your Course Backlog   
-</li>
+<li>Updated your Sprint Test Plan</li>
+<li>Updated your Course Backlog</li>
 </ul>
 </div>
 </div>
@@ -930,8 +671,7 @@ You may also have
 <div id="postamble" class="status">
 <p class="author">Author: Mikael Svahnberg</p>
 <p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
-<p class="date">Created: 2017-05-31 Wed 11:26</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="date">Created: 2018-01-23 Tue 10:33</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

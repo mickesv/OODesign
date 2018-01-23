@@ -3,23 +3,30 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2018-01-23 Tue 11:22 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Preparing for the Exam</title>
-<!-- 2017-05-31 Wed 11:26 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Mikael Svahnberg" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Mikael Svahnberg" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -46,27 +53,111 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -86,6 +177,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="org/org.css" />
@@ -95,7 +187,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -144,55 +236,56 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. About This Sprint</a></li>
-<li><a href="#sec-2">2. User Stories covered in this Sprint</a></li>
-<li><a href="#sec-3">3. Introduction</a>
+<li><a href="#org359e902">1. About This Sprint</a></li>
+<li><a href="#org4235c2e">2. User Stories covered in this Sprint</a></li>
+<li><a href="#org5fa384d">3. Introduction</a>
 <ul>
-<li><a href="#sec-3-1">3.1. Common Mistakes</a></li>
+<li><a href="#org58a1386">3.1. Common Mistakes</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">4. Learning Material</a>
+<li><a href="#orgf3dcb79">4. Learning Material</a>
 <ul>
-<li><a href="#sec-4-1">4.1. Old Exams</a></li>
-<li><a href="#sec-4-2">4.2. Dictionary</a>
+<li><a href="#orgb22b0bf">4.1. Old Exams</a></li>
+<li><a href="#orgbb87204">4.2. Dictionary</a>
 <ul>
-<li><a href="#sec-4-2-1">4.2.1. Development Methodology / Utvecklingsmetodik</a></li>
-<li><a href="#sec-4-2-2">4.2.2. Use Cases</a></li>
-<li><a href="#sec-4-2-3">4.2.3. Interaction Diagrams / Interaktionsdiagram</a></li>
-<li><a href="#sec-4-2-4">4.2.4. Class Diagrams / Klassdiagram</a></li>
-<li><a href="#sec-4-2-5">4.2.5. GRASP Patterns and Design Patterns</a></li>
+<li><a href="#org62ea593">4.2.1. Development Methodology / Utvecklingsmetodik</a></li>
+<li><a href="#orgf4498e7">4.2.2. Use Cases</a></li>
+<li><a href="#org2a1daa7">4.2.3. Interaction Diagrams / Interaktionsdiagram</a></li>
+<li><a href="#org8d2a926">4.2.4. Class Diagrams / Klassdiagram</a></li>
+<li><a href="#orgd1fbd6a">4.2.5. GRASP Patterns and Design Patterns</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li><a href="#sec-5">5. Sprint Acceptance Tests</a></li>
+<li><a href="#org66ea6bb">5. Sprint Acceptance Tests</a></li>
 </ul>
 </div>
 </div>
+<div class="org">
 <br/>
 
+</div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> About This Sprint</h2>
+
+<div id="outline-container-org359e902" class="outline-2">
+<h2 id="org359e902"><span class="section-number-2">1</span> About This Sprint</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This sprint describes what you can do to prepare yourself for the exam.
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
+<div id="outline-container-org4235c2e" class="outline-2">
+<h2 id="org4235c2e"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
-<li>As a student I want to pass the exam so that I can get the course credits and get on with my life.
-</li>
-<li>As a teacher I want the students to be able to study for the exam so they have a good chance of passing it.
-</li>
+<li>As a student I want to pass the exam so that I can get the course credits and get on with my life.</li>
+<li>As a teacher I want the students to be able to study for the exam so they have a good chance of passing it.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Introduction</h2>
+<div id="outline-container-org5fa384d" class="outline-2">
+<h2 id="org5fa384d"><span class="section-number-2">3</span> Introduction</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 For historical reasons the exams in this course have been divided into two parts; one theoretical with true/false statements, and one practical where you do a design for a smaller system to show that you know how each of the design diagrams work. For historical reasons, the exams have also been in english. I am going to break with some of those traditions.
@@ -207,43 +300,47 @@ Some generic tips for studying to the exam include:
 </p>
 
 <ul class="org-ul">
-<li><b>Use Your Sprint Test Plan and your Course Backlog.</b>  In each of the previous sprints in this course, you have worked on your Sprint Test Plan. This should now contain a fair amount of terms in the glossary. This is a good starting point for your revising. Do you recoginise the terms and know the differences between them? Do you know the notation for each diagram and term, and how to use it?
-</li>
+<li><b>Use Your Sprint Test Plan and your Course Backlog.</b>  In each of the previous sprints in this course, you have worked on your Sprint Test Plan. This should now contain a fair amount of terms in the glossary. This is a good starting point for your revising. Do you recoginise the terms and know the differences between them? Do you know the notation for each diagram and term, and how to use it?</li>
 
-<li><b>Reflect on your Assignments.</b>  What did you do in the assignments? How did you use the diagrams? What worked, and what didn&rsquo;t work? Were there any misunderstanding on your behalf that was pointed out to you?
-</li>
+<li><b>Reflect on your Assignments.</b>  What did you do in the assignments? How did you use the diagrams? What worked, and what didn&rsquo;t work? Were there any misunderstanding on your behalf that was pointed out to you?</li>
 
-<li><b>Look at old exams.</b> Since I have changed plenty of things in the exam format this will not be a 100% preparation for the current exam, but it will help you to identify (some) important aspects to study further. You should also bear in mind that I have not created all of the old exams, which also introduces a certain discrepancy in format and style. For your benefit, I have made available a selection of old exams below. You can also ask the student reception for old exams.
-</li>
+<li><b>Look at old exams.</b> Since I have changed plenty of things in the exam format this will not be a 100% preparation for the current exam, but it will help you to identify (some) important aspects to study further. You should also bear in mind that I have not created all of the old exams, which also introduces a certain discrepancy in format and style. For your benefit, I have made available a selection of old exams below. You can also ask the student reception for old exams.</li>
 
-<li><b>Read the course book.</b> This may seem like very basic advice, but the course book does offer plenty of good advice on how to reason about object oriented design, in addition to thoroughly going through the UML notation. I tend to make sure that I don&rsquo;t ask for things in an exam that cannot be figured out from the course book, since this should (<abbr title="in my humble opinion">imho</abbr>) be the least common denominator in a course.
-</li>
+<li><b>Read the course book.</b> This may seem like very basic advice, but the course book does offer plenty of good advice on how to reason about object oriented design, in addition to thoroughly going through the UML notation. I tend to make sure that I don&rsquo;t ask for things in an exam that cannot be figured out from the course book, since this should (<abbr title="in my humble opinion">imho</abbr>) be the least common denominator in a course.</li>
 
-<li><b>Use the LITMUS Test</b> Technically, this is part of a research study performed by Prof. Harald Störrle, but it works pretty well as a study help too. <a href="http://goo.gl/forms/ZSdspiwXy8">Run the Test</a> and use it to identify areas where you need to study more.
-</li>
+<li><b>Use the LITMUS Test</b> Technically, this is part of a research study performed by Prof. Harald Störrle, but it works pretty well as a study help too. <a href="http://goo.gl/forms/ZSdspiwXy8">Run the Test</a> and use it to identify areas where you need to study more.</li>
 </ul>
 </div>
 
-<div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Common Mistakes</h3>
+<div id="outline-container-org58a1386" class="outline-3">
+<h3 id="org58a1386"><span class="section-number-3">3.1</span> Common Mistakes</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 When marking exams previous years I have seen some common mistakes. Below, I express concrete advice that should help you to get it right. At the very least, please use this list as a reminder to test your own understanding. If you are unsure, go back and revise the relevant parts of the course. I will add to this list as I see more things.
 </p>
 
 <ul class="org-ul">
-<li><b>Use Cases have actions in their names.</b> A use case typically has a name that includes an <i>action</i>. For example, &ldquo;Pay money&rdquo;, &ldquo;Book ticket&rdquo;, &ldquo;Reserve flight&rdquo;. If you just use the noun (&ldquo;money&rdquo;, &ldquo;ticket&rdquo;, &ldquo;flight&rdquo;), there is no way of knowing what an actor is supposed to do in the use case. The nouns are good names for your concepts in your domain model, though.
-</li>
-<li><b>Don&rsquo;t use composition or aggregation unless you are absolutely sure.</b> First off, when you make the domain model there is no such thing as a composition or an aggregation; these are strictly hints for how to implement the system and thus only appear in your class diagram. Second, <i>most relations between classes can be modelled as plain associations</i>. The composition or aggregations may look cool because it&rsquo;s got a fancy little diamond in one end, but if you are even wondering whether a relation should be an association or a composition, then it is a &ldquo;simple&rdquo; association.
-</li>
-<li><b>Put the symbols at the right end of the relation.</b> In composition/aggregation this means that the diamond is on the <i>owner</i> side. For inheritance the triangle is on the <i>parent</i> side. To illustrate:
-</li>
+<li><b>Use Cases have actions in their names.</b> A use case typically has a name that includes an <i>action</i>. For example, &ldquo;Pay money&rdquo;, &ldquo;Book ticket&rdquo;, &ldquo;Reserve flight&rdquo;. If you just use the noun (&ldquo;money&rdquo;, &ldquo;ticket&rdquo;, &ldquo;flight&rdquo;), there is no way of knowing what an actor is supposed to do in the use case. The nouns are good names for your concepts in your domain model, though.</li>
+<li><b>Don&rsquo;t use composition or aggregation unless you are absolutely sure.</b> First off, when you make the domain model there is no such thing as a composition or an aggregation; these are strictly hints for how to implement the system and thus only appear in your class diagram. Second, <i>most relations between classes can be modelled as plain associations</i>. The composition or aggregations may look cool because it&rsquo;s got a fancy little diamond in one end, but if you are even wondering whether a relation should be an association or a composition, then it is a &ldquo;simple&rdquo; association.</li>
+<li><b>Put the symbols at the right end of the relation.</b> In composition/aggregation this means that the diamond is on the <i>owner</i> side. For inheritance the triangle is on the <i>parent</i> side. To illustrate:</li>
 </ul>
+
+<div class="org-src-container">
+<pre class="src src-plantuml">Car o- Engine
+note right: A car &lt;i&gt;consists of&lt;/i&gt; an Engine.
+</pre>
+</div>
 
 
 <div class="figure">
 <p><img src="./images/FSymbolsEnd.png" alt="FSymbolsEnd.png" />
 </p>
+</div>
+
+<div class="org-src-container">
+<pre class="src src-plantuml">Media &lt;|- DVD
+note right: A DVD &lt;I&gt;is a&lt;/I&gt; type of Media.
+</pre>
 </div>
 
 
@@ -253,9 +350,13 @@ When marking exams previous years I have seen some common mistakes. Below, I exp
 </div>
 
 <ul class="org-ul">
-<li><b>Put the method in the called class.</b> Consider the interaction diagram below. Where would you put the <code>Start()</code> method? What I have seen in many exams is that there is a tendency to put it into the <code>Car</code> class. But think about it for a while. It is <code>c:Car</code> who is initiating the method call, and it wants the <code>e:Engine</code> to start. If you put the <code>Start()</code> method in <code>Car</code>, then <code>Engine</code> has no way of knowing that it has been called. Expressing it in a different way, <code>Start()</code> is an operation we wish to perform on the <code>e:Engine</code>, and therefore it must be offered by the <code>Engine</code> class.
-</li>
+<li><b>Put the method in the called class.</b> Consider the interaction diagram below. Where would you put the <code>Start()</code> method? What I have seen in many exams is that there is a tendency to put it into the <code>Car</code> class. But think about it for a while. It is <code>c:Car</code> who is initiating the method call, and it wants the <code>e:Engine</code> to start. If you put the <code>Start()</code> method in <code>Car</code>, then <code>Engine</code> has no way of knowing that it has been called. Expressing it in a different way, <code>Start()</code> is an operation we wish to perform on the <code>e:Engine</code>, and therefore it must be offered by the <code>Engine</code> class.</li>
 </ul>
+
+<div class="org-src-container">
+<pre class="src src-plantuml">"c:Car" -&gt; "e:Engine" : Start()
+</pre>
+</div>
 
 
 <div class="figure">
@@ -264,52 +365,42 @@ When marking exams previous years I have seen some common mistakes. Below, I exp
 </div>
 
 <ul class="org-ul">
-<li><b>A Class is a description of an Object. An Object is a concrete instance of a Class.</b> Think of a class as a blueprint that tells the compiler that &ldquo;When you create objects of this type, this is how much memory to allocate, and these are the methods that can be called&rdquo;. An object is then a &ldquo;physical&rdquo; representation of a class description in memory. Once a system is running it has no clear representation of the class anymore &#x2013; just the objects<sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>. The borders between what a class is and what an object is is often muddled in dynamically typed languages such as JavaScript, so if your background is in such languages it is worth thinking twice about it.
-</li>
+<li><b>A Class is a description of an Object. An Object is a concrete instance of a Class.</b> Think of a class as a blueprint that tells the compiler that &ldquo;When you create objects of this type, this is how much memory to allocate, and these are the methods that can be called&rdquo;. An object is then a &ldquo;physical&rdquo; representation of a class description in memory. Once a system is running it has no clear representation of the class anymore &#x2013; just the objects<sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>. The borders between what a class is and what an object is is often muddled in dynamically typed languages such as JavaScript, so if your background is in such languages it is worth thinking twice about it.</li>
 
-<li><b>Dynamic diagrams deal in objects.</b> Related to this is that when you look at the dynamic diagrams they tend to work with objects (and not classes). Consider, for example, sequence diagrams. In these diagrams it is <i>specific instances</i> of classes (i.e., objects) that have specific values on all their attributes, and these specific instances collaborate (with the help of method calls) to solve <i>one particular</i> scenario of execution. Remember that we may have instances without names <code>:Car</code> as well as named instances that are assigned to a variable, <code>myCar:Car</code>. Also note that this does not imply that the second example <i>knows</i> that it is named <code>myCar</code>, this is just the name of the varible that is pointing to an object of the type <code>Car</code>.
-</li>
+<li><b>Dynamic diagrams deal in objects.</b> Related to this is that when you look at the dynamic diagrams they tend to work with objects (and not classes). Consider, for example, sequence diagrams. In these diagrams it is <i>specific instances</i> of classes (i.e., objects) that have specific values on all their attributes, and these specific instances collaborate (with the help of method calls) to solve <i>one particular</i> scenario of execution. Remember that we may have instances without names <code>:Car</code> as well as named instances that are assigned to a variable, <code>myCar:Car</code>. Also note that this does not imply that the second example <i>knows</i> that it is named <code>myCar</code>, this is just the name of the varible that is pointing to an object of the type <code>Car</code>.</li>
 </ul>
 </div>
 </div>
 </div>
 
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Learning Material</h2>
+<div id="outline-container-orgf3dcb79" class="outline-2">
+<h2 id="orgf3dcb79"><span class="section-number-2">4</span> Learning Material</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Old Exams</h3>
+</div>
+<div id="outline-container-orgb22b0bf" class="outline-3">
+<h3 id="orgb22b0bf"><span class="section-number-3">4.1</span> Old Exams</h3>
 <div class="outline-text-3" id="text-4-1">
 <p>
 A small selection of old exams (For the course PA1415. The other courses are normally a 90-95% subset of this exam). The following were done before my involvement in the course (but I did provide the example solution for the January 2016 exam):
 </p>
 <ul class="org-ul">
-<li><a href="./OldExams/PA1415_2014-08-28.pdf">Exam 2014-08-28</a>
-</li>
-<li><a href="./OldExams/PA1415_2015-06-08.pdf">Exam 2015-06-08</a>
-</li>
-<li><a href="./OldExams/PA1415_2015-08-21.pdf">Exam 2015-08-21</a>
-</li>
+<li><a href="./OldExams/PA1415_2014-08-28.pdf">Exam 2014-08-28</a></li>
+<li><a href="./OldExams/PA1415_2015-06-08.pdf">Exam 2015-06-08</a></li>
+<li><a href="./OldExams/PA1415_2015-08-21.pdf">Exam 2015-08-21</a></li>
 <li><a href="./OldExams/PA1415_2016-01-09.pdf">Exam 2016-01-09</a>
 <ul class="org-ul">
-<li><a href="./OldExams/PA1415_2016-01-09_SOLVED.pdf">Solution for Exam 2016-01-09, Part I</a>
-</li>
-<li><a href="./OldExams/PA1415_2016-01-09_Part2.pdf">Solution for Exam 2016-01-09, Part II</a>
-</li>
-</ul>
-</li>
+<li><a href="./OldExams/PA1415_2016-01-09_SOLVED.pdf">Solution for Exam 2016-01-09, Part I</a></li>
+<li><a href="./OldExams/PA1415_2016-01-09_Part2.pdf">Solution for Exam 2016-01-09, Part II</a></li>
+</ul></li>
 </ul>
 
 <p>
 More recent exams made while I was involved in the course:
 </p>
 <ul class="org-ul">
-<li><a href="./OldExams/PA1415-20160529_SOLVED.pdf">Exam 2016-05-29, With Solutions</a>
-</li>
-<li><a href="./OldExams/PA1415-20160819_SOLVED.pdf">Exam 2016-08-19, With Solutions</a>
-</li>
-<li><a href="./OldExams/PA1415-20170102-SOLVED.pdf">Exam 2017-01-02, With Solutions</a>
-</li>
+<li><a href="./OldExams/PA1415-20160529_SOLVED.pdf">Exam 2016-05-29, With Solutions</a></li>
+<li><a href="./OldExams/PA1415-20160819_SOLVED.pdf">Exam 2016-08-19, With Solutions</a></li>
+<li><a href="./OldExams/PA1415-20170102-SOLVED.pdf">Exam 2017-01-02, With Solutions</a></li>
 </ul>
 
 <div class="note">
@@ -321,8 +412,8 @@ Keep in mind that the solutions are <i>proposals</i>, to give you an idea of how
 </div>
 </div>
 
-<div id="outline-container-sec-4-2" class="outline-3">
-<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Dictionary</h3>
+<div id="outline-container-orgbb87204" class="outline-3">
+<h3 id="orgbb87204"><span class="section-number-3">4.2</span> Dictionary</h3>
 <div class="outline-text-3" id="text-4-2">
 <p>
 Since the exam will be in swedish a translation of common terms are presented below. Sometimes the english term will be used also in swedish, for reasons of simplicity and clarity.
@@ -337,383 +428,383 @@ The terms are roughly organised into different groups below. <i>This does not me
 </p>
 </div>
 
-<div id="outline-container-sec-4-2-1" class="outline-4">
-<h4 id="sec-4-2-1"><span class="section-number-4">4.2.1</span> Development Methodology / Utvecklingsmetodik</h4>
+<div id="outline-container-org62ea593" class="outline-4">
+<h4 id="org62ea593"><span class="section-number-4">4.2.1</span> Development Methodology / Utvecklingsmetodik</h4>
 <div class="outline-text-4" id="text-4-2-1">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">Engelska</th>
-<th scope="col" class="left">Min Svenska</th>
-<th scope="col" class="left">Kanske Riktig Svenska</th>
+<th scope="col" class="org-left">Engelska</th>
+<th scope="col" class="org-left">Min Svenska</th>
+<th scope="col" class="org-left">Kanske Riktig Svenska</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left">Requirements Engineering</td>
-<td class="left">Kravhantering</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Requirements Engineering</td>
+<td class="org-left">Kravhantering</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Requirement</td>
-<td class="left">Krav</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Requirement</td>
+<td class="org-left">Krav</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Analysis</td>
-<td class="left">Analys</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Analysis</td>
+<td class="org-left">Analys</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Design</td>
-<td class="left">Design</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Design</td>
+<td class="org-left">Design</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Implementation</td>
-<td class="left">Implementation</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Implementation</td>
+<td class="org-left">Implementation</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Testing</td>
-<td class="left">Testning</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Testing</td>
+<td class="org-left">Testning</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Test Case</td>
-<td class="left">Testfall</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Test Case</td>
+<td class="org-left">Testfall</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Development Phase</td>
-<td class="left">Utvecklingsfas</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Development Phase</td>
+<td class="org-left">Utvecklingsfas</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Phase</td>
-<td class="left">Fas</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Phase</td>
+<td class="org-left">Fas</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Backlog</td>
-<td class="left">Backlog</td>
-<td class="left">Att-göra-lista</td>
+<td class="org-left">Backlog</td>
+<td class="org-left">Backlog</td>
+<td class="org-left">Att-göra-lista</td>
 </tr>
 
 <tr>
-<td class="left">Waterfall Model</td>
-<td class="left">Vattenfallsmodellen</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Waterfall Model</td>
+<td class="org-left">Vattenfallsmodellen</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Iterative Development</td>
-<td class="left">Iterativ utveckling</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Iterative Development</td>
+<td class="org-left">Iterativ utveckling</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Incremental Development</td>
-<td class="left">Inkrementell utveckling</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Incremental Development</td>
+<td class="org-left">Inkrementell utveckling</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">SCRUM</td>
-<td class="left">SCRUM</td>
-<td class="left">Skärmytsling</td>
+<td class="org-left">SCRUM</td>
+<td class="org-left">SCRUM</td>
+<td class="org-left">Skärmytsling</td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div id="outline-container-sec-4-2-2" class="outline-4">
-<h4 id="sec-4-2-2"><span class="section-number-4">4.2.2</span> Use Cases</h4>
+<div id="outline-container-orgf4498e7" class="outline-4">
+<h4 id="orgf4498e7"><span class="section-number-4">4.2.2</span> Use Cases</h4>
 <div class="outline-text-4" id="text-4-2-2">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">Engelska</th>
-<th scope="col" class="left">Min Svenska</th>
-<th scope="col" class="left">Kanske Riktig Svenska</th>
+<th scope="col" class="org-left">Engelska</th>
+<th scope="col" class="org-left">Min Svenska</th>
+<th scope="col" class="org-left">Kanske Riktig Svenska</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left">Use Case</td>
-<td class="left">Use Case</td>
-<td class="left">Användningsfall</td>
+<td class="org-left">Use Case</td>
+<td class="org-left">Use Case</td>
+<td class="org-left">Användningsfall</td>
 </tr>
 
 <tr>
-<td class="left">Expanded Use Case</td>
-<td class="left">Expanded Use Case</td>
-<td class="left">Utökat Användningsfall</td>
+<td class="org-left">Expanded Use Case</td>
+<td class="org-left">Expanded Use Case</td>
+<td class="org-left">Utökat Användningsfall</td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
-<td class="left">Expanderat Use Case</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Expanderat Use Case</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Use Case Diagram</td>
-<td class="left">Use Case-Diagram</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Use Case Diagram</td>
+<td class="org-left">Use Case-Diagram</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Actor</td>
-<td class="left">Aktör</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Actor</td>
+<td class="org-left">Aktör</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-sec-4-2-3" class="outline-4">
-<h4 id="sec-4-2-3"><span class="section-number-4">4.2.3</span> Interaction Diagrams / Interaktionsdiagram</h4>
+<div id="outline-container-org2a1daa7" class="outline-4">
+<h4 id="org2a1daa7"><span class="section-number-4">4.2.3</span> Interaction Diagrams / Interaktionsdiagram</h4>
 <div class="outline-text-4" id="text-4-2-3">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">Engelska</th>
-<th scope="col" class="left">Min Svenska</th>
-<th scope="col" class="left">Kanske Riktig Svenska</th>
+<th scope="col" class="org-left">Engelska</th>
+<th scope="col" class="org-left">Min Svenska</th>
+<th scope="col" class="org-left">Kanske Riktig Svenska</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left">Interaction Diagram</td>
-<td class="left">Interaktionsdiagram</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Interaction Diagram</td>
+<td class="org-left">Interaktionsdiagram</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Communication Diagram</td>
-<td class="left">Kommunikationsdiagram</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Communication Diagram</td>
+<td class="org-left">Kommunikationsdiagram</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Sequence Diagram</td>
-<td class="left">Sekvensdiagram</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Sequence Diagram</td>
+<td class="org-left">Sekvensdiagram</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">System Sequence Diagram</td>
-<td class="left">Systemsekvensdiagram</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">System Sequence Diagram</td>
+<td class="org-left">Systemsekvensdiagram</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Class</td>
-<td class="left">Klass</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Class</td>
+<td class="org-left">Klass</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Object</td>
-<td class="left">Objekt</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Object</td>
+<td class="org-left">Objekt</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Type</td>
-<td class="left">Typ</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Type</td>
+<td class="org-left">Typ</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Event</td>
-<td class="left">Händelse</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Event</td>
+<td class="org-left">Händelse</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-sec-4-2-4" class="outline-4">
-<h4 id="sec-4-2-4"><span class="section-number-4">4.2.4</span> Class Diagrams / Klassdiagram</h4>
+<div id="outline-container-org8d2a926" class="outline-4">
+<h4 id="org8d2a926"><span class="section-number-4">4.2.4</span> Class Diagrams / Klassdiagram</h4>
 <div class="outline-text-4" id="text-4-2-4">
 <table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">Engelska</th>
-<th scope="col" class="left">Min Svenska</th>
-<th scope="col" class="left">Kanske Riktig Svenska</th>
-<th scope="col" class="left">Kommentar</th>
+<th scope="col" class="org-left">Engelska</th>
+<th scope="col" class="org-left">Min Svenska</th>
+<th scope="col" class="org-left">Kanske Riktig Svenska</th>
+<th scope="col" class="org-left">Kommentar</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left">Domain Model</td>
-<td class="left">Domänmodell</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Domain Model</td>
+<td class="org-left">Domänmodell</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Conceptual Model</td>
-<td class="left">Konceptuell Modell</td>
-<td class="left">&#xa0;</td>
-<td class="left">(Samma som Domain Model)</td>
+<td class="org-left">Conceptual Model</td>
+<td class="org-left">Konceptuell Modell</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">(Samma som Domain Model)</td>
 </tr>
 
 <tr>
-<td class="left">Concept</td>
-<td class="left">Koncept</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Concept</td>
+<td class="org-left">Koncept</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Class Diagram</td>
-<td class="left">Klassdiagram</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Class Diagram</td>
+<td class="org-left">Klassdiagram</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Attribute</td>
-<td class="left">Attribut</td>
-<td class="left">Medlemsvariabel</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Attribute</td>
+<td class="org-left">Attribut</td>
+<td class="org-left">Medlemsvariabel</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Method</td>
-<td class="left">Metod</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Method</td>
+<td class="org-left">Metod</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Message</td>
-<td class="left">Meddelande</td>
-<td class="left">Metodanrop</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Message</td>
+<td class="org-left">Meddelande</td>
+<td class="org-left">Metodanrop</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Association</td>
-<td class="left">Association</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Association</td>
+<td class="org-left">Association</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Aggregate</td>
-<td class="left">Aggregat</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Aggregate</td>
+<td class="org-left">Aggregat</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Composition</td>
-<td class="left">Komposition</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Composition</td>
+<td class="org-left">Komposition</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Association Attribute</td>
-<td class="left">Associationsattribut</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Association Attribute</td>
+<td class="org-left">Associationsattribut</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Multiplicity</td>
-<td class="left">Multiplicitet</td>
-<td class="left">Kardinalitet</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Multiplicity</td>
+<td class="org-left">Multiplicitet</td>
+<td class="org-left">Kardinalitet</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Base Class</td>
-<td class="left">Basklass</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Base Class</td>
+<td class="org-left">Basklass</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Inheritance</td>
-<td class="left">Arv</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Inheritance</td>
+<td class="org-left">Arv</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 
 <tr>
-<td class="left">Inheritance Hierarchy</td>
-<td class="left">Arvshierarki</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
+<td class="org-left">Inheritance Hierarchy</td>
+<td class="org-left">Arvshierarki</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">&#xa0;</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 
-<div id="outline-container-sec-4-2-5" class="outline-4">
-<h4 id="sec-4-2-5"><span class="section-number-4">4.2.5</span> GRASP Patterns and Design Patterns</h4>
+<div id="outline-container-orgd1fbd6a" class="outline-4">
+<h4 id="orgd1fbd6a"><span class="section-number-4">4.2.5</span> GRASP Patterns and Design Patterns</h4>
 <div class="outline-text-4" id="text-4-2-5">
 <p>
 GRASP Patterns och Design Patterns are not translated; the english names are used.   
@@ -722,15 +813,14 @@ GRASP Patterns och Design Patterns are not translated; the english names are use
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> Sprint Acceptance Tests</h2>
+<div id="outline-container-org66ea6bb" class="outline-2">
+<h2 id="org66ea6bb"><span class="section-number-2">5</span> Sprint Acceptance Tests</h2>
 <div class="outline-text-2" id="text-5">
 <p>
 You are done with this sprint when:
 </p>
 <ul class="org-ul">
-<li>You feel well prepared for the exam.
-</li>
+<li>You feel well prepared for the exam.</li>
 </ul>
 
 
@@ -744,7 +834,7 @@ You are done with this sprint when:
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p>This is somewhat of a simplification, since the runtime environment still needs to be able to do dynamic casting, and you may have all sorts of reflection APIs to figure out the class definition based on an object.</p></div>
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara">This is somewhat of a simplification, since the runtime environment still needs to be able to do dynamic casting, and you may have all sorts of reflection APIs to figure out the class definition based on an object.</div></div>
 
 
 </div>
@@ -752,8 +842,7 @@ You are done with this sprint when:
 <div id="postamble" class="status">
 <p class="author">Author: Mikael Svahnberg</p>
 <p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
-<p class="date">Created: 2017-05-31 Wed 11:26</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="date">Created: 2018-01-23 Tue 11:22</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

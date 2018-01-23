@@ -3,23 +3,30 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2018-01-22 Mon 14:07 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Requirements Engineering</title>
-<!-- 2017-05-31 Wed 11:26 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Mikael Svahnberg" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Mikael Svahnberg" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -46,27 +53,111 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -86,6 +177,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="org/org.css" />
@@ -95,7 +187,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -144,69 +236,66 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. About This Sprint</a></li>
-<li><a href="#sec-2">2. User Stories covered in this Sprint</a></li>
-<li><a href="#sec-3">3. Introduction</a>
+<li><a href="#org17225cf">1. About This Sprint</a></li>
+<li><a href="#orgda8d4b6">2. User Stories covered in this Sprint</a></li>
+<li><a href="#org93585af">3. Introduction</a>
 <ul>
-<li><a href="#sec-3-1">3.1. Interviews</a></li>
-<li><a href="#sec-3-2">3.2. Specification</a></li>
-<li><a href="#sec-3-3">3.3. Prioritisation</a></li>
-<li><a href="#sec-3-4">3.4. Summary</a></li>
+<li><a href="#orgc3c2ece">3.1. Interviews</a></li>
+<li><a href="#org6b48ca9">3.2. Specification</a></li>
+<li><a href="#org1c8ec48">3.3. Prioritisation</a></li>
+<li><a href="#orgefacf13">3.4. Summary</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">4. Learning Material</a>
+<li><a href="#org883cacc">4. Learning Material</a>
 <ul>
-<li><a href="#sec-4-1">4.1. Book Chapters</a></li>
-<li><a href="#sec-4-2">4.2. Screencasts</a></li>
+<li><a href="#orgcc86407">4.1. Book Chapters</a></li>
+<li><a href="#orgca50b38">4.2. Screencasts</a></li>
 </ul>
 </li>
-<li><a href="#sec-5">5. Experiential Learning</a>
+<li><a href="#orge66af0c">5. Experiential Learning</a>
 <ul>
-<li><a href="#sec-5-1">5.1. Sprint Test Plan</a></li>
-<li><a href="#sec-5-2">5.2. Self-Study: Requirements Interview</a></li>
-<li><a href="#sec-5-3">5.3. Self-Study: Requirements Specification</a></li>
-<li><a href="#sec-5-4">5.4. Assignment: Requirements Document</a></li>
-<li><a href="#sec-5-5">5.5. Update Course Backlog</a></li>
+<li><a href="#orgdddf970">5.1. Sprint Test Plan</a></li>
+<li><a href="#orgad395da">5.2. Self-Study: Requirements Interview</a></li>
+<li><a href="#org4b12f5f">5.3. Self-Study: Requirements Specification</a></li>
+<li><a href="#orgb602d14">5.4. Update Course Backlog</a></li>
 </ul>
 </li>
-<li><a href="#sec-6">6. Sprint Acceptance Tests</a></li>
+<li><a href="#orge7ccf86">6. Sprint Acceptance Tests</a></li>
 </ul>
 </div>
 </div>
+<div class="org">
 <br/>
 
+</div>
 
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> About This Sprint</h2>
+
+<div id="outline-container-org17225cf" class="outline-2">
+<h2 id="org17225cf"><span class="section-number-2">1</span> About This Sprint</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-This sprint briefly introduces the topic requirements engineering. It is primarily targeted at PA1415 Software Design.
+This sprint briefly introduces the topic requirements engineering.
 </p>
 
 <p>
-For more information on this topic, see e.g. the course <code>PA1412 Praktisk Kravhantering</code>.
+For more information on this topic, see e.g. the course <code>PA2551 Kravhantering och Produkthantering</code>.
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
+<div id="outline-container-orgda8d4b6" class="outline-2">
+<h2 id="orgda8d4b6"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
-<li>As a requirements engineer I want to know who may have requirements on the system we are building so that I can make sure that all needs are met.
-</li>
-<li>As a requirements engineer I want to have a range of methods for finding requirements so that I can choose the best method for each person or source of requirements.
-</li>
-<li>As a requirements engineer I want to document the found requirements so that I can discuss them with the customer.
-</li>
-<li>As a requirements engineer I want to document the found requirements so that I can communicate them to the developers.
-</li>
-<li>As a project manager I need to decide what to focus on building right now so that I best satisfy all customers&rsquo; expectations.
-</li>
+<li>As a requirements engineer I want to know who may have requirements on the system we are building so that I can make sure that all needs are met.</li>
+<li>As a requirements engineer I want to have a range of methods for finding requirements so that I can choose the best method for each person or source of requirements.</li>
+<li>As a requirements engineer I want to document the found requirements so that I can discuss them with the customer.</li>
+<li>As a requirements engineer I want to document the found requirements so that I can communicate them to the developers.</li>
+<li>As a project manager I need to decide what to focus on building right now so that I best satisfy all customers&rsquo; expectations.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Introduction</h2>
+<div id="outline-container-org93585af" class="outline-2">
+<h2 id="org93585af"><span class="section-number-2">3</span> Introduction</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 Before you start designing your system, you need to find out <i>what</i> to design and build. There are of course different ways of doing this. The traditional way advocates that you need to fully understand the entire system before you go ahead with the design (cf. <i>waterfall development</i>), whereas at the other end the agile approach (e.g. as advocated by <a href="http://www.extremeprogramming.org/">eXtreme Programming</a> and the <a href="http://agilemanifesto.org/">Agile Manifesto</a>) is that you should only do as much requirements engineering up front as is necessary to understand how to start building, since the requirements are going to change anyway. Note that they do not say &ldquo;Don&rsquo;t do it!&rdquo;; they say &ldquo;Do as little as possible, but not less&rdquo;.
@@ -225,15 +314,15 @@ Finding out who may have an interest in the system (a <i>stakeholder</i>) is so 
 </p>
 
 
-<div id="fig:REProcess" class="figure">
+<div id="orgc15a450" class="figure">
 <p><img src="./images/FRE_process.png" alt="FRE_process.png" />
 </p>
-<p><span class="figure-number">Figure 1:</span> Requirements Engineering Overview (Simplified)</p>
+<p><span class="figure-number">Figure 1: </span>Requirements Engineering Overview (Simplified)</p>
 </div>
 </div>
 
-<div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Interviews</h3>
+<div id="outline-container-orgc3c2ece" class="outline-3">
+<h3 id="orgc3c2ece"><span class="section-number-3">3.1</span> Interviews</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 I&rsquo;ve already touched upon elicitation techniques. The one you are likely to use the most is <i>Interviews</i>. &ldquo;Interview&rdquo; is actually a cover-all phrase that encompasses a whole range of different techniques that involves two people or more with (at least) voice contact. You <i>may</i> thus do interviews over phone, but I would not recommend it since you loose a lot of nuances that can be learnt by observing body language. Video conference or face-to-face meetings IRL are the most common interview settings. You can be one person interviewing one other person, or there can be more people either doing the interview or being interviewed (although at some point it is perhaps better to run the meeting as a <a href="https://en.wikipedia.org/wiki/Focus_group">focus group</a>).
@@ -252,154 +341,139 @@ Thus, a requirements engineer will probably use semi-structured open answered in
 </p>
 
 <p>
-How you behave during an interview influences the results, because your behaviour can make the interview subjects more or less prone to answer your questions. In Table <a href="#tab:InterviewsDnD">1</a> I have compiled a list of do&rsquo;s and don&rsquo;ts in interview situations (we have actually used this list to assess requirements elicitation interviews in the requirements engineering courses at BTH).
+How you behave during an interview influences the results, because your behaviour can make the interview subjects more or less prone to answer your questions. In Table <a href="#org043b911">1</a> I have compiled a list of do&rsquo;s and don&rsquo;ts in interview situations (we have actually used this list to assess requirements elicitation interviews in the requirements engineering courses at BTH).
 </p>
 
-<table id="tab:InterviewsDnD" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+<table id="org043b911" border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
 <caption class="t-above"><span class="table-number">Table 1:</span> Do and Don&rsquo;t in an Interview Situation</caption>
 
 <colgroup>
-<col  class="left" />
+<col  class="org-left" />
 
-<col  class="left" />
+<col  class="org-left" />
 </colgroup>
 <thead>
 <tr>
-<th scope="col" class="left">Do</th>
-<th scope="col" class="left">Don&rsquo;t</th>
+<th scope="col" class="org-left">Do</th>
+<th scope="col" class="org-left">Don&rsquo;t</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td class="left">Do    prepare thoroughly for the meeting</td>
-<td class="left">Don&rsquo;t put your laptop on the table as a wall between you and your client</td>
+<td class="org-left">Do    prepare thoroughly for the meeting</td>
+<td class="org-left">Don&rsquo;t put your laptop on the table as a wall between you and your client</td>
 </tr>
 
 <tr>
-<td class="left">Do    prepare a checklist for the meeting</td>
-<td class="left">Don&rsquo;t keep your cap on your head</td>
+<td class="org-left">Do    prepare a checklist for the meeting</td>
+<td class="org-left">Don&rsquo;t keep your cap on your head</td>
 </tr>
 
 <tr>
-<td class="left">Do    introduce yourself properly</td>
-<td class="left">Don&rsquo;t interrupt the customer</td>
+<td class="org-left">Do    introduce yourself properly</td>
+<td class="org-left">Don&rsquo;t interrupt the customer</td>
 </tr>
 
 <tr>
-<td class="left">Do    ask about access to stakeholders</td>
-<td class="left">Don&rsquo;t interrupt each other</td>
+<td class="org-left">Do    ask about access to stakeholders</td>
+<td class="org-left">Don&rsquo;t interrupt each other</td>
 </tr>
 
 <tr>
-<td class="left">Do    ask about access to previous systems</td>
-<td class="left">Don&rsquo;t take no notes</td>
+<td class="org-left">Do    ask about access to previous systems</td>
+<td class="org-left">Don&rsquo;t take no notes</td>
 </tr>
 
 <tr>
-<td class="left">Do    book the next meeting</td>
-<td class="left">Don&rsquo;t record the interview without asking</td>
+<td class="org-left">Do    book the next meeting</td>
+<td class="org-left">Don&rsquo;t record the interview without asking</td>
 </tr>
 
 <tr>
-<td class="left">Do    ask about quality requirements</td>
-<td class="left">Don&rsquo;t assume stuff</td>
+<td class="org-left">Do    ask about quality requirements</td>
+<td class="org-left">Don&rsquo;t assume stuff</td>
 </tr>
 
 <tr>
-<td class="left">Do    make sure you know who you are talking to, and why</td>
-<td class="left">Don&rsquo;t provide requirements</td>
+<td class="org-left">Do    make sure you know who you are talking to, and why</td>
+<td class="org-left">Don&rsquo;t provide requirements</td>
 </tr>
 
 <tr>
-<td class="left">Do    ask about deadlines</td>
-<td class="left">Don&rsquo;t provide goldplating</td>
+<td class="org-left">Do    ask about deadlines</td>
+<td class="org-left">Don&rsquo;t provide goldplating</td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
-<td class="left">Don&rsquo;t technobabble</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Don&rsquo;t technobabble</td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
-<td class="left">Don&rsquo;t sit quiet</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Don&rsquo;t sit quiet</td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
-<td class="left">Don&rsquo;t kiss up (too much)</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Don&rsquo;t kiss up (too much)</td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
-<td class="left">Don&rsquo;t follow your meeting checklist manically</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Don&rsquo;t follow your meeting checklist manically</td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
-<td class="left">Don&rsquo;t share war-stories about other customers and systems</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Don&rsquo;t share war-stories about other customers and systems</td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
-<td class="left">Don&rsquo;t ask about the budget at the first meeting</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Don&rsquo;t ask about the budget at the first meeting</td>
 </tr>
 
 <tr>
-<td class="left">&#xa0;</td>
-<td class="left">Don&rsquo;t argue among yourselves</td>
+<td class="org-left">&#xa0;</td>
+<td class="org-left">Don&rsquo;t argue among yourselves</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Specification</h3>
+<div id="outline-container-org6b48ca9" class="outline-3">
+<h3 id="org6b48ca9"><span class="section-number-3">3.2</span> Specification</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
-Once you have found the requirements, your next step (after analysing them and negotiating them with the customer, but that is also outside the scope of this course) is to <i>Specify</i> the requirements. There is an IEEE standard, <a href="#fig:SRS">IEEE 830</a>, for how to structure your requirements document, assuming you specify requirements in the traditional way. The good thing about this is that it has existed for many years, and people are used to seeing it and signing contract based on it. The bad thing about it is that it is not as well known or easy to understand as requirements engineering researchers would like to think it is, and with a few moments of education I am certain that you will be able to educate your customers on any document and requirements format you choose.
+Once you have found the requirements, your next step (after analysing them and negotiating them with the customer, but that is also outside the scope of this course) is to <i>Specify</i> the requirements. There is an IEEE standard, <a href="#orgd676723">IEEE 830</a>, for how to structure your requirements document, assuming you specify requirements in the traditional way. The good thing about this is that it has existed for many years, and people are used to seeing it and signing contract based on it. The bad thing about it is that it is not as well known or easy to understand as requirements engineering researchers would like to think it is, and with a few moments of education I am certain that you will be able to educate your customers on any document and requirements format you choose.
 </p>
 
-<div class="info">
+<div class="info" id="fig:SRS">
 <p>
 <b>IEEE 830 Standard for Software Requirements Specifications</b>
 </p>
 <ol class="org-ol">
 <li>Introduction
 <ol class="org-ol">
-<li>Purpose of the Requirements Document
-</li>
-<li>Scope of the Product
-</li>
-<li>Definitions, Acronyms, and Abbreviations
-</li>
-<li>References
-</li>
-<li>Overview of the Remainder of the Document
-</li>
-</ol>
-</li>
+<li>Purpose of the Requirements Document</li>
+<li>Scope of the Product</li>
+<li>Definitions, Acronyms, and Abbreviations</li>
+<li>References</li>
+<li>Overview of the Remainder of the Document</li>
+</ol></li>
 <li>General Description
 <ol class="org-ol">
-<li>Product Perspective
-</li>
-<li>Product Functions
-</li>
-<li>User Characteristics
-</li>
-<li>General Constraints
-</li>
-<li>Assumptions and Dependencies
-</li>
-</ol>
-</li>
+<li>Product Perspective</li>
+<li>Product Functions</li>
+<li>User Characteristics</li>
+<li>General Constraints</li>
+<li>Assumptions and Dependencies</li>
+</ol></li>
 <li>Specific Requirements
-Functional, non-functional, and interface requirements
-</li>
-<li>Appendices
-</li>
-<li>Index
-</li>
+Functional, non-functional, and interface requirements</li>
+<li>Appendices</li>
+<li>Index</li>
 </ol>
 
 </div>
@@ -409,10 +483,11 @@ To simplify, there are two plus one ways of writing requirements. The two ways a
 </p>
 
 
-<div id="fig:REtwoplusone" class="figure">
+
+<div id="org3746956" class="figure">
 <p><img src="./images/FRESpecification.png" alt="FRESpecification.png" />
 </p>
-<p><span class="figure-number">Figure 2:</span> Two plus one way of specifying requirements</p>
+<p><span class="figure-number">Figure 2: </span>Two plus one way of specifying requirements</p>
 </div>
 
 <p>
@@ -423,18 +498,12 @@ Traditional requirements may be specified as figures, tables, sketches, or plain
 UML use cases are covered in a different course sprint, so I will only briefly mention them here. With a use case, you are attempting to put the requirements into a context. Of course, this means that you need to write more, since you also need to add information about the context. This is one of the reasons why they are not considered requirements &#x2013; they are simply too verbose. This verbosity also means that a developer is unlikely to do use cases for every requirement and every part of the system; but will rather do them for those parts of the system where there is a usage flow that is difficult to grasp in one sentence, and where you are likely to hold a &ldquo;conversation&rdquo; with the system to fulfill a higher need. For example, searching for a hotel room is a one-liner. <i>Booking</i> a room on the other hand may involve
 </p>
 <ul class="org-ul">
-<li>a search
-</li>
-<li>a narrowing of the results to specific types of rooms
-</li>
-<li>a check whether the room is available
-</li>
-<li>a selection of the room
-</li>
-<li>input of information about the person booking the room, and
-</li>
-<li>a confirmation that the room is booked.
-</li>
+<li>a search</li>
+<li>a narrowing of the results to specific types of rooms</li>
+<li>a check whether the room is available</li>
+<li>a selection of the room</li>
+<li>input of information about the person booking the room, and</li>
+<li>a confirmation that the room is booked.</li>
 </ul>
 
 <p>
@@ -443,8 +512,8 @@ Each of these items may, in turn, comprise more than several requirements, inclu
 </div>
 </div>
 
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Prioritisation</h3>
+<div id="outline-container-org1c8ec48" class="outline-3">
+<h3 id="org1c8ec48"><span class="section-number-3">3.3</span> Prioritisation</h3>
 <div class="outline-text-3" id="text-3-3">
 
 <div class="figure">
@@ -461,16 +530,13 @@ In traditional requirements engineering, there is a whole phase solely dedicated
 </p>
 
 <p>
-This, of course, does not answer the question since it only explains <i>how</i> you decide, but not <i>on what grounds</i>. Also here, you can probably build a research career on deciding which factors should influence your prioritisation (see, for example, Ruhe and Saliu&rsquo;s paper &ldquo;The art and Science of Release Planning&rdquo; <sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>), but a few good starting points are:
+This, of course, does not answer the question since it only explains <i>how</i> you decide, but not <i>on what grounds</i>. Also here, you can probably build a research career on deciding which factors should influence your prioritisation (see, for example, Ruhe and Saliu&rsquo;s paper &ldquo;The art and Science of Release Planning&rdquo; <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>), but a few good starting points are:
 </p>
 
 <ul class="org-ul">
-<li>Value for the customer
-</li>
-<li>Cost of implementation (Cost and Value can be nicely combined as e.g. Karlsson and Ryan <sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup> shows).
-</li>
-<li>Penalty for not implementing
-</li>
+<li>Value for the customer</li>
+<li>Cost of implementation (Cost and Value can be nicely combined as e.g. Karlsson and Ryan <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> shows).</li>
+<li>Penalty for not implementing</li>
 </ul>
 
 <p>
@@ -479,8 +545,8 @@ UML/RUP would advocate that you wait with prioritising your requirements and ins
 </div>
 </div>
 
-<div id="outline-container-sec-3-4" class="outline-3">
-<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Summary</h3>
+<div id="outline-container-orgefacf13" class="outline-3">
+<h3 id="orgefacf13"><span class="section-number-3">3.4</span> Summary</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 Requirements Engineering is a big topic, and can be quite complex. The introduction above is just meant to get you started. I have, for example, only touched upon the difference between bespoke and market-driven requirements engineering. I have not mentioned any of the challenges involved when you do large scale requirements engineering or very large scale requirements engineering. Nor have I gone through all the different techniques available for eliciting requirements, checklists for analysis, requirements verification, etc. etc. You will get some more information about some of these things in the screencast &ldquo;Requirements Engineering&rdquo;, and for the rest I direct you towards one of the requirements engineering courses offered at BTH.
@@ -502,45 +568,40 @@ A note also about elicitation techniques: I say earlier that you are most likely
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> Learning Material</h2>
+<div id="outline-container-org883cacc" class="outline-2">
+<h2 id="org883cacc"><span class="section-number-2">4</span> Learning Material</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Book Chapters</h3>
+</div>
+<div id="outline-container-orgcc86407" class="outline-3">
+<h3 id="orgcc86407"><span class="section-number-3">4.1</span> Book Chapters</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>C. Larman, <i>Applying UML and Patterns</i>, 3rd Edition, Chapters:
 <ol class="org-ol">
-<li value="4">Inception is Not the Requirements Phase
-</li>
-<li>Evolutionary Requirements
-</li>
-<li>Use Cases
-</li>
-<li>Other Requirements
-</li>
-</ol>
-</li>
+<li value="4">Inception is Not the Requirements Phase</li>
+<li>Evolutionary Requirements</li>
+<li>Use Cases</li>
+<li>Other Requirements</li>
+</ol></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-4-2" class="outline-3">
-<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Screencasts</h3>
+<div id="outline-container-orgca50b38" class="outline-3">
+<h3 id="orgca50b38"><span class="section-number-3">4.2</span> Screencasts</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
-<li><a href="https://play.bth.se/media/Requirements+Engineering/1_epma2li8/41750261">Requirements Engineering</a>
-</li>
-<li><a href="https://play.bth.se/media/Use+Cases/1_d4tqygel/41750261">Use Cases</a>
-</li>
+<li><a href="https://play.bth.se/media/Requirements+Engineering/1_epma2li8/41750261">Requirements Engineering</a></li>
+<li><a href="https://play.bth.se/media/Use+Cases/1_d4tqygel/41750261">Use Cases</a></li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> Experiential Learning</h2>
+<div id="outline-container-orge66af0c" class="outline-2">
+<h2 id="orge66af0c"><span class="section-number-2">5</span> Experiential Learning</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-sec-5-1" class="outline-3">
-<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Sprint Test Plan</h3>
+</div>
+<div id="outline-container-orgdddf970" class="outline-3">
+<h3 id="orgdddf970"><span class="section-number-3">5.1</span> Sprint Test Plan</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
@@ -556,30 +617,18 @@ Add and/or revise the following items to your glossary:
 <ul class="org-ul">
 <li>Requirements Engineering
 <ul class="org-ul">
-<li>Requirements Elicitation
-</li>
-<li>Stakeholders
-</li>
-<li>Software Requirements Specification (SRS)
-</li>
-<li>RFC 2119
-</li>
-<li>Requirements Prioritisation
-</li>
-</ul>
-</li>
-<li>Quality Attribute (Also: Non-functional Requirement)
-</li>
-<li>User Story
-</li>
-<li>Epic
-</li>
-<li>Backlog
-</li>
-<li>Acceptance Test
-</li>
-<li>Use Case
-</li>
+<li>Requirements Elicitation</li>
+<li>Stakeholders</li>
+<li>Software Requirements Specification (SRS)</li>
+<li>RFC 2119</li>
+<li>Requirements Prioritisation</li>
+</ul></li>
+<li>Quality Attribute (Also: Non-functional Requirement)</li>
+<li>User Story</li>
+<li>Epic</li>
+<li>Backlog</li>
+<li>Acceptance Test</li>
+<li>Use Case</li>
 </ul>
 
 <p>
@@ -587,8 +636,8 @@ Make sure you understand what each item is, the notation for them, and how to us
 </p>
 </div>
 </div>
-<div id="outline-container-sec-5-2" class="outline-3">
-<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Self-Study: Requirements Interview</h3>
+<div id="outline-container-orgad395da" class="outline-3">
+<h3 id="orgad395da"><span class="section-number-3">5.2</span> Self-Study: Requirements Interview</h3>
 <div class="outline-text-3" id="text-5-2">
 <p>
 Let&rsquo;s say you are going to build a student simulator. As a part of this you need to find out the morning practices of a typical student.
@@ -599,185 +648,26 @@ Interiew a couple of student colleagues on what they do in the mornings. Try to 
 </p>
 </div>
 </div>
-<div id="outline-container-sec-5-3" class="outline-3">
-<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Self-Study: Requirements Specification</h3>
+<div id="outline-container-org4b12f5f" class="outline-3">
+<h3 id="org4b12f5f"><span class="section-number-3">5.3</span> Self-Study: Requirements Specification</h3>
 <div class="outline-text-3" id="text-5-3">
 <p>
-Try to write down a common process for what you elicited above, i.e. the &ldquo;getting up, getting ready, and getting to uni in the morning"-process.
+Try to write down a common process for what you elicited above, i.e. the &ldquo;getting up, getting ready, and getting to uni in the morning&rdquo;-process.
 </p>
 
 <p>
 Express this process as:
 </p>
 <ul class="org-ul">
-<li>regular requirements (consider their apartment, their mother, the bus, etc. as part of &ldquo;the system&rdquo;)
-</li>
-<li>user stories (think about the role they have for each part, and the motivation for why they want something done)
-</li>
-<li>use cases  (consider their apartment, their mother, the bus, etc. as part of &ldquo;the system&rdquo;)
-</li>
+<li>regular requirements (consider their apartment, their mother, the bus, etc. as part of &ldquo;the system&rdquo;)</li>
+<li>user stories (think about the role they have for each part, and the motivation for why they want something done)</li>
+<li>use cases  (consider their apartment, their mother, the bus, etc. as part of &ldquo;the system&rdquo;)</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-5-4" class="outline-3">
-<h3 id="sec-5-4"><span class="section-number-3">5.4</span> Assignment: Requirements Document</h3>
+<div id="outline-container-orgb602d14" class="outline-3">
+<h3 id="orgb602d14"><span class="section-number-3">5.4</span> Update Course Backlog</h3>
 <div class="outline-text-3" id="text-5-4">
-<p>
-Your main task is to write user stories based on the system description for the assignments.
-</p>
-
-<p>
-<b>Tasks</b>
-</p>
-<ol class="org-ol">
-<li>Describe the system in terms of the most important workflows, as &ldquo;epics&rdquo;. Add conditions of satisfaction to each epic.
-</li>
-<li>List the epics in order of importance, and add a brief motivation for why you have ordered them the way you have.
-</li>
-<li>Take the three most important epics, and break them down to more manageable user stories. Add conditions of satisfaction to the user stories. Order them according to priority, and add a brief motivation.
-</li>
-</ol>
-
-<div class="info">
-<p>
-<b>Document Structure:</b>
-</p>
-
-<p>
-The title for this Assignment Document is: <i>User Stories for System &lt;system name&gt;</i>
-.
-</p>
-
-<p>
-The assignment document shall contain the following items:
-</p>
-
-<ol class="org-ol">
-<li>Title Page
-<ol class="org-ol">
-<li>Title: &lt;assignment document title&gt;
-</li>
-<li>Sub-title: &ldquo;Assignment in the course &lt;course code&gt;&lt;course name&gt;&rdquo;
-</li>
-<li>Date
-</li>
-<li>Authors and Author Contribution
-
-<p>
-Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
-</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Author Name</th>
-<th scope="col" class="left">Social Security Number</th>
-<th scope="col" class="left">Thinking</th>
-<th scope="col" class="left">Writing</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-</tr>
-</tbody>
-</table>
-</li>
-</ol>
-</li>
-<li>System Description
-
-<p>
-A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
-</p>
-</li>
-
-<li value="3">High-level Epics
-<ol class="org-ol">
-<li>Motivation for Priority
-</li>
-<li>Epics (ordered most important first)
-</li>
-</ol>
-</li>
-<li>User Stories and Epics
-<ol class="org-ol">
-<li>Motivation for Priority
-</li>
-<li>User Stories and Epics (ordered most important first)
-</li>
-</ol>
-</li>
-</ol>
-
-</div>
-
-<div class="note">
-<p>
-<b>Please note</b> that the &ldquo;User Stories and Epics&rdquo; shall include <i>both</i> the remaining epics from section 3 in the document <i>and</i> the broken down user stories.
-</p>
-
-<p>
-<b>Please also note</b> that the user stories from the epics that you break down will probably be interlaced; the least important user stories from the top-most epic need not be more important than the most important user stories from the second epic. You will thus have to review the priorities of <i>all</i> user stories against all other user stories and epics.
-</p>
-
-<p>
-<b>Please also also note</b>, when you go forward you will want each user story to have a unique ID so that you can refer back to them.
-</p>
-
-</div>
-
-<p>
-Commit and push this document to your project repository.
-</p>
-
-<div class="tip">
-<p>
-<b>Conditions of Satisfaction:</b>
-</p>
-
-<p>
-When marking this part of the assignment we are looking for the following:
-</p>
-
-<ol class="org-ol">
-<li value="0">Does the title page contain a table with authors and author contribution 
-</li>
-<li>Size of assignment: Are there 5-10 epics and 10-30 user stories?
-</li>
-<li>Is there a significant difference in scope between the epics and the user stories?
-</li>
-<li>Are the epics and user stories well formed (including actor, goal, and reason)?
-</li>
-<li>Are there relevant conditions of satisfaction for each user story/epic?
-</li>
-<li>Is there a reasonable motivation for the priorities of the epics and user stories?
-</li>
-<li>Does the prioritisation actually follow the motivation?
-</li>
-</ol>
-
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-5-5" class="outline-3">
-<h3 id="sec-5-5"><span class="section-number-3">5.5</span> Update Course Backlog</h3>
-<div class="outline-text-3" id="text-5-5">
 <p>
 How do you translate your user stories into UML use cases? How do you use the prioritised order to decide on a development schedule? Why are you specifying your requirements first as user stories if you are then going to re-specify them as UML use cases immediately afterwards?
 </p>
@@ -792,31 +682,24 @@ Are there any other questions that you want answered? Add them, along with a bri
 </div>
 </div>
 </div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> Sprint Acceptance Tests</h2>
+<div id="outline-container-orge7ccf86" class="outline-2">
+<h2 id="orge7ccf86"><span class="section-number-2">6</span> Sprint Acceptance Tests</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 You are done with this sprint when:
 </p>
 <ul class="org-ul">
-<li>You have read the Learning Materials.
-</li>
-<li>You have created the &ldquo;User Stories&rdquo; document and committed/pushed it to your project repository.
-</li>
+<li>You have read the Learning Materials.</li>
 </ul>
 
 <p>
 You may also have
 </p>
 <ul class="org-ul">
-<li>Updated your Sprint Test Plan
-</li>
-<li>Updated your Course Backlog
-</li>
-<li>Performed self-study requirements interviews
-</li>
-<li>Documented the results from the self-study interviews in different formats.
-</li>
+<li>Updated your Sprint Test Plan</li>
+<li>Updated your Course Backlog</li>
+<li>Performed self-study requirements interviews</li>
+<li>Documented the results from the self-study interviews in different formats.</li>
 </ul>
 </div>
 </div>
@@ -824,13 +707,13 @@ You may also have
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
 G. Ruhe and M. O. Saliu. <i>The art and science of software release planning</i>. IEEE Software, 22(6):47–53, 2005.
-</p></div>
+</p></div></div>
 
-<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p class="footpara">
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
 J. Karlsson and K. Ryan. A cost-value approach for prioritizing requirements. IEEE Software, 14(5):67– 74, 1997.
-</p></div>
+</p></div></div>
 
 
 </div>
@@ -838,8 +721,7 @@ J. Karlsson and K. Ryan. A cost-value approach for prioritizing requirements. IE
 <div id="postamble" class="status">
 <p class="author">Author: Mikael Svahnberg</p>
 <p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
-<p class="date">Created: 2017-05-31 Wed 11:26</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="date">Created: 2018-01-22 Mon 14:07</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

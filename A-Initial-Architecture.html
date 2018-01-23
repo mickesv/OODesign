@@ -3,10 +3,10 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-01-19 Fri 10:59 -->
+<!-- 2018-01-23 Tue 11:08 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Release Sprint: 3-Week Roll Call; List of Use Cases</title>
+<title>Create Initial Software Architecture Assignment</title>
 <meta name="generator" content="Org mode" />
 <meta name="author" content="Mikael Svahnberg" />
 <style type="text/css">
@@ -231,23 +231,26 @@ for the JavaScript code in this tag.
 </head>
 <body>
 <div id="content">
-<h1 class="title">Release Sprint: 3-Week Roll Call; List of Use Cases</h1>
+<h1 class="title">Create Initial Software Architecture Assignment</h1>
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#orge5e88a7">1. About this Sprint</a></li>
-<li><a href="#org1868bbf">2. User Stories covered in this Sprint</a></li>
-<li><a href="#org4e4f1ae">3. Course Goals for this Sprint</a></li>
-<li><a href="#org834d93f">4. Introduction</a></li>
-<li><a href="#org9340028">5. Learning Material</a></li>
-<li><a href="#org4eb5579">6. Experiential Learning</a>
+<li><a href="#org70b1508">1. About This Sprint</a></li>
+<li><a href="#org5129432">2. User Stories covered in this Sprint</a></li>
+<li><a href="#org55a49a8">3. Learning Material</a>
 <ul>
-<li><a href="#orga3d89c5">6.1. Assignment: Early List of Use Cases</a></li>
-<li><a href="#org8fac044">6.2. Assignment Submission</a></li>
+<li><a href="#orgf41222c">3.1. Book Chapters</a></li>
+<li><a href="#org891c9d8">3.2. Screencasts</a></li>
+<li><a href="#orgae2ae4b">3.3. Books and Articles</a></li>
 </ul>
 </li>
-<li><a href="#org1b8b564">7. Sprint Acceptance Tests</a></li>
+<li><a href="#orga53d2fa">4. Experiential Learning</a>
+<ul>
+<li><a href="#orga7a8764">4.1. Assignment: Create Initial Software Architecture</a></li>
+</ul>
+</li>
+<li><a href="#org8ef569e">5. Sprint Acceptance Tests</a></li>
 </ul>
 </div>
 </div>
@@ -256,78 +259,93 @@ for the JavaScript code in this tag.
 
 </div>
 
-<div id="outline-container-orge5e88a7" class="outline-2">
-<h2 id="orge5e88a7"><span class="section-number-2">1</span> About this Sprint</h2>
+
+<div id="outline-container-org70b1508" class="outline-2">
+<h2 id="org70b1508"><span class="section-number-2">1</span> About This Sprint</h2>
 <div class="outline-text-2" id="text-1">
 <p>
-This is a <i>release sprint</i>. This means that you package things that you have done in other sprints in order to create a release (an assignment delivery). You are expected to integrate what you have learnt previously and test/evaluate your release candidate to maximise your potential for passing the assignment.
-</p>
-
-<p>
-This particular release sprint also serves as the three week roll call in the course. <b>Please Note</b> that if you do not submit this release on time, you will be deregistered from the course.
+This sprint reviews how to describe a non-trivial software system in the form of a software architecture.  
 </p>
 </div>
 </div>
-<div id="outline-container-org1868bbf" class="outline-2">
-<h2 id="org1868bbf"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
+<div id="outline-container-org5129432" class="outline-2">
+<h2 id="org5129432"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
-<li>As the government, we want to make sure that all students registered on a course are also active in the course so that we do not pay the university too much.</li>
+<li>As a software designer I want to be able to divide my design into manageable chunks so that I can get a better overview.</li>
+<li>As a software designer I want to address the quality requirements of the software system early on so that they are not missed.</li>
+<li>As a software designer I want to address the quality requirements of the software system in the most appropriate way to facilitate the rest of the development project.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org4e4f1ae" class="outline-2">
-<h2 id="org4e4f1ae"><span class="section-number-2">3</span> Course Goals for this Sprint</h2>
+<div id="outline-container-org55a49a8" class="outline-2">
+<h2 id="org55a49a8"><span class="section-number-2">3</span> Learning Material</h2>
 <div class="outline-text-2" id="text-3">
+</div>
+<div id="outline-container-orgf41222c" class="outline-3">
+<h3 id="orgf41222c"><span class="section-number-3">3.1</span> Book Chapters</h3>
+<div class="outline-text-3" id="text-3-1">
 <ul class="org-ul">
-<li>(PA1415) på en grundläggande nivå i grupp kunna ta fram krav på en programvara och uttrycka dem i en kravspecifikation.</li>
-</ul>
-
-<p>
-<b>Kunskap och förståelse</b>
-</p>
-<ul class="org-ul">
-<li>(PA1435, PA1434, PA1443) kunna visa förståelse för grundläggande principer i objektorienterad programvaruutveckling.</li>
+<li>C. Larman, <i>Applying UML and Patterns</i>, 3rd Edition, Chapters:
+<ol class="org-ol">
+<li value="33">Architecture Analysis</li>
+<li>Logical Architecture Refinement</li>
+<li value="38">UML Deployment and Component Diagrams</li>
+<li>Documenting Architecture: UML &amp; the N+1 View Model</li>
+</ol></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-org834d93f" class="outline-2">
-<h2 id="org834d93f"><span class="section-number-2">4</span> Introduction</h2>
+<div id="outline-container-org891c9d8" class="outline-3">
+<h3 id="org891c9d8"><span class="section-number-3">3.2</span> Screencasts</h3>
+<div class="outline-text-3" id="text-3-2">
+<ul class="org-ul">
+<li><a href="https://play.bth.se/media/Architecture_Styles/1_dzmp3dcw">Architecture Styles</a></li>
+</ul>
+</div>
+</div>
+<div id="outline-container-orgae2ae4b" class="outline-3">
+<h3 id="orgae2ae4b"><span class="section-number-3">3.3</span> Books and Articles</h3>
+<div class="outline-text-3" id="text-3-3">
+<ul class="org-ul">
+<li>L. Bass, P. Clements, and R. Kazman. <i>Software Architecture in Practice, Third Edition.</i> Addison-Wesley Publishing Co., Reading MA, 2012.</li>
+<li>C. Hofmeister, R. Nord, and D. Soni. <i>Applied Software Architecture.</i> Addison-Wesley, Reading MA, 2000.</li>
+<li>R. Kazman, L. Bass, M. Webb, and G. Abowd. <i>SAAM: A method for analyzing the properties of software architectures.</i> In Proceedings of the 16th international conference on Software engineering, pages 81–90. IEEE Computer Society Press, 1994.</li>
+<li>P.B. Kruchten, &ldquo;The 4+ 1 view model of architecture.&rdquo; <i>IEEE software</i> 12.6 (1995): 42-50.</li>
+<li>M. Lindvall, R. T. Tvedt, and P. Costa. An empirically-based process for software architecture evaluation. <i>Empirical Software Engineering</i>, 8:83–108, 2003.</li>
+<li>M. Svahnberg and F. Mårtensson. Six years of evaluating software architectures in student projects. <i>Journal of Systems &amp; Software</i>, 80(11):1893–1901, 2007.</li>
+</ul>
+</div>
+</div>
+</div>
+<div id="outline-container-orga53d2fa" class="outline-2">
+<h2 id="orga53d2fa"><span class="section-number-2">4</span> Experiential Learning</h2>
 <div class="outline-text-2" id="text-4">
+</div>
+<div id="outline-container-orga7a8764" class="outline-3">
+<h3 id="orga7a8764"><span class="section-number-3">4.1</span> Assignment: Create Initial Software Architecture</h3>
+<div class="outline-text-3" id="text-4-1">
 <p>
-The idea with this release sprint is that I should see who is active in the course. I will at the same time take the opportunity to briefly look at your initial efforts regarding the assignment series so that I may possibly steer you in a more productive direction.
+Create an initial software architecture for your system.
 </p>
 
 <p>
-A reasonable effort for this assignment is between 1/2 to 1 hour. Just read the system description and brainstorm a list of 5-15 processes that a user may do with the system (i.e. UML use cases). Add one or two sentences describing each of these use cases, package it up in a PDF and submit.
-</p>
-
-<p>
-This submission can be seen as a starting point for the next submission where you take this initial list of use cases and continue your analysis, and expand the descriptions of your found use cases.
-</p>
-</div>
-</div>
-<div id="outline-container-org9340028" class="outline-2">
-<h2 id="org9340028"><span class="section-number-2">5</span> Learning Material</h2>
-<div class="outline-text-2" id="text-5">
-<p>
-Please review the sprints concerning
+<b>Tasks:</b>
 </p>
 <ul class="org-ul">
-<li><a href="./Sprint0-course-intro.html">Sprint0: Course Introduction</a></li>
+<li>Which quality attributes are relevant for your system?</li>
+<li>Based on what you currently know, structure your system into different modules that have high coherence and low coupling.
+<ul class="org-ul">
+<li>Try to think about localising specific areas of functionality into separate modules.</li>
+</ul></li>
+<li>Do you need to model your system from different viewpoints (e.g. modules, threads and processes, data flow)?
+<ul class="org-ul">
+<li>If so, create a model for each viewpoint.</li>
+<li>Make sure your viewpoints are consistent with each other.</li>
+<li>If you do not need several viewpoints, then why not?</li>
+</ul></li>
+<li>Motivate and reason about what traits in your system makes it require or not require specific viewpoints.</li>
 </ul>
-</div>
-</div>
-<div id="outline-container-org4eb5579" class="outline-2">
-<h2 id="org4eb5579"><span class="section-number-2">6</span> Experiential Learning</h2>
-<div class="outline-text-2" id="text-6">
-</div>
-<div id="outline-container-orga3d89c5" class="outline-3">
-<h3 id="orga3d89c5"><span class="section-number-3">6.1</span> Assignment: Early List of Use Cases</h3>
-<div class="outline-text-3" id="text-6-1">
-<p>
-Create an inital list of use cases for your system. Briefly describe each of them (1-2 sentences each).
-</p>
 
 <div class="info">
 <p>
@@ -335,7 +353,7 @@ Create an inital list of use cases for your system. Briefly describe each of the
 </p>
 
 <p>
-The title for this Assignment Document is: <i>List of Use Cases for System &lt;system name&gt;</i>
+The title for this Assignment Document is: <i>Initial Software Architecture for System &lt;system name&gt;</i>
 </p>
 <div class="org">
 <p>
@@ -402,8 +420,17 @@ A brief description (2-3 paragraphs) of your interpretation of what the goal of 
 </div>
 
 <ol class="org-ol">
-<li value="3">Use Cases
-A list of use cases for your system, with a brief description of each.</li>
+<li value="3">Quality Attributes
+Discuss quality attributes that are important for your system. Motivate why.</li>
+<li>Viewpoints
+Discuss your choices of viewpoints.</li>
+<li>Viewpoints
+<ul class="org-ul">
+<li>Create one section for each of your viewpoints.</li>
+<li>Model your system from the perspective of the viewpoint in a suitable notation (tip: You may find the UML Package notation useful)</li>
+<li>Describe the entities in your model. Remember that associations between entities also carry meaning in an architecture model and needs to be explained.</li>
+<li>Describe which particular design concerns that you are addressing with the help of the viewpoint.</li>
+</ul></li>
 </ol>
 
 </div>
@@ -415,51 +442,41 @@ Commit and push this document to your project repository.
 <div class="tip">
 <p>
 <b>Conditions of Satisfaction:</b>
-</p>
-
-<p>
 When marking this part of the assignment we are looking for the following:
 </p>
 
 <ol class="org-ol">
-<li value="0">Does the title page contain a table with authors and author contribution</li>
-<li>Size of assignment: Are there 5-15 use cases listed?</li>
+<li value="0">Does the title page contain a table with authors and author contribution?</li>
+<li>Size of assignment: Is the system described from at least one and preferrably two to three viewpoints?</li>
+<li>Size of assignment: Does each viewpoint contain 5-15 entities?</li>
+<li>Are important quality attributes described and motivated?</li>
+<li>Are the viewpoints motivated? Is there a reasoning about why or why not certain viewpoints are needed?</li>
+<li>Is there a legend for each viewpoint that describes the types of entities and connections?</li>
+<li>Are the entities and connections in each viewpoint described?</li>
+<li>Does each viewpoint/entity have high cohesion and low coupling?</li>
+<li>Is there a described strategy for how classes are allocated to different modules/entities?</li>
+<li>IS this strategy followed?</li>
 </ol>
 
 </div>
 </div>
 </div>
-
-<div id="outline-container-org8fac044" class="outline-3">
-<h3 id="org8fac044"><span class="section-number-3">6.2</span> Assignment Submission</h3>
-<div class="outline-text-3" id="text-6-2">
-<p>
-Submit the assignment as one or several PDFs on It&rsquo;s Learning.
-</p>
-
-<p>
-Your submission shall include the following:
-</p>
-<ul class="org-ul">
-<li>A link to your course project on Github</li>
-<li>Your List of Use Cases</li>
-</ul>
 </div>
-</div>
-</div>
-<div id="outline-container-org1b8b564" class="outline-2">
-<h2 id="org1b8b564"><span class="section-number-2">7</span> Sprint Acceptance Tests</h2>
-<div class="outline-text-2" id="text-7">
+<div id="outline-container-org8ef569e" class="outline-2">
+<h2 id="org8ef569e"><span class="section-number-2">5</span> Sprint Acceptance Tests</h2>
+<div class="outline-text-2" id="text-5">
 <p>
 You are done with this sprint when:
 </p>
 <ul class="org-ul">
-<li><img src="./org/checked.png" alt="checked.png" /> You have submitted the documents.</li>
-<li><img src="./org/checked.png" alt="checked.png" /> You have made sure that all participants in your team are included in your submission.</li>
+<li>You have considered which quality attributes are relevant for your system.</li>
+<li>You have created an initial software architecture for your system.</li>
+<li>You have committed/pushed the created documents to your project repository</li>
 </ul>
 
+
 <p>
-You may also have:
+You may also have
 </p>
 <ul class="org-ul">
 <li>Updated your Sprint Test Plan</li>
@@ -471,7 +488,7 @@ You may also have:
 <div id="postamble" class="status">
 <p class="author">Author: Mikael Svahnberg</p>
 <p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
-<p class="date">Created: 2018-01-19 Fri 10:59</p>
+<p class="date">Created: 2018-01-23 Tue 11:08</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>

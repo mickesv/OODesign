@@ -3,23 +3,30 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
+<!-- 2018-01-23 Tue 10:33 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Interactions and Structure</title>
-<!-- 2017-05-31 Wed 11:26 -->
-<meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
-<meta  name="generator" content="Org-mode" />
-<meta  name="author" content="Mikael Svahnberg" />
+<meta name="generator" content="Org mode" />
+<meta name="author" content="Mikael Svahnberg" />
 <style type="text/css">
  <!--/*--><![CDATA[/*><!--*/
-  .title  { text-align: center; }
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
   .todo   { font-family: monospace; color: red; }
-  .done   { color: green; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
   .tag    { background-color: #eee; font-family: monospace;
             padding: 2px; font-size: 80%; font-weight: normal; }
   .timestamp { color: #bebebe; }
   .timestamp-kwd { color: #5f9ea0; }
-  .right  { margin-left: auto; margin-right: 0px;  text-align: right; }
-  .left   { margin-left: 0px;  margin-right: auto; text-align: left; }
-  .center { margin-left: auto; margin-right: auto; text-align: center; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
   .underline { text-decoration: underline; }
   #postamble p, #preamble p { font-size: 90%; margin: .2em; }
   p.verse { margin-left: 3%; }
@@ -46,27 +53,111 @@
     border: 1px solid black;
   }
   pre.src:hover:before { display: inline;}
-  pre.src-sh:before    { content: 'sh'; }
-  pre.src-bash:before  { content: 'sh'; }
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
   pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
-  pre.src-R:before     { content: 'R'; }
-  pre.src-perl:before  { content: 'Perl'; }
-  pre.src-java:before  { content: 'Java'; }
-  pre.src-sql:before   { content: 'SQL'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-hledger:before { content: 'hledger'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
 
   table { border-collapse:collapse; }
   caption.t-above { caption-side: top; }
   caption.t-bottom { caption-side: bottom; }
   td, th { vertical-align:top;  }
-  th.right  { text-align: center;  }
-  th.left   { text-align: center;   }
-  th.center { text-align: center; }
-  td.right  { text-align: right;  }
-  td.left   { text-align: left;   }
-  td.center { text-align: center; }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
   dt { font-weight: bold; }
-  .footpara:nth-child(2) { display: inline; }
-  .footpara { display: block; }
+  .footpara { display: inline; }
   .footdef  { margin-bottom: 1em; }
   .figure { padding: 1em; }
   .figure p { text-align: center; }
@@ -86,6 +177,7 @@
     { font-size: 10px; font-weight: bold; white-space: nowrap; }
   .org-info-js_search-highlight
     { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
   /*]]>*/-->
 </style>
 <link rel="stylesheet" type="text/css" href="org/org.css" />
@@ -95,7 +187,7 @@
 @licstart  The following is the entire license notice for the
 JavaScript code in this tag.
 
-Copyright (C) 2012-2013 Free Software Foundation, Inc.
+Copyright (C) 2012-2017 Free Software Foundation, Inc.
 
 The JavaScript code in this tag is free software: you can
 redistribute it and/or modify it under the terms of the GNU
@@ -144,64 +236,59 @@ for the JavaScript code in this tag.
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
 <ul>
-<li><a href="#sec-1">1. About This Sprint</a></li>
-<li><a href="#sec-2">2. User Stories covered in this Sprint</a></li>
-<li><a href="#sec-3">3. Introduction</a>
+<li><a href="#orgad70d1b">1. About This Sprint</a></li>
+<li><a href="#org33fa8cf">2. User Stories covered in this Sprint</a></li>
+<li><a href="#org3e44b14">3. Introduction</a>
 <ul>
-<li><a href="#sec-3-1">3.1. Contracts</a></li>
-<li><a href="#sec-3-2">3.2. Interaction Diagrams</a></li>
-<li><a href="#sec-3-3">3.3. Class Diagrams</a></li>
-<li><a href="#sec-3-4">3.4. Moar Classes: Packages</a></li>
-<li><a href="#sec-3-5">3.5. Moar Packages!</a></li>
+<li><a href="#org3064152">3.1. Contracts</a></li>
+<li><a href="#orgcc6c2e3">3.2. Interaction Diagrams</a></li>
+<li><a href="#org907a749">3.3. Class Diagrams</a></li>
+<li><a href="#orgc6355b9">3.4. Moar Classes: Packages</a></li>
+<li><a href="#orgb2002be">3.5. Moar Packages!</a></li>
 </ul>
 </li>
-<li><a href="#sec-4">4. <span class="todo TODO">TODO</span> Learning Material</a>
+<li><a href="#org11ee79c">4. Learning Material</a>
 <ul>
-<li><a href="#sec-4-1">4.1. Book Chapters</a></li>
-<li><a href="#sec-4-2">4.2. Screencasts</a></li>
-<li><a href="#sec-4-3">4.3. Further Reading</a></li>
+<li><a href="#orgae2f272">4.1. Book Chapters</a></li>
+<li><a href="#org868fcad">4.2. Screencasts</a></li>
+<li><a href="#org3610a8d">4.3. Further Reading</a></li>
 </ul>
 </li>
-<li><a href="#sec-5">5. Experiential Learning</a>
+<li><a href="#orgc6bcff4">5. Experiential Learning</a>
 <ul>
-<li><a href="#sec-5-1">5.1. Sprint Test Plan</a></li>
-<li><a href="#sec-5-2">5.2. Assignment: Package Diagram</a></li>
-<li><a href="#sec-5-3">5.3. Assignment: Interaction Diagrams</a></li>
-<li><a href="#sec-5-4">5.4. Assignment: Class and Package Diagram</a></li>
-<li><a href="#sec-5-5">5.5. Update Course Backlog</a></li>
+<li><a href="#org68ce70f">5.1. Sprint Test Plan</a></li>
+<li><a href="#org097439a">5.2. Update Course Backlog</a></li>
 </ul>
 </li>
-<li><a href="#sec-6">6. Sprint Acceptance Tests</a></li>
+<li><a href="#org3030d48">6. Sprint Acceptance Tests</a></li>
 </ul>
 </div>
 </div>
+<div class="org">
 <br/>
 
+</div>
 
-
-<div id="outline-container-sec-1" class="outline-2">
-<h2 id="sec-1"><span class="section-number-2">1</span> About This Sprint</h2>
+<div id="outline-container-orgad70d1b" class="outline-2">
+<h2 id="orgad70d1b"><span class="section-number-2">1</span> About This Sprint</h2>
 <div class="outline-text-2" id="text-1">
 <p>
 This sprint discusses how to identify and model interactions between entities in UML interaction diagrams. The sprint also covers how the interaction diagrams produce material that is used to create UML Class Diagrams.
 </p>
 </div>
 </div>
-<div id="outline-container-sec-2" class="outline-2">
-<h2 id="sec-2"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
+<div id="outline-container-org33fa8cf" class="outline-2">
+<h2 id="org33fa8cf"><span class="section-number-2">2</span> User Stories covered in this Sprint</h2>
 <div class="outline-text-2" id="text-2">
 <ul class="org-ul">
-<li>As a software designer I want to understand how domain concepts interact so that I can select the best way to implement these interactions.
-</li>
-<li>As a software designer I want to model both the <i>dynamic behaviour</i> as well as the <i>static structure</i> of the application so that I can communicate both to the developers.
-</li>
-<li>As a software implementer I want to know which methods and attributes each class contains so that I can implement them.
-</li>
+<li>As a software designer I want to understand how domain concepts interact so that I can select the best way to implement these interactions.</li>
+<li>As a software designer I want to model both the <i>dynamic behaviour</i> as well as the <i>static structure</i> of the application so that I can communicate both to the developers.</li>
+<li>As a software implementer I want to know which methods and attributes each class contains so that I can implement them.</li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-3" class="outline-2">
-<h2 id="sec-3"><span class="section-number-2">3</span> Introduction</h2>
+<div id="outline-container-org3e44b14" class="outline-2">
+<h2 id="org3e44b14"><span class="section-number-2">3</span> Introduction</h2>
 <div class="outline-text-2" id="text-3">
 <p>
 So you have your system events from the UML system sequence diagrams, and you have an idea of the concepts in the problem domain based on your domain model. Your next step is to figure out what should happen inside the system as a consequence of your system events. UML books like to introduce the concept of an <i>Operation Contract</i> at this stage, and spend an impressive amount of time defining all the attributes that you should fill in for each contract. I will not go this far. I will not even require you to write any contracts. As an <i>analysis tool</i>, they are quite ok, however.
@@ -219,8 +306,8 @@ The takeaway from this sprint is, however, not the actual diagrams. What I want 
 </div>
 </div>
 
-<div id="outline-container-sec-3-1" class="outline-3">
-<h3 id="sec-3-1"><span class="section-number-3">3.1</span> Contracts</h3>
+<div id="outline-container-org3064152" class="outline-3">
+<h3 id="org3064152"><span class="section-number-3">3.1</span> Contracts</h3>
 <div class="outline-text-3" id="text-3-1">
 <p>
 An operation contract simply documents the system operations. This is ok, and you should really think of doing something like this anyway. If you use e.g. <a href="http://www.stack.nl/~dimitri/doxygen/">Doxygen</a> or the equivalent for your language, you document your system operations in your code so that callers of a function immediately can get an overview of the operation, its parameters, and its return values.
@@ -245,16 +332,11 @@ To identify <i>what</i> may have changed, you look at your domain model. Instanc
 </p>
 
 <ul class="org-ul">
-<li>an instance of a concept may be created
-</li>
-<li>an instance of a concept may be deleted
-</li>
-<li>an attribute of an instance may change value
-</li>
-<li>an association betwen two instances may be formed
-</li>
-<li>an association betwen two instances may be broken
-</li>
+<li>an instance of a concept may be created</li>
+<li>an instance of a concept may be deleted</li>
+<li>an attribute of an instance may change value</li>
+<li>an association betwen two instances may be formed</li>
+<li>an association betwen two instances may be broken</li>
 </ul>
 
 <p>
@@ -262,16 +344,11 @@ It is good form to write this in past tense (to remind you that you are only des
 </p>
 
 <ul class="org-ul">
-<li>An instance of <code>Goat</code> with the name <code>gHarry</code> was created.
-</li>
-<li>The (x,y) position of the goat <code>gHarry</code> was set to (10,4).
-</li>
-<li>An instance of <code>GoatFood</code> with the name <code>gf</code> was created.
-</li>
-<li><code>gf</code> was associated with <code>gHarry</code>.
-</li>
-<li>The location of <code>gf:GoatFood</code> was set to the location of <code>gHarry:Goat</code>&rsquo;s mouth.
-</li>
+<li>An instance of <code>Goat</code> with the name <code>gHarry</code> was created.</li>
+<li>The (x,y) position of the goat <code>gHarry</code> was set to (10,4).</li>
+<li>An instance of <code>GoatFood</code> with the name <code>gf</code> was created.</li>
+<li><code>gf</code> was associated with <code>gHarry</code>.</li>
+<li>The location of <code>gf:GoatFood</code> was set to the location of <code>gHarry:Goat</code>&rsquo;s mouth.</li>
 </ul>
 
 <p>
@@ -290,8 +367,8 @@ This here is the specific point from where I am going to get exam answers using 
 </div>
 </div>
 
-<div id="outline-container-sec-3-2" class="outline-3">
-<h3 id="sec-3-2"><span class="section-number-3">3.2</span> Interaction Diagrams</h3>
+<div id="outline-container-orgcc6c2e3" class="outline-3">
+<h3 id="orgcc6c2e3"><span class="section-number-3">3.2</span> Interaction Diagrams</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
 UML introduces two types of Interaction diagrams, namely <i>Sequence Diagrams</i> and <i>Collaboration Diagrams</i>. These express the same thing and so you can use either one. When I was once a young and budding student we only had collaboration diagrams, and for a long while I favoured them because you are able to express more in less space. These days, however, I prefer sequence diagrams because it is easier to follow the order in which operations should be called, and are overall clearer to get an overview of.
@@ -302,10 +379,11 @@ You have already acquainted yourself with sequence diagrams in the form of <i>Sy
 </p>
 
 
-<div id="fig:SequenceTheatre" class="figure">
+
+<div id="orge2985f5" class="figure">
 <p><img src="./images/FSequenceTheatre.png" alt="FSequenceTheatre.png" />
 </p>
-<p><span class="figure-number">Figure 2:</span> This example is officially getting silly</p>
+<p><span class="figure-number">Figure 2: </span>This example is officially getting silly</p>
 </div>
 
 <p>
@@ -313,10 +391,11 @@ A collaboration diagram is perhaps easier to work with on a whiteboard; you can 
 </p>
 
 
-<div id="fig:CollaborationTheatre" class="figure">
+
+<div id="org1bb1545" class="figure">
 <p><img src="./images/FCollaborationTheatre.png" alt="FCollaborationTheatre.png" />
 </p>
-<p><span class="figure-number">Figure 3:</span> Evolving a Goat and Putting it on Stage.</p>
+<p><span class="figure-number">Figure 3: </span>Evolving a Goat and Putting it on Stage.</p>
 </div>
 
 
@@ -333,8 +412,9 @@ Interaction Diagrams model specific <i>objects</i> and their <i>specific interac
 </div>
 </div>
 
-<div id="outline-container-sec-3-3" class="outline-3">
-<h3 id="sec-3-3"><span class="section-number-3">3.3</span> Class Diagrams</h3>
+
+<div id="outline-container-org907a749" class="outline-3">
+<h3 id="org907a749"><span class="section-number-3">3.3</span> Class Diagrams</h3>
 <div class="outline-text-3" id="text-3-3">
 <p>
 From the interaction diagrams, that describe the dynamic behaviour of specific objects, we can now start to extract how the class declarations must look like. The methods that are called on an object are placed in the corresponding class of that object. The associations formed are added to the &ldquo;owner&rdquo; class of the association (Usually, it is fairly obvious which class should be the owner of an association. Otherwise, decide now and refactor later). Attributes are more difficult to find, since they are not really that prominent in an interaction diagram. If you have made an operation contract, you can get the (post-operation visibly changed) attributes therefrom, but otherwise you will have to guess a bit based on the methods and the responsibilities each object seem to have.
@@ -344,40 +424,12 @@ From the interaction diagrams, that describe the dynamic behaviour of specific o
 I am loath to continue with the previous example but, in the interest of completeness, here goes. First, create the classes used in the example, and add the methods called on each class and the attributes I can guess at. Then, add the relations between classes where the objects call each other. I like to do it in a particular order, and I am revealing the source code for the UML Class Diagram below to show you this order. You are of course free to work in any order you prefer.
 </p>
 
-<div class="org-src-container">
-
-<pre class="src src-plantuml">' Add Classes, methods, and attributes:
-' --------------------
-TheatreStage : +action()
-EvolutionManager : +Goat getGoat()
-EvolutionManager : -lastGoat
-Goat : +whosAGoodGoat()
-ActorContainer : +add(Actor theActor)
-ActorContainer : -list&lt;Actor&gt; myActors
 
 
-' Relations
-' --------------------
-TheatreStage - "1" EvolutionManager
-EvolutionManager - "*" Goat
-TheatreStage -- "1" Goat
-TheatreStage -- "1" ActorContainer
-
-
-' I have decided that Goat needs to be a sub-type of Actor
-' This simplifies the ActorContainer to not worry about Goatiness,
-' but does need to have a relation to "Actor"
-' --------------------
-Actor &lt;|-- Goat
-ActorContainer o-- "*" Actor
-</pre>
-</div>
-
-
-<div id="fig:ClassTheatre" class="figure">
+<div id="org7bbd32d" class="figure">
 <p><img src="./images/FClassTheatre1.png" alt="FClassTheatre1.png" />
 </p>
-<p><span class="figure-number">Figure 4:</span> Class Diagram for the Theatre Example</p>
+<p><span class="figure-number">Figure 4: </span>Class Diagram for the Theatre Example</p>
 </div>
 
 <p>
@@ -390,8 +442,8 @@ Also note that even though in the interaction diagram I store the returned <code
 </div>
 </div>
 
-<div id="outline-container-sec-3-4" class="outline-3">
-<h3 id="sec-3-4"><span class="section-number-3">3.4</span> Moar Classes: Packages</h3>
+<div id="outline-container-orgc6355b9" class="outline-3">
+<h3 id="orgc6355b9"><span class="section-number-3">3.4</span> Moar Classes: Packages</h3>
 <div class="outline-text-3" id="text-3-4">
 <p>
 Preferrably I would like to stop now and put the rest into a separate sprint (and kill the Goat-example once and for all). However, this bit needs to be said, and it will actually help you in your diagrams so I need to put at least a small teaser here.
@@ -402,14 +454,12 @@ Essentially, you now have all the tools necessary to do object oriented design. 
 </p>
 
 <ol class="org-ol">
-<li>You are creating a giant ball of mud, with all your classes thrown into a &#x2013; for all intents and purposes &#x2013; random order.
-</li>
-<li>You will soon not be able to fit all of your design onto one single paper.
-</li>
+<li>You are creating a giant ball of mud, with all your classes thrown into a &#x2013; for all intents and purposes &#x2013; random order.</li>
+<li>You will soon not be able to fit all of your design onto one single paper.</li>
 </ol>
 
 <p>
-To expand on Obstacle #1; What is the significance of that <code>TheatreStage</code> is in the top left corner of Figure <a href="#fig:ClassTheatre">4</a>? What does it mean that <code>Actor</code> is at the bottom of the diagram? Of course, I have made this figure in <a href="http://plantuml.com/">plantUML</a>, which lays out the diagram in an order itself sees fit (since it uses <a href="http://www.graphviz.org/">GraphViz</a> as its backend, the strategy it uses is to minimise the number of arches that needs to cross each other). But even if you are using a CASE tool that allows you to position your classes with absolute coordinates (like a normal drawing program does), there is no inherent semantic meaning in the position of a class.
+To expand on Obstacle #1; What is the significance of that <code>TheatreStage</code> is in the top left corner of Figure <a href="#org7bbd32d">4</a>? What does it mean that <code>Actor</code> is at the bottom of the diagram? Of course, I have made this figure in <a href="http://plantuml.com/">plantUML</a>, which lays out the diagram in an order itself sees fit (since it uses <a href="http://www.graphviz.org/">GraphViz</a> as its backend, the strategy it uses is to minimise the number of arches that needs to cross each other). But even if you are using a CASE tool that allows you to position your classes with absolute coordinates (like a normal drawing program does), there is no inherent semantic meaning in the position of a class.
 </p>
 
 <p>
@@ -421,10 +471,11 @@ To further address Obstacle #1, you also need to define the principles according
 </p>
 
 
-<div id="fig:LayeredPackageDiagram" class="figure">
+
+<div id="org29f037a" class="figure">
 <p><img src="./images/FLayeredPackage.png" alt="FLayeredPackage.png" />
 </p>
-<p><span class="figure-number">Figure 5:</span> An example of a Layered Architecture, expressed in an UML Package Diagram</p>
+<p><span class="figure-number">Figure 5: </span>An example of a Layered Architecture, expressed in an UML Package Diagram</p>
 </div>
 
 <p>
@@ -444,27 +495,21 @@ Because the focus right now is to determine what from your domain model is relev
 <b>To Summarise:</b>
 </p>
 <ul class="org-ul">
-<li>Right now you will be focusing mostly on the Application Logic Layer
-</li>
-<li>Start by defining the high-level packages <i>inside</i> the application logic layer
-</li>
-<li>Then study the dynamic behaviour of your system
-</li>
-<li>Identify the involved entities (classes), and add these to your class diagram to represent the static structure of your system, along with the methods, attributes, and associations you have identified as necessary.
-</li>
-<li>Allocate the identified classes to you packages.
-</li>
-<li>&#x2026;
-</li>
-<li>profit!
-</li>
+<li>Right now you will be focusing mostly on the Application Logic Layer</li>
+<li>Start by defining the high-level packages <i>inside</i> the application logic layer</li>
+<li>Then study the dynamic behaviour of your system</li>
+<li>Identify the involved entities (classes), and add these to your class diagram to represent the static structure of your system, along with the methods, attributes, and associations you have identified as necessary.</li>
+<li>Allocate the identified classes to you packages.</li>
+<li>&#x2026;</li>
+<li>profit!</li>
 </ul>
 
 </div>
 </div>
 </div>
-<div id="outline-container-sec-3-5" class="outline-3">
-<h3 id="sec-3-5"><span class="section-number-3">3.5</span> Moar Packages!</h3>
+
+<div id="outline-container-orgb2002be" class="outline-3">
+<h3 id="orgb2002be"><span class="section-number-3">3.5</span> Moar Packages!</h3>
 <div class="outline-text-3" id="text-3-5">
 <p>
 As your system grows, you will get an increasing number of packages, and you will pretty soon need to worry about how you assign responsibilities and classes to different packages. Chapter 35 in C. Larman, <i>Applying UML and Patterns</i>, 3rd Edition covers some guidelines for this. Remember that they are <i>guidelines</i> and not set in stone. Glancing through the list there are one or two that I disagree with, and we will discuss this in the appropriate lecture.
@@ -472,64 +517,53 @@ As your system grows, you will get an increasing number of packages, and you wil
 </div>
 </div>
 </div>
-<div id="outline-container-sec-4" class="outline-2">
-<h2 id="sec-4"><span class="section-number-2">4</span> <span class="todo TODO">TODO</span> Learning Material</h2>
+<div id="outline-container-org11ee79c" class="outline-2">
+<h2 id="org11ee79c"><span class="section-number-2">4</span> Learning Material</h2>
 <div class="outline-text-2" id="text-4">
-</div><div id="outline-container-sec-4-1" class="outline-3">
-<h3 id="sec-4-1"><span class="section-number-3">4.1</span> Book Chapters</h3>
+</div>
+<div id="outline-container-orgae2f272" class="outline-3">
+<h3 id="orgae2f272"><span class="section-number-3">4.1</span> Book Chapters</h3>
 <div class="outline-text-3" id="text-4-1">
 <ul class="org-ul">
 <li>C. Larman, <i>Applying UML and Patterns</i>, 3rd Edition, Chapters:
 <ol class="org-ol">
-<li value="11">Operation Contracts
-</li>
-<li value="13">Logical Architecture and UML Package Diagrams
-</li>
-<li value="14">On to Object Design          
-</li>
-<li value="15">UML Interaction Diagrams
-</li>
-<li>UML Class Diagrams
-</li>
-<li value="31">Domain Model Refinement
-</li>
-<li value="35">Package Design
-</li>
-</ol>
-</li>
+<li value="11">Operation Contracts</li>
+<li value="13">Logical Architecture and UML Package Diagrams</li>
+<li value="14">On to Object Design</li>
+<li value="15">UML Interaction Diagrams</li>
+<li>UML Class Diagrams</li>
+<li value="31">Domain Model Refinement</li>
+<li value="35">Package Design</li>
+</ol></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-4-2" class="outline-3">
-<h3 id="sec-4-2"><span class="section-number-3">4.2</span> Screencasts</h3>
+<div id="outline-container-org868fcad" class="outline-3">
+<h3 id="org868fcad"><span class="section-number-3">4.2</span> Screencasts</h3>
 <div class="outline-text-3" id="text-4-2">
 <ul class="org-ul">
-<li><a href="https://play.bth.se/media/Contracts/1_086yu2lr/41750261">Contracts</a>
-</li>
-<li><a href="https://play.bth.se/media/Interaction+Diagrams/1_pntlhd3l">Interaction Diagrams</a>
-</li>
-<li><a href="https://play.bth.se/media/From+Interactions+to+Classes/1_8cte1tiv">From Interaction Diagrams to Classes</a>
-</li>
-<li><a href="https://play.bth.se/media/Packages/1_31pkpm8r">Packages</a>
-</li>
+<li><a href="https://play.bth.se/media/Contracts/1_086yu2lr/41750261">Contracts</a></li>
+<li><a href="https://play.bth.se/media/Interaction+Diagrams/1_pntlhd3l">Interaction Diagrams</a></li>
+<li><a href="https://play.bth.se/media/From+Interactions+to+Classes/1_8cte1tiv">From Interaction Diagrams to Classes</a></li>
+<li><a href="https://play.bth.se/media/Packages/1_31pkpm8r">Packages</a></li>
 </ul>
 </div>
 </div>
-<div id="outline-container-sec-4-3" class="outline-3">
-<h3 id="sec-4-3"><span class="section-number-3">4.3</span> Further Reading</h3>
+<div id="outline-container-org3610a8d" class="outline-3">
+<h3 id="org3610a8d"><span class="section-number-3">4.3</span> Further Reading</h3>
 <div class="outline-text-3" id="text-4-3">
 <ul class="org-ul">
-<li><a href="http://dilbert.com/strip/1997-03-09e">Dilbert solves the Software Design Problem</a>
-</li>
+<li><a href="http://dilbert.com/strip/1997-03-09e">Dilbert solves the Software Design Problem</a></li>
 </ul>
 </div>
 </div>
 </div>
-<div id="outline-container-sec-5" class="outline-2">
-<h2 id="sec-5"><span class="section-number-2">5</span> Experiential Learning</h2>
+<div id="outline-container-orgc6bcff4" class="outline-2">
+<h2 id="orgc6bcff4"><span class="section-number-2">5</span> Experiential Learning</h2>
 <div class="outline-text-2" id="text-5">
-</div><div id="outline-container-sec-5-1" class="outline-3">
-<h3 id="sec-5-1"><span class="section-number-3">5.1</span> Sprint Test Plan</h3>
+</div>
+<div id="outline-container-org68ce70f" class="outline-3">
+<h3 id="org68ce70f"><span class="section-number-3">5.1</span> Sprint Test Plan</h3>
 <div class="outline-text-3" id="text-5-1">
 <p>
 Go through the user stories for this sprint and make sure you have a clear understanding of how to solve each of them.
@@ -545,42 +579,26 @@ Add and/or revise the following items to your glossary:
 <ul class="org-ul">
 <li>Interaction Diagrams
 <ul class="org-ul">
-<li>Sequence Diagrams
-</li>
-<li>Collaboration Diagrams (Also: Communication Diagram)
-</li>
-</ul>
-</li>
-<li>Operation Contracts (Also: Design Contracts)
-</li>
+<li>Sequence Diagrams</li>
+<li>Collaboration Diagrams (Also: Communication Diagram)</li>
+</ul></li>
+<li>Operation Contracts (Also: Design Contracts)</li>
 <li>Class Diagrams
 <ul class="org-ul">
-<li>Associations
-</li>
-<li>Aggregation
-</li>
-<li>Composition
-</li>
-<li>Class Roles
-</li>
-<li>Multiplicity
-</li>
-</ul>
-</li>
-<li>Dynamic Behaviour
-</li>
-<li>Static Structure
-</li>
-<li>Package Diagram
-</li>
-<li>Software Architecture
-</li>
+<li>Associations</li>
+<li>Aggregation</li>
+<li>Composition</li>
+<li>Class Roles</li>
+<li>Multiplicity</li>
+</ul></li>
+<li>Dynamic Behaviour</li>
+<li>Static Structure</li>
+<li>Package Diagram</li>
+<li>Software Architecture</li>
 <li>Architecture Style
 <ul class="org-ul">
-<li>Layered Architecture Style
-</li>
-</ul>
-</li>
+<li>Layered Architecture Style</li>
+</ul></li>
 </ul>
 
 <p>
@@ -588,463 +606,9 @@ Make sure you understand what each item is, the notation for them, and how to us
 </p>
 </div>
 </div>
-<div id="outline-container-sec-5-2" class="outline-3">
-<h3 id="sec-5-2"><span class="section-number-3">5.2</span> Assignment: Package Diagram</h3>
+<div id="outline-container-org097439a" class="outline-3">
+<h3 id="org097439a"><span class="section-number-3">5.2</span> Update Course Backlog</h3>
 <div class="outline-text-3" id="text-5-2">
-<p>
-List and describe the high-level packages in your system.
-</p>
-
-<p>
-<b>Tasks:</b>
-</p>
-<ul class="org-ul">
-<li>Break down your system into logically coherent packages.
-</li>
-<li>Briefly describe each package, and its responsibilities.
-</li>
-<li>Model your system in a UML Package Diagram.
-</li>
-</ul>
-
-<div class="info">
-<p>
-<b>Document Structure:</b>
-</p>
-
-<p>
-The title for this Assignment Document is: <i>Package Diagram for System &lt;system name&gt;</i>
-.
-</p>
-
-<p>
-The assignment document shall contain the following items:
-</p>
-
-<ol class="org-ol">
-<li>Title Page
-<ol class="org-ol">
-<li>Title: &lt;assignment document title&gt;
-</li>
-<li>Sub-title: &ldquo;Assignment in the course &lt;course code&gt;&lt;course name&gt;&rdquo;
-</li>
-<li>Date
-</li>
-<li>Authors and Author Contribution
-
-<p>
-Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
-</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Author Name</th>
-<th scope="col" class="left">Social Security Number</th>
-<th scope="col" class="left">Thinking</th>
-<th scope="col" class="left">Writing</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-</tr>
-</tbody>
-</table>
-</li>
-</ol>
-</li>
-<li>System Description
-
-<p>
-A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
-</p>
-</li>
-
-<li value="3">Overall Packages
-
-<p>
-List your packages and briefly describe their responsibilities.
-</p>
-</li>
-<li>Package Diagram
-
-<p>
-Represent your packages as a UML Package Diagram.
-</p>
-</li>
-</ol>
-
-</div>
-
-<p>
-Commit and push this document to your project repository.
-</p>
-
-<div class="tip">
-<p>
-<b>Conditions of Satisfaction:</b>
-</p>
-
-<p>
-When marking this part of the assignment we are looking for the following:
-</p>
-
-<ol class="org-ol">
-<li value="0">Does the title page contain a table with authors and author contribution?
-</li>
-<li>Size of assignment: Does the package model contain 5 to 10 packages?
-</li>
-<li>Do the packages represent a logical division of the system?
-</li>
-<li>Is each package described in an understandable way?
-</li>
-<li>Are the responsibilities of each package clearly described?
-</li>
-</ol>
-
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-5-3" class="outline-3">
-<h3 id="sec-5-3"><span class="section-number-3">5.3</span> Assignment: Interaction Diagrams</h3>
-<div class="outline-text-3" id="text-5-3">
-<p>
-Describe what will happen inside the system for your system events in terms of UML Interaction Diagrams. You may choose yourself whether you prefer UML Sequence Diagrams or UML Collaboration Diagrams. You may wish to try using both to get a feel of which one you prefer.
-</p>
-
-<p>
-<b>Tasks:</b>
-</p>
-<ul class="org-ul">
-<li>Go back to your list of UML Use Cases and their corresponding UML System Sequence Diagrams, and extract the System Events therefrom.
-</li>
-<li>Starting with your most important Use Case, create UML Interaction Diagrams for all the System Events.
-</li>
-<li>Continue until you have created <i>no fewer than 10 UML Interaction Diagrams</i> and have completed a full Use Case. I.e., if you are in the middle of a use case with your tenth interaction diagram, you complete the use case and create slightly more than ten interaction diagrams.
-</li>
-</ul>
-
-<div class="info">
-<p>
-<b>Document Structure:</b>
-</p>
-
-<p>
-The title for this Assignment Document is: <i>Interaction Diagrams for System &lt;system name&gt;</i>
-.
-</p>
-
-<p>
-The assignment document shall contain the following items:
-</p>
-
-<ol class="org-ol">
-<li>Title Page
-<ol class="org-ol">
-<li>Title: &lt;assignment document title&gt;
-</li>
-<li>Sub-title: &ldquo;Assignment in the course &lt;course code&gt;&lt;course name&gt;&rdquo;
-</li>
-<li>Date
-</li>
-<li>Authors and Author Contribution
-
-<p>
-Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
-</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Author Name</th>
-<th scope="col" class="left">Social Security Number</th>
-<th scope="col" class="left">Thinking</th>
-<th scope="col" class="left">Writing</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-</tr>
-</tbody>
-</table>
-</li>
-</ol>
-</li>
-<li>System Description
-
-<p>
-A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
-</p>
-</li>
-
-<li value="3">Prioritised List of Use Cases
-
-<p>
-Repeat your prioritised list of Use Cases.
-</p>
-</li>
-
-<li>System Events
-
-<p>
-List the System Events you have extracted from your UML System Sequence Diagrams:
-</p>
-
-<ol class="org-ol">
-<li>System Events for Use Case &lt;name 1&gt;
-</li>
-<li>System Events for Use Case &lt;name 2&gt;
-</li>
-<li>&#x2026;
-</li>
-<li>System Events for Use Case &lt;name N&gt;
-</li>
-</ol>
-</li>
-
-<li>Interaction Diagrams
-
-<p>
-Your UML Interaction Diagrams, organised per use case and titled with the system event.
-</p>
-
-<ol class="org-ol">
-<li>Interaction Diagrams for Use Case &lt;name 1&gt;
-</li>
-<li>Interaction Diagrams for Use Case &lt;name 2&gt;
-</li>
-<li>&#x2026;
-</li>
-<li>Interaction Diagrams for Use Case &lt;name N&gt;
-</li>
-</ol>
-</li>
-</ol>
-
-</div>
-
-<p>
-Commit and push this document to your project repository.
-</p>
-
-<div class="tip">
-<p>
-<b>Conditions of Satisfaction:</b>
-</p>
-
-<p>
-When marking this part of the assignment we are looking for the following:
-</p>
-
-<ol class="org-ol">
-<li value="0">Does the title page contain a table with authors and author contribution?
-</li>
-<li>Size of assignment: Are there at least 10 interaction diagrams?
-</li>
-<li>Are all relevant objects (and only objects) involved in the interaction diagrams?
-</li>
-<li>Are all methods (messages) suitably named?
-</li>
-<li>Are returned objects and objects passed as parameters also represented in the interaction diagram?
-</li>
-<li>Will the interaction diagram actually sufficiently address the system event?
-</li>
-<li>Are there interactions that are missing to fully satisfy the system event?
-</li>
-</ol>
-
-</div>
-</div>
-</div>
-<div id="outline-container-sec-5-4" class="outline-3">
-<h3 id="sec-5-4"><span class="section-number-3">5.4</span> Assignment: Class and Package Diagram</h3>
-<div class="outline-text-3" id="text-5-4">
-<p>
-In this assignment you use your UML Interaction Diagrams and extract the static structure necessary in the form of a UML Class Diagram. Furthermore, you divide your classes into the packages that you have previously identified. This assignment builds upon the previously created package diagram.
-</p>
-
-<p>
-<b>Tasks:</b>
-</p>
-<ul class="org-ul">
-<li>For each object in each interaction diagram, create a corresponding class in a UML Class Diagram.
-</li>
-<li>Put your classes into the package from your Package Diagram you think is most suitable for each class.
-</li>
-<li>Add all methods that are being called on each object in your interaction diagram to the corresponding class.
-</li>
-<li>If two objects are interacting in your interaction diagrams, add an association between the corresponding classes.
-</li>
-<li>Identify attributes that each object must have, and add these to the corresponding class.
-</li>
-<li>Refine the associations in your UML Class Diagram and consider whether they should be simple associations, aggregations, or compositions.
-</li>
-<li>Refine the associations in your UML Class Diagram with respect to multiplicity
-</li>
-<li>Refine the attributes in each class in your UML Class Diagram and add types and visibility.
-</li>
-<li>Refine the methods in each class in your UML Class Diagram and add return types, parameter types, and visibility.
-</li>
-</ul>
-
-<div class="info">
-<p>
-<b>Document Structure:</b>
-</p>
-
-<p>
-The title for this Assignment Document is: <i>Class and Package Diagram for System &lt;system name&gt;</i>
-.
-</p>
-
-<p>
-The assignment document shall contain the following items:
-</p>
-
-<ol class="org-ol">
-<li>Title Page
-<ol class="org-ol">
-<li>Title: &lt;assignment document title&gt;
-</li>
-<li>Sub-title: &ldquo;Assignment in the course &lt;course code&gt;&lt;course name&gt;&rdquo;
-</li>
-<li>Date
-</li>
-<li>Authors and Author Contribution
-
-<p>
-Add a table with all authors, their social security numbers, and the share in percent that the author has contributed in thinking (discussing, reasoning, etc.) and in actually writing the submitted assignment document.
-</p>
-
-<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
-
-
-<colgroup>
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-
-<col  class="left" />
-</colgroup>
-<thead>
-<tr>
-<th scope="col" class="left">Author Name</th>
-<th scope="col" class="left">Social Security Number</th>
-<th scope="col" class="left">Thinking</th>
-<th scope="col" class="left">Writing</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-<td class="left">&#xa0;</td>
-</tr>
-</tbody>
-</table>
-</li>
-</ol>
-</li>
-<li>System Description
-
-<p>
-A brief description (2-3 paragraphs) of your interpretation of what the goal of the system is.
-</p>
-</li>
-
-<li value="3">Class and Package Diagram
-
-<p>
-Present the final UML Class Diagram (divided into Packages).
-</p>
-
-<p>
-Briefly describe each package and its responsibilities.
-</p>
-</li>
-</ol>
-
-</div>
-
-<p>
-Commit and push this document to your project repository.
-</p>
-
-<div class="tip">
-<p>
-<b>Conditions of Satisfaction:</b>
-</p>
-
-<p>
-When marking this part of the assignment we are looking for the following:
-</p>
-
-<ol class="org-ol">
-<li value="0">Does the title page contain a table with authors and author contribution?
-</li>
-<li>Size of assignment: Does the UML Class Diagram contain 15-30 Classes?
-</li>
-<li>Do all objects from the interaction diagrams in the previous assignment have a corresponding class?
-</li>
-<li>Are the classes placed into relevant packages?
-</li>
-<li>Do all method calls from the interaction diagrams in the previous assignment have a corresponding method in the right class?
-</li>
-<li>Are all interactions in the interaction diagrams accurately represented as associations between classes?
-</li>
-<li>Where applicable, are associations between classes modelled as aggregations or compositions?
-</li>
-<li>Are there multiplicity indicators on associations? Are they used correctly?
-</li>
-<li>Do all methods have a visibility indicator, a return type, types for all parameters, and a relevant name?
-</li>
-<li>Do all attributes have a visibility indicator, a type, and a relevant name?
-</li>
-<li>Are there any missing attributes?
-</li>
-</ol>
-
-</div>
-</div>
-</div>
-
-<div id="outline-container-sec-5-5" class="outline-3">
-<h3 id="sec-5-5"><span class="section-number-3">5.5</span> Update Course Backlog</h3>
-<div class="outline-text-3" id="text-5-5">
 <p>
 When deciding how to solve a system event in terms of interacting objects, are there better ways for the objects to interact, and are there worse ways? With respect to what?
 </p>
@@ -1055,35 +619,24 @@ Are there any other questions that you want answered? Add them, along with a bri
 </div>
 </div>
 </div>
-<div id="outline-container-sec-6" class="outline-2">
-<h2 id="sec-6"><span class="section-number-2">6</span> Sprint Acceptance Tests</h2>
+<div id="outline-container-org3030d48" class="outline-2">
+<h2 id="org3030d48"><span class="section-number-2">6</span> Sprint Acceptance Tests</h2>
 <div class="outline-text-2" id="text-6">
 <p>
 You are done with this sprint when:
 </p>
 <ul class="org-ul">
-<li>You have an understanding of how the dynamic behaviour of the system is used to identify the static structure
-</li>
-<li>You have an understanding of how you may use your previous analysis, in terms of Use Cases, System Sequence Diagrams, and Domain Model to initiate your design of the dynamic behaviour.
-</li>
-<li>You have created a Package Diagram document.
-</li>
-<li>You have created an Interaction Diagrams document.
-</li>
-<li>You have created a Class and Package Diagrams document.
-</li>
-<li>You have committed/pushed these documents to your project repository.
-</li>
+<li>You have an understanding of how the dynamic behaviour of the system is used to identify the static structure</li>
+<li>You have an understanding of how you may use your previous analysis, in terms of Use Cases, System Sequence Diagrams, and Domain Model to initiate your design of the dynamic behaviour.</li>
+<li>You have committed/pushed these documents to your project repository.</li>
 </ul>
 
 <p>
 You may also have
 </p>
 <ul class="org-ul">
-<li>Updated your Sprint Test Plan
-</li>
-<li>Updated your Course Backlog   
-</li>
+<li>Updated your Sprint Test Plan</li>
+<li>Updated your Course Backlog</li>
 </ul>
 </div>
 </div>
@@ -1091,8 +644,7 @@ You may also have
 <div id="postamble" class="status">
 <p class="author">Author: Mikael Svahnberg</p>
 <p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
-<p class="date">Created: 2017-05-31 Wed 11:26</p>
-<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 25.1.1 (<a href="http://orgmode.org">Org</a> mode 8.2.10)</p>
+<p class="date">Created: 2018-01-23 Tue 10:33</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
