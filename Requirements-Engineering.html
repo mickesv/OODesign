@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-01-23 Tue 11:49 -->
+<!-- 2018-01-29 Mon 11:39 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Requirements Engineering</title>
@@ -446,7 +446,7 @@ How you behave during an interview influences the results, because your behaviou
 <h3 id="org6b48ca9"><span class="section-number-3">3.2</span> Specification</h3>
 <div class="outline-text-3" id="text-3-2">
 <p>
-Once you have found the requirements, your next step (after analysing them and negotiating them with the customer, but that is also outside the scope of this course) is to <i>Specify</i> the requirements. There is an IEEE standard, IEEE 830, for how to structure your requirements document, assuming you specify requirements in the traditional way. The good thing about this is that it has existed for many years, and people are used to seeing it and signing contract based on it. The bad thing about it is that it is not as well known or easy to understand as requirements engineering researchers would like to think it is, and with a few moments of education I am certain that you will be able to educate your customers on any document and requirements format you choose.
+Once you have found the requirements, your next step (after analysing them and negotiating them with the customer, but that is also outside the scope of this course) is to <i>Specify</i> the requirements. There is an IEEE standard, IEEE 830, for how to structure your requirements document, assuming you specify requirements in the traditional way. The good thing about this is that it has existed for many years, and people are used to seeing it and signing contract based on it. The bad thing about it is that it is not as well known or easy to understand as requirements engineering researchers would like to think it is, and with a few minutes of education I am certain that you will be able to educate your customers on any document and requirements format you choose.
 </p>
 
 <div class="info" id="fig:SRS">
@@ -495,6 +495,14 @@ Traditional requirements may be specified as figures, tables, sketches, or plain
 </p>
 
 <p>
+User stories are intended to be kept simple while still covering the most important information. They are often written according to a standard template: <i>As a &lt;type of user&gt; I want &lt;some goal&gt; so that &lt;some reason&gt;.</i>
+</p>
+
+<p>
+With this template, we get the most important information, namely <i>what</i> you want the system to do (&ldquo;some goal&rdquo;), <i>who&ldquo; wants it (&rdquo;type of user&ldquo;) so that you can go back and get more information, and put the requirement into context of what else this type of user wants with the system, and a /motivation</i> for the requirement (&ldquo;some reason&rdquo;), so that you can better understand exactly what the user desires to do and why. This will help you make reasonable assumptions about how to implement the requirement.
+</p>
+
+<p>
 UML use cases are covered in a different course sprint, so I will only briefly mention them here. With a use case, you are attempting to put the requirements into a context. Of course, this means that you need to write more, since you also need to add information about the context. This is one of the reasons why they are not considered requirements &#x2013; they are simply too verbose. This verbosity also means that a developer is unlikely to do use cases for every requirement and every part of the system; but will rather do them for those parts of the system where there is a usage flow that is difficult to grasp in one sentence, and where you are likely to hold a &ldquo;conversation&rdquo; with the system to fulfill a higher need. For example, searching for a hotel room is a one-liner. <i>Booking</i> a room on the other hand may involve
 </p>
 <ul class="org-ul">
@@ -529,6 +537,7 @@ So, which requirement should you focus on developing first?
 In traditional requirements engineering, there is a whole phase solely dedicated to requirements prioritisation. Agile software development methodologies (such as Scrum) also assumes that you always have your user stories prioritised in your backlog. Essentially, you are doing insertion sort whenever you add a new user story, while also checking that the priority of the existing items do not change as a result of adding the new user story. Each sprint begins with a review of the backlog, before you select among the top prioritised user stories which you should develop in the sprint. If the user story is really big (called an <i>epic</i>), one of the actions you may do is to break it down into more manageable user stories and put these into the backlog.
 </p>
 
+
 <p>
 This, of course, does not answer the question since it only explains <i>how</i> you decide, but not <i>on what grounds</i>. Also here, you can probably build a research career on deciding which factors should influence your prioritisation (see, for example, Ruhe and Saliu&rsquo;s paper &ldquo;The art and Science of Release Planning&rdquo; <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup>), but a few good starting points are:
 </p>
@@ -542,6 +551,23 @@ This, of course, does not answer the question since it only explains <i>how</i> 
 <p>
 UML/RUP would advocate that you wait with prioritising your requirements and instead prioritise the UML use cases, so that you deliver the most important features first. This does not mean that you need to implement the full flow of events in one go; always keep the Minimum Viable Product in mind.
 </p>
+
+<div class="warning">
+<p>
+<b>Epics are bigger user stories, but not necessarily more important.</b>
+</p>
+
+
+<div class="figure">
+<p><img src="./images/IFrank-the-Pug-Quote.jpg" alt="IFrank-the-Pug-Quote.jpg" />
+</p>
+</div>
+
+<p>
+For example, the epic &ldquo;As a manager I want us to support Chinese characters so we can enter the chinese market&rdquo; is really big, but maybe not very important. Conversely, the user story &ldquo;As a user I want to be able to abort a transaction so that I am able to change my mind at any time&rdquo; is much smaller, and way more important.
+</p>
+
+</div>
 </div>
 </div>
 
@@ -721,7 +747,7 @@ J. Karlsson and K. Ryan. A cost-value approach for prioritizing requirements. IE
 <div id="postamble" class="status">
 <p class="author">Author: Mikael Svahnberg</p>
 <p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
-<p class="date">Created: 2018-01-23 Tue 11:49</p>
+<p class="date">Created: 2018-01-29 Mon 11:39</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
