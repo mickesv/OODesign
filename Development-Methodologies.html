@@ -3,7 +3,7 @@
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
-<!-- 2018-01-29 Mon 15:11 -->
+<!-- 2018-01-30 Tue 10:36 -->
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Development Methodologies</title>
@@ -241,7 +241,9 @@ for the JavaScript code in this tag.
 <li><a href="#orge425871">3. Introduction</a>
 <ul>
 <li><a href="#org122a980">3.1. Project Planning and Tracking</a></li>
-<li><a href="#org6e3de6e">3.2. Design Documentation</a></li>
+<li><a href="#orgc89343f">3.2. Earned Value and Burndown Charts</a></li>
+<li><a href="#org11603ef">3.3. Velocity</a></li>
+<li><a href="#org6e3de6e">3.4. Design Documentation</a></li>
 </ul>
 </li>
 <li><a href="#orgb47e072">4. Learning Material</a>
@@ -457,7 +459,7 @@ GANTT charts visualise your project in terms of activities and calendar dates, b
 </table>
 
 <p>
-An example of a GANTT chart is presented in Figure <a href="#org3513596">2</a>. As you can see, many of the columns I describe above are hidden inside tasks or not available at all. Of course, different tools will provide you with different values to set, but the table above is &#x2013; to me &#x2013; a bare minimum of what you would want to define per task. Eye candy be damned!
+An example of a GANTT chart is presented in Figure <a href="#org3513596">2</a>. As you can see, many of the columns I describe above are hidden inside tasks or not available at all. Of course, different tools will provide you with different values to set, but the table above is &#x2013; to me &#x2013; a bare minimum of what you would want to define per task. Eye candy be damned; it is relatively easy to roll out your own GANTT charts using Excel.
 </p>
 
 
@@ -466,7 +468,12 @@ An example of a GANTT chart is presented in Figure <a href="#org3513596">2</a>. 
 </p>
 <p><span class="figure-number">Figure 2: </span>An example of a GANTT chart</p>
 </div>
+</div>
+</div>
 
+<div id="outline-container-orgc89343f" class="outline-3">
+<h3 id="orgc89343f"><span class="section-number-3">3.2</span> Earned Value and Burndown Charts</h3>
+<div class="outline-text-3" id="text-3-2">
 <p>
 The discussion above focus on the <i>work performed</i> (or the planned work). In contrast, agile methodologies focus on the <i>earned value</i>, which gives a slightly different picture. Whereas you can use the information above to tell your boss whether you are on time or not, you are not able to say at a glance how happy this has made the customer, or how many features you have left to before you are done. For these purposes, we use <i>Earned Value charts</i> and <i>Burn charts</i>.
 </p>
@@ -525,10 +532,47 @@ A burndown chart essentially turns this chart upside down. Partially, this is do
 </div>
 </div>
 </div>
+<div id="outline-container-org11603ef" class="outline-3">
+<h3 id="org11603ef"><span class="section-number-3">3.3</span> Velocity</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+With the help of earned value charts and/or burndown charts, it is possible to measure your <i>velocity</i>, i.e. the speed at which you are developing. Simply put, your average velocity is the average number of story points that your team is able to complete in one iteration. When planning for the next release, your average veloity is useful as a guideline for how much you should commit to.
+</p>
 
+<p>
+Your current velocity is, correspondingly, the speed at which you are currently completing story points. It is a simple math exercise to make a projection for how many story points you will be able to close the current iteration (<i>We are <code>x%</code> into the current iteration and have closed <code>y</code> story points</i>).
+</p>
+
+<div class="warning">
+<p>
+<b>Why You Should Not Compare Velocities</b>
+</p>
+
+<p>
+A manager may wish look at your average velocity and compare with other teams. This is wrong, for a number of reasons:
+</p>
+
+<dl class="org-dl">
+<dt>Each team assigns story points in their own unique way</dt><dd>Rather than following some corporate standard, counting <a href="https://en.wikipedia.org/wiki/Function_point">Function Points</a>, using <a href="https://en.wikipedia.org/wiki/COCOMO">COCOMO</a>, or some other method, you assign story points according to <i>your</i> experience, and <i>your</i> assessment of how big a user story is, or how difficult it will be to implement. You do this based in your past velocity, and based on the skills and abilities of <i>your</i> team. This is a unique composition, and so the story point estimates will also be unique. The important thing is that <i>you</i> are consistent over time, which is difficult enough considering that your team is likely <i>not</i> stable (old people leave, new people are added, etc.).</dd>
+<dt>Your team has decided what a story point means for you</dt><dd>Your team may have decided that an average user story is 400 story points. Another team may decide that the same user story is 4000 points, because it makes them feel better. Others will claim that the average user story is 4 story points, just because. In other words, the meaning of a story point only makes sense to the team that created it. <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup></dd>
+<dt>Each team has a unique composition</dt><dd>Not all developers are the same, and your velocity is just that: <i>yours</i>. Different teams are likely working on different parts of the product (unless you move around, which is not so common), and the average user stories may be of different sizes (Compare, for example, implementing smaller workflows into the user interface, with adding support for new standards against backend systems).</dd>
+<dt>Story Points are intended as a planning tool</dt><dd>The worst thing you can do is to take something that works well as a planning tool, and pervert it to also be a reporting tool or (worse yet) a control tool. What will inevitably happen is that people will optimise for whatever favours them most, and you will end up having a mediocre tool for control, planning, and monitoring.</dd>
+</dl>
+
+<p>
+Ultimately, the underlying philosophy here is that the <i>teams</i> are (and should be) capable of planning themselves, and should only be compared to themselves. Management should support the teams so that they are able to excel, rather than punishing them for being human.
+</p>
+
+<p>
+( <a href="https://www.scrumalliance.org/community/articles/2014/february/velocity">Read More</a> )
+</p>
+
+</div>
+</div>
+</div>
 <div id="outline-container-org6e3de6e" class="outline-3">
-<h3 id="org6e3de6e"><span class="section-number-3">3.2</span> Design Documentation</h3>
-<div class="outline-text-3" id="text-3-2">
+<h3 id="org6e3de6e"><span class="section-number-3">3.4</span> Design Documentation</h3>
+<div class="outline-text-3" id="text-3-4">
 
 <div id="org4bb1ed0" class="figure">
 <p><img src="./images/arne01.png" alt="arne01.png" width="600" />
@@ -559,7 +603,7 @@ Remember earlier where I mentioned that UML/RUP claims to be agile? Please take 
 </p>
 
 <p>
-In 2014 a colleague of mine did a survey <sup><a id="fnr.1" class="footref" href="#fn.1">1</a></sup> among nearly 4000 professional software developers about their software development practices in general. One of the questions was the seemingly innocent <i>&ldquo;Do you model?&rdquo;</i>. Answers ranged from &ldquo;no&rdquo; to &ldquo;hell no!&rdquo;, as presented in Figure <a href="#orgdc48901">8</a>.
+In 2014 a colleague of mine did a survey <sup><a id="fnr.2" class="footref" href="#fn.2">2</a></sup> among nearly 4000 professional software developers about their software development practices in general. One of the questions was the seemingly innocent <i>&ldquo;Do you model?&rdquo;</i>. Answers ranged from &ldquo;no&rdquo; to &ldquo;hell no!&rdquo;, as presented in Figure <a href="#orgdc48901">8</a>.
 </p>
 
 
@@ -742,7 +786,9 @@ You may also have
 <h2 class="footnotes">Footnotes: </h2>
 <div id="text-footnotes">
 
-<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara"><p class="footpara">
+<div class="footdef"><sup><a id="fn.1" class="footnum" href="#fnr.1">1</a></sup> <div class="footpara">It is a different story if you have several teams working on items from the same backlog. Then you want them to use the same standard so you can compare estimates of the <i>user stories</i> (note: <i>not</i> the teams).</div></div>
+
+<div class="footdef"><sup><a id="fn.2" class="footnum" href="#fnr.2">2</a></sup> <div class="footpara"><p class="footpara">
 T. Gorschek, E. Tempero, L. Angelis, <i>On the use of software design models in software development practice: An empirical investigation</i>, in Journal of Systems and Software 95(2014):176&#x2013;193.
 </p></div></div>
 
@@ -752,7 +798,7 @@ T. Gorschek, E. Tempero, L. Angelis, <i>On the use of software design models in 
 <div id="postamble" class="status">
 <p class="author">Author: Mikael Svahnberg</p>
 <p class="email">Email: <a href="mailto:Mikael.Svahnberg@bth.se">Mikael.Svahnberg@bth.se</a></p>
-<p class="date">Created: 2018-01-29 Mon 15:11</p>
+<p class="date">Created: 2018-01-30 Tue 10:36</p>
 <p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
 </div>
 </body>
